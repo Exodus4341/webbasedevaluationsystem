@@ -2,7 +2,7 @@
 <br>
 
 <?php if ($users): ?>
-<table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="example" width="100%">
+<table cellpadding="0" cellspacing="0" border="0" class="table table-striped display" id="example" width="100%">
 	<thead>
 		<tr>
 			<th>Picture</th>

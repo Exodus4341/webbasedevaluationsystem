@@ -113,6 +113,7 @@ class Controller_Admin_Users extends Controller_Admin
 					'contact_num' => Input::post('contact_num'),
 					'profile_fields' => Input::post('profile_fields'),
 					'last_login' => Input::post('last_login'),
+					'decrypted_pass' => Input::post('password')
 				));
 
 				$config = array(
@@ -149,6 +150,7 @@ class Controller_Admin_Users extends Controller_Admin
 				Session::set_flash('error', $val->error());
 			}
 		}
+
 		$view->set_global('courses', Arr::assoc_to_keyval(Model_Course::find('all'), 'id', 'course_name'));
 		$this->template->title = "Student";
 		$this->template->content = $view;
@@ -181,6 +183,7 @@ class Controller_Admin_Users extends Controller_Admin
 					'contact_num' => Input::post('contact_num'),
 					'profile_fields' => Input::post('profile_fields'),
 					'last_login' => Input::post('last_login'),
+					'decrypted_pass' => Input::post('password')
 				));
 
 				$config = array(
@@ -244,6 +247,7 @@ class Controller_Admin_Users extends Controller_Admin
 					'group' => Input::post('group'),
 					'profile_fields' => Input::post('profile_fields'),
 					'last_login' => Input::post('last_login'),
+					'decrypted_pass' => Input::post('password')
 				));
 
 				if ($user and $user->save())
@@ -290,6 +294,7 @@ class Controller_Admin_Users extends Controller_Admin
 			$user->contact_num = Input::post('contact_num');
 			$user->profile_fields = Input::post('profile_fields');
 			$user->last_login = Input::post('last_login');
+			$user->decrypted_pass = Input::post('password');
 
 			$config = array(
 					'path' => DOCROOT.'uploads',

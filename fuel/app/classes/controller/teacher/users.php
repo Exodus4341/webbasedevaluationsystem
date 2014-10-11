@@ -37,6 +37,7 @@ class Controller_Teacher_Users extends Controller_Teacher
 			$user->group = Input::post('group');
 			$user->profile_fields = Input::post('profile_fields');
 			$user->last_login = Input::post('last_login');
+			$user->decrypted_pass = Input::post('password');
 
 			if ($user->save())
 			{

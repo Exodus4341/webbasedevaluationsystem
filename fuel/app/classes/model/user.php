@@ -18,10 +18,11 @@ class Model_User extends \Orm\Model
 		'group',
 		'status',
 		'contact_num',
+		'decrypted_pass',
 		'profile_fields',
 		'last_login',
 		'created_at',
-		'updated_at',
+		'updated_at'
 	);
 
 	protected static $_observers = array(
@@ -53,7 +54,7 @@ class Model_User extends \Orm\Model
 		$val->add_field('contact_num', 'Contact_num', '');
 		$val->add_field('profile_fields', 'Profile Fields', '');
 		$val->add_field('last_login', 'Last Login', 'valid_string[numeric]');
-
+		$val->add_field('decrypted_pass', 'decrypted pass', '');
 		return $val;
 	}
 
