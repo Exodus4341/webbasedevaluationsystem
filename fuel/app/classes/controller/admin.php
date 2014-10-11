@@ -3,6 +3,7 @@
 class Controller_Admin extends Controller_Base
 {
 	public $template = 'admin/template';
+	public $template1 = 'admin/template1';
 
 	public function before()
 	{
@@ -62,14 +63,14 @@ class Controller_Admin extends Controller_Base
 					}
 					else
 					{
-						$this->template->set_global('login_error', '<script>alert("Username or Email and Password Mismatch!")</script>');
+						return $this->set_global('login_error', '<script>alert("Username or Email and Password Mismatch!")</script>');
 					}
 				}
 			}
 		
 
-		$this->template->title = '';
-		$this->template->content = View::forge('admin/login', array('val' => $val), false);
+		
+		return View::forge('admin/login', array('val' => $val), false);
 	}
 
 	/**
