@@ -1,14 +1,9 @@
-<h2>Viewing #<?php echo $questions->id; ?></h2>
-
+<h2>Viewing #<?php echo $questions[0]['qid']; ?></h2>
 <p>
 	<strong>Category:</strong>
-	<?php echo $questions->category; ?></p>
+	<?php echo $questions[0]['cat_name']; ?></p>
 <p>
 	<strong>Question:</strong>
-	<?php echo $questions->question; ?></p>
-<p>
-	<strong>Subj id:</strong>
-	<?php echo $questions->subj_id; ?></p>
-
-<?php echo Html::anchor('admin/question/edit/'.$questions->id, 'Edit'); ?> |
-<?php echo Html::anchor('admin/question', 'Back'); ?>
+	<?php echo $questions[0]['question']; ?></p>
+<?php echo Html::anchor('admin/question/edit/'.$questions[0]['qid'], 'Edit', array('class' => 'btn btn-warning')); ?> |
+<?php echo Html::anchor('admin/question', 'Back', array('class' => 'btn btn-default')); ?>

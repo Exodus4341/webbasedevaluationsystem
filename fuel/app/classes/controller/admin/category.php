@@ -5,7 +5,7 @@ class Controller_Admin_Category extends Controller_Admin
 	public function action_index()
 	{
 		$data['categories'] = Model_Category::find('all');
-		$this->template->title = "category";
+		$this->template->title = "Category";
 		$this->template->content = View::forge('admin\category/index', $data);
 
 	}
@@ -14,7 +14,7 @@ class Controller_Admin_Category extends Controller_Admin
 	{
 		$data['category'] = Model_Category::find($id);
 
-		$this->template->title = "category";
+		$this->template->title = "Category";
 		$this->template->content = View::forge('admin\category/view', $data);
 
 	}
@@ -50,7 +50,7 @@ class Controller_Admin_Category extends Controller_Admin
 			}
 		}
 
-		$this->template->title = "categorys";
+		$this->template->title = "Category";
 		$this->template->content = View::forge('admin\category/create');
 
 	}
@@ -93,7 +93,7 @@ class Controller_Admin_Category extends Controller_Admin
 			$this->template->set_global('category', $category, false);
 		}
 
-		$this->template->title = "categorys";
+		$this->template->title = "Category";
 		$this->template->content = View::forge('admin\category/edit');
 
 	}

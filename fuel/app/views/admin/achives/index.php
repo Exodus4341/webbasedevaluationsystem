@@ -1,15 +1,17 @@
 <?php echo Form::open('admin/achives/search'); ?>
-    <br />
-    <?php echo Form::input('txtFromYearFrom', Input::post('txtFromYearFrom', isset($academicyear) ? $academicyear->txtFromYearFrom : ''), array('class' => 'span4 date-picker-year-from', 'id' => 'txtYearFrom', 'required' => '')); ?>
-    TO 
-    <?php echo Form::input('txtFromYearTo', Input::post('txtFromYearTo', isset($academicyear) ? $academicyear->txtFromYearTo : ''), array('class' => 'span4 date-picker-year-to', 'id' => 'txtYearTo', 'required' => '')); ?>
-    <div class="input">
-        <?php echo Form::select('semester', Input::post('semester', isset($academicyear) ? $academicyear->semester : ''), 
-        array(0 => 'First-Sem', 1 => 'Second-Sem'),array('class' => 'span4', 'required' => '')); ?>
+    <h3>School Year</h3>
+    <?php echo Form::select('acadyear', Input::post('acadyear', isset($academicyear) ? $academicyear->acadyear : ''), $years, array('class' => 'span4 date-picker-year-from form-control', 'id' => 'txtYearFrom', 'required' => '')); ?>
+    <h3>Semester</h3>
+    <div class="form-group">
+        <?php echo Form::select('semester', Input::post('semester', isset($academicyear) ? $academicyear->Semester : ''), 
+        array(0 => 'First Semester', 1 => 'Second Semester'),array('class' => 'span4 form-control', 'required' => '')); ?>
     </div>
     <?php echo Form::submit('submit', 'Search', array('class' => 'btn btn-primary')); ?> 
         
 <?php echo Form::close(); ?>
+
+
+
 
 <script type="text/javascript">
 $(function() {

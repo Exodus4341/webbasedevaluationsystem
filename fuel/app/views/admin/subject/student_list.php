@@ -32,8 +32,12 @@
 		</tr>
 	</table>
 	<br />
-	<?php echo Html::anchor('admin/subject/add_student_subject/'.$teachers[0]['id'], 'Add New Student', array('class' => 'btn btn-success')); ?>
+	<div class="actions">
+		<?php echo Html::anchor('admin/subject/add_student_subject/'.$teachers[0]['id'], 'Add New Student', array('class' => 'btn btn-success')); ?>
+	</div>
 <?php endif ?>
+<br />
+<br />
 <?php if ($studentlist): ?>
 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="example" width="100%">
 	<thead>
@@ -53,7 +57,7 @@
 			}else{
 				echo $studentlists['ssc'];
 				}; ?></td>
-			<td><?php echo Html::anchor('admin/subject/delete_subject/'.$studentlists['ssid'], '', array('Onclick' => "return confirm('Are you sure?')", 'class'=>'icon icon-remove', 'title'=>'Remove from this subject')); ?></td>
+			<td><?php echo Html::anchor('admin/subject/delete_subject/'.$studentlists['ssid'], '', array('Onclick' => "return confirm('Are you sure?')", 'class'=>'btn btn-danger glyphicon glyphicon-remove-circle btn-xs', 'title'=>'Remove from this subject')); ?></td>
 		</tr>
 <?php endforeach; ?>	</tbody>
 </table>

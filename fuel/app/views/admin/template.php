@@ -20,6 +20,11 @@
 		    width: 400px;
 		    background-color: rgb(237, 243, 233);
 		}
+		.box-modal{
+			width: 500px;
+			height: 0px auto;
+			border-radius: 10px;
+		}
 		.login {
 		  background: url("../assets/img/Jmc2008.jpg") no-repeat;
 		  background-size: 100%;
@@ -65,12 +70,17 @@
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-nav navbar-right">
-          
+          		
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="glyphicon glyphicon-user"></i> <?php echo $current_user->username ?>  <i class="caret"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
+                    	<li><a href="#" data-toggle="modal" data-target="#admin">New Admin User</a></li>
+                    	<li><a href="#" data-toggle="modal" data-target="#teacher">New Teacher</a></li>
+                    	<li><a href="#" data-toggle="modal" data-target="#student">New Student</a></li>
+                    	<li><?php echo Html::anchor('admin/users/deactivate', 'Deactivated Students') ?></li>
+                    	<li><?php echo Html::anchor('admin/users/deactivate_teacher', 'Deactivated Teachers') ?></li>
 		                <li><?php echo Html::anchor('admin/SchoolYear', 'Set School Year') ?></li>
 		               	<li><?php echo Html::anchor('admin/academicyear', 'Academic Year') ?></li>
 		               	<li><?php echo Html::anchor('admin/achives', 'Archives') ?></li>
@@ -83,7 +93,6 @@
                 <!-- /.dropdown -->
             </ul>
             <!-- /.navbar-top-links -->
-
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
@@ -112,13 +121,13 @@
 							<?php echo Html::anchor('admin/users', 'Users  <span class="pull-right glyphicon glyphicon-chevron-down"></span>') ?>
 							 <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="blank.html">Administrator</a>
+                                    <?php echo Html::anchor('admin/users', 'Administrators') ?>
                                 </li>
                                 <li>
-                                    <a href="blank.html">Students</a>
+                                    <?php echo Html::anchor('admin/users/student_list', 'Students') ?>
                                 </li>
                                 <li>
-                                    <a href="login.html">Teachers</a>
+                                    <?php echo Html::anchor('admin/users/teacher_list', 'Teachers') ?>
                                 </li>
                             </ul> 
 						</li>
@@ -131,8 +140,8 @@
 <br><br>
         <div id="page-wrapper">
             <div class="row">
-	            <div class="col-lg-12">
-				<?php if (!$current_user): ?>
+	            <div class="col-lg-12">		
+	            <?php if (!$current_user): ?>
 					<?php else: ?>
 						<?php 
 							$query = DB::query("SELECT * FROM schoolyear")->execute()->as_array();
@@ -145,7 +154,6 @@
 							}
 						 ?>
 				<?php endif ?>
-		
 				<?php if (Session::get_flash('success')): ?>
 								<br><br><br>
 								<div class="alert alert-success alert-dismissible" role="alert">
@@ -189,3 +197,256 @@
 
 </body>
 </html>
+
+
+<!-- Modal -->
+<div class="modal fade" id="admin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">New Admin User</h4>
+      </div>
+      <div class="modal-body">
+        <?php echo Form::open(); ?>
+		<fieldset class="box-modal">
+			<div class="clearfix">
+				<?php echo Form::label('Username', 'username'); ?>
+				<div class="input">
+					<?php echo Form::input('username', Input::post('username', isset($user) ? $user->username : ''), array('required', 'class' => 'form-control')); ?>
+				</div>
+			</div>
+			<div class="clearfix">
+				<?php echo Form::label('Password', 'password'); ?>
+				<div class="input">
+					<?php echo Form::password('password', Input::post('password', isset($user) ? $user->password : ''), array('required', 'class' => 'form-control')); ?>
+				</div>
+			</div>
+			<div class="clearfix">
+				<?php echo Form::label('Email', 'email'); ?>
+				<div class="input">
+					<?php echo Form::input('email', Input::post('email', isset($user) ? $user->email : ''), array('required', 'class' => 'form-control')); ?>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="input">
+					<?php echo Form::select('group', Input::post('group', isset($user) ? $user->group : ''), array(100=>'admin') , array('class' => 'form-control', 'style' => 'display:none;')); ?>
+				</div>
+			</div>
+      </div>
+      <div class="modal-footer">
+	        <div class="actions">
+					<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
+				</div>
+			</fieldset>
+		<?php echo Form::close(); ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal teachers -->
+<div class="modal fade" id="teacher" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">New Teacher</h4>
+      </div>
+      <div class="modal-body">
+       	<?php echo Form::open(array('method' => 'post', 'enctype' => 'multipart/form-data')); ?>
+			<fieldset class="box-department">
+					<div class="clearfix">
+						<?php echo Form::label('Student Profile', 'student_profile'); ?>
+						<img id="PreviewHolder" style="width:100px; height:100px; border-radius:10%; border: 2px solid #1b1b1b;"/>
+						<div class="input">
+							<?php echo Form::input('pic_url', Input::post('pic_url', isset($user) ? $user->pic_url : ''), array('class' => 'form-control', 'id' => 'pic_url','type' => 'file')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Username', 'username'); ?>
+						<div class="input">
+							<?php echo Form::input('username', Input::post('username', isset($user) ? $user->username : ''), array('class' => 'form-control', 'required' => '')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Generated Password', 'password'); ?>
+						<div class="input">
+							<?php echo Form::input('genpassword', Str::random('alnum', 10), array('class' => 'form-control','id' => 'genpass','readonly')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Password', 'password'); ?>
+						<div class="input">
+							<?php echo Form::password('password', '', array('class' => 'form-control', 'id' =>'pass', 'required' => '')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('First name', 'fname'); ?>
+						<div class="input">
+							<?php echo Form::input('fname', Input::post('fname', isset($user) ? $user->fname : ''), array('class' => 'form-control', 'required' => '')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Last name', 'lname'); ?>
+						<div class="input">
+							<?php echo Form::input('lname', Input::post('lname', isset($user) ? $user->lname : ''), array('class' => 'form-control', 'required' => '')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Middle name', 'mname'); ?>
+						<div class="input">
+							<?php echo Form::input('mname', Input::post('mname', isset($user) ? $user->mname : ''), array('class' => 'form-control', 'required' => '')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Department', 'department'); ?>
+						<div class="input">
+							<?php echo Form::select('id', Input::post('id', isset($user) ? $user->department : $current_user->id), $departments, array('class' => 'form-control')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Email', 'email'); ?>
+						<div class="input">
+							<?php echo Form::input('email', Input::post('email', isset($user) ? $user->email : ''), array('class' => 'form-control', 'required' => '')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Contact Number', 'contact_num'); ?>
+						<div class="input">
+							<?php echo Form::input('contact_num', Input::post('contact_num', isset($user) ? $user->contact_num : ''), array('class' => 'form-control', 'required' => '')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="input">
+							<?php echo Form::select('group', Input::post('group', isset($user) ? $user->group : ''), array(50=>'teacher'), array('class' => 'form-control', 'style' => 'display:none;')); ?>
+						</div>
+					</div>			
+      </div>
+      <div class="modal-footer">
+        <div class="actions">
+					<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
+				</div>
+			</fieldset>
+		<?php echo Form::close(); ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal students -->
+<div class="modal fade" id="student" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">New Student</h4>
+      </div>
+      <div class="modal-body">
+		        <?php echo Form::open(array('method' => 'post', 'enctype' => 'multipart/form-data')); ?>
+					<fieldset class="box-modal">
+						 <?php //echo Html::img('uploads/'.$user->pic_url, array('class' => "thumbnail", "style" => "width:80px; height:80px")); ?>
+					<div class="clearfix">
+						<?php echo Form::label('Student Profile', 'student_profile'); ?>
+					<img id="PreviewHolder" style="width:100px; height:100px; border-radius:10%; border: 2px solid #1b1b1b;"/>
+						<div class="input">
+							<?php echo Form::input('pic_url', Input::post('pic_url', isset($user) ? $user->pic_url : ''), array('class' => 'form-control', 'id' => 'pic_url', 'type' => 'file')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Username', 'username'); ?>
+						<div class="input">
+							<?php echo Form::input('username', Input::post('username', isset($user) ? $user->username : ''), array('class' => 'form-control', 'required' => '')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Generated Password', 'password'); ?>
+						<div class="input">
+							<?php echo Form::input('genpassword', Str::random('alnum', 10), array('class' => 'form-control','id' => 'genpass','readonly')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Password', 'password'); ?>
+						<div class="input">
+							<?php echo Form::password('password', '', array('class' => 'form-control', 'id' =>'pass', 'required' => '')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('First name', 'fname'); ?>
+						<div class="input">
+							<?php echo Form::input('fname', Input::post('fname', isset($user) ? $user->fname : ''), array('class' => 'form-control', 'required' => '')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Last name', 'lname'); ?>
+						<div class="input">
+							<?php echo Form::input('lname', Input::post('lname', isset($user) ? $user->lname : ''), array('class' => 'form-control', 'required' => '')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Middle name', 'mname'); ?>
+						<div class="input">
+							<?php echo Form::input('mname', Input::post('mname', isset($user) ? $user->mname : ''), array('class' => 'form-control', 'required' => '')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Course', 'course'); ?>
+						<div class="input">
+							<?php echo Form::select('course', Input::post('course', isset($user) ? $user->course : $current_user->id), $courses, array('class' => 'form-control')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Year', 'year'); ?>
+						<div class="input">
+							<?php echo Form::select('year', Input::post('year', isset($user) ? $user->year : ''), 
+							array(1 => 1, 2 => 2, 3 => 3, 4 => 4, 5 => 5),array('class' => 'form-control', 'required' => '')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Email', 'email'); ?>
+						<div class="input">
+							<?php echo Form::input('email', Input::post('email', isset($user) ? $user->email : ''), array('class' => 'form-control')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<?php echo Form::label('Contact Number', 'contact_num'); ?>
+						<div class="input">
+							<?php echo Form::input('contact_num', Input::post('contact_num', isset($user) ? $user->contact_num : ''), array('class' => 'form-control', 'required' => '')); ?>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="input">
+							<?php echo Form::select('group', Input::post('group', isset($user) ? $user->group : ''), array(1=>'student') , array('class' => 'form-control', 'style' => 'display:none')); ?>
+						</div>
+					</div>
+					<br />
+				<div class="actions">
+					<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
+				</div>
+			</fieldset>
+		<?php echo Form::close(); ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+		  	var genpass = $('#genpass').val();
+		  	var pass = $('#pass').val(genpass);
+
+		  	function readURL(input){
+		  		if(input.files && input.files[0]){
+		  			var reader = new FileReader();
+		  			reader.onload = function(e){
+		  				$('#PreviewHolder').attr('src', e.target.result);
+		  			}
+		  			reader.readAsDataURL(input.files[0]);
+		  		}
+		  	}
+
+		  	$("#pic_url").change(function(){
+		  		readURL(this);
+		  	});
+</script>

@@ -46,7 +46,7 @@ class Controller_Admin_Academicyear extends Controller_Admin
 				Session::set_flash('error', $val->error());
 			}
 		}
-		$this->template->title = "year";
+		$this->template->title = "Year";
 		$this->template->content = View::forge('admin\academicyear/create');
 
 	}

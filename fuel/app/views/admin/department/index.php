@@ -13,10 +13,9 @@
 
 			<td><?php echo $department->dept_name; ?></td>
 			<td>
-				<?php echo Html::anchor('admin/department/view/'.$department->id, '',  array('class'=>'icon icon-eye-open', 'title'=>'View')); ?> |
-				<?php echo Html::anchor('admin/department/edit/'.$department->id, '', array('class'=>'icon icon-wrench', 'title'=>'Edit')); ?> |
-				<?php echo Html::anchor('admin/department/delete/'.$department->id, '', array('onclick' => "return confirm('Are you sure?')", 'class'=>'icon icon-trash', 'title'=>'Delete')); ?>
-
+				<?php echo Html::anchor('admin/department/view/'.$department->id, '',  array('class'=>'glyphicon glyphicon-eye-open btn btn-info btn-xs', 'title'=>'View')); ?>
+				<?php echo Html::anchor('admin/department/edit/'.$department->id, '', array('class'=>'glyphicon glyphicon-wrench btn btn-warning btn-xs', 'title'=>'Edit')); ?>
+				<?php echo Html::anchor('admin/department/delete/'.$department->id, '', array('onclick' => "return confirm('Are you sure?')", 'class'=>'glyphicon glyphicon-trash btn btn-danger btn-xs', 'title'=>'Delete')); ?>
 			</td>
 		</tr>
 <?php endforeach; ?>	</tbody>
@@ -29,5 +28,4 @@
 	<br />
 	<br />
 	<?php echo Html::anchor('admin/department/create', 'Add new Department', array('class' => 'btn btn-success')); ?>
-
 </p>

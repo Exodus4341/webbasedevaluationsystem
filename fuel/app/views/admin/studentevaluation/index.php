@@ -18,7 +18,7 @@
 			<td><?php echo $teachers['dept_name']; ?></td>
 			<td><?php echo $teachers['email']; ?></td>
 			<td>
-			<center><?php echo Html::anchor('admin/studentevaluation/view_subjects/'.$teachers['uid'], '', array('class'=>'icon icon-eye-open', 'title'=>'View Subjects')); ?></center>
+			<center><?php echo Html::anchor('admin/studentevaluation/view_subjects/'.$teachers['uid'], '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info btn-xs', 'title'=>'View Subjects')); ?></center>
 			</td>
 		</tr>
 <?php endforeach; ?>	</tbody>
@@ -26,7 +26,4 @@
 <?php else: ?>
 <p>No studentevaluations.</p>
 
-<?php endif; ?><p>
-	<?php //echo Html::anchor('admin/studentevaluation/create', 'Add new studentevaluation', array('class' => 'btn btn-success')); ?>
-
-</p>
+<?php endif; ?>

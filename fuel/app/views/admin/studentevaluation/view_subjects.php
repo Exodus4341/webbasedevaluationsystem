@@ -61,7 +61,8 @@
 			</td>
 
 			<td>
-				<?php echo Html::anchor('admin/studentevaluation/result_evaluation/'.$subject['teacher_id'].'/'.$subject['sid'], '', array('class'=>'icon icon-eye-open', 'title'=>'View Results Evaluation')); ?>
+				<?php echo Html::anchor('admin/studentevaluation/result_evaluation/'.$subject['teacher_id'].'/'.$subject['sid'], '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info
+				 btn-xs', 'title'=>'View Results Evaluation')); ?>
 			</td>
 		</tr>
 <?php endforeach; ?>	</tbody>

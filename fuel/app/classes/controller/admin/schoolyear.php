@@ -40,7 +40,7 @@ class Controller_Admin_Schoolyear extends Controller_Admin
 		}
 
 		$view->set_global('years', Arr::assoc_to_keyval(Model_Academicyear::find('all'), 'year', 'year'));
-		$this->template->title = "Update Academic Year";
+		$this->template->title = "Update School Year";
 		$this->template->content = $view;
 	}
 

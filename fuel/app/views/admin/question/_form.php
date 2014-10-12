@@ -1,23 +1,29 @@
+<style type="text/css">
+	.box-department{
+		width: 500px;
+		height: 0px auto;
+		border-radius: 10px;
+	}
+</style>
 <?php echo Form::open(); ?>
-
+<div class="box-department">
 	<fieldset>
 		<div class="clearfix">
 			<?php echo Form::label('Category', 'category'); ?>
 
 			<div class="input">
-				<?php echo Form::select('category', Input::post('category', isset($question) ? $question->category : $current_user->id), $category, array('class' => 'span4')); ?>
+				<?php echo Form::select('category', Input::post('category', isset($question) ? $question->category : $current_user->id), $category, array('class' => 'form-control')); ?>
 			</div>
 		</div>
 		<div class="clearfix">
 			<?php echo Form::label('Question', 'question'); ?>
-
 			<div class="input">
-				<?php echo Form::textarea('question', Input::post('question', isset($question) ? $question->question : ''), array('class' => 'span4')); ?>
-
+				<?php echo Form::textarea('question', Input::post('question', isset($question) ? $question->question : ''), array('class' => 'form-control')); ?>
 			</div>
 		</div>		
 	</fieldset>
-
+</div>
+<br />
 <?php if ($subjects): ?>
 
 
@@ -47,14 +53,12 @@
 </table>
 <br />
 <br />
-<div class="actions">
-			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
-
-		</div>
+	<div class="actions">
+		<?php echo Html::anchor('admin/question', 'Back', array('class' => 'btn btn-default')); ?> |
+		<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
+	</div>
 <?php echo Form::close(); ?>
 <?php else: ?>
 <p>No Users.</p>
 
 <?php endif; ?>
-<br />
-<br />

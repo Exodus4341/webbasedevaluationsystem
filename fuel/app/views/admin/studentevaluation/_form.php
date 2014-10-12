@@ -1,5 +1,4 @@
 <?php echo Form::open(); ?>
-
 	<fieldset>
 		<div class="clearfix">
 			<?php echo Form::label('Questionnaire id', 'questionnaire_id'); ?>

@@ -3,8 +3,10 @@ class Controller_Admin_Achives extends Controller_Admin
 {
 	public function action_index()
 	{
+		$view = View::forge('admin\achives/index');
 		$this->template->title = "Academic Year";
-		$this->template->content = View::forge('admin\achives/index');
+		$view->set_global('years', Arr::assoc_to_keyval(Model_Academicyear::find('all'), 'year', 'year'));
+		$this->template->content = $view;
 	}
 
 	public function action_view_pdf()
@@ -28,10 +30,9 @@ class Controller_Admin_Achives extends Controller_Admin
 	public function action_search()
 	{
 		$view = View::forge('admin\achives/search');
-		$from = $_POST['txtFromYearFrom'];
-		$to = $_POST['txtFromYearTo'];
+		$acadyear = $_POST['acadyear'];
 		$sem = $_POST['semester'];
-		$search = DB::query("SELECT * FROM subjects AS s WHERE (s.`created_at` BETWEEN ".$from ." AND ".$to.") AND (s.`semester` = ".$sem.") ")->execute()->as_array();
+		$search = DB::query("SELECT * FROM subjects AS s WHERE s.`academicyear` = ".$acadyear." AND s.`semester` = ".$sem." ")->execute()->as_array();
 		$view->set_global('search', $search);
 		$this->template->title = "Search";
 		$this->template->content = $view;

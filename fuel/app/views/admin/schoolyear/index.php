@@ -16,7 +16,7 @@
 				echo "Second Semester - " .$indexs['academicyear'];
 				} ?></td>
 			<td>
-				<?php echo Html::anchor('admin/schoolyear/edit/'.$indexs['id'], '', array('class'=>'icon icon-wrench', 'title'=>'Edit')); ?>
+				<?php echo Html::anchor('admin/schoolyear/edit/'.$indexs['id'], '', array('class'=>'btn btn-warning btn-xs glyphicon glyphicon-wrench', 'title'=>'Edit')); ?>
 			</td>
 		</tr>
 <?php endforeach; ?>

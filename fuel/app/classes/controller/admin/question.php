@@ -15,10 +15,12 @@ class Controller_Admin_Question extends Controller_Admin
 
 	public function action_view($id = null)
 	{
-		$data['questions'] = Model_Question::find($id);
-
+		$view = View::forge('admin\question/view');
+		$q = "SELECT *, q.`id` AS qid FROM questions AS q INNER JOIN categories AS c WHERE q.`category` = c.`id` ";
+		$qw = DB::query($q)->execute()->as_array();
+		$view->set_global('questions', $qw);
 		$this->template->title = "Question";
-		$this->template->content = View::forge('admin\question/view', $data);
+		$this->template->content = $view;
 
 	}
 

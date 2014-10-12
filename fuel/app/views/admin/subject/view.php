@@ -18,5 +18,5 @@
 	<strong>Teacher Name:</strong>
 	<?php echo ucwords($subject[0]['fname'])." ".ucwords($subject[0]['mname'])." ".ucwords($subject[0]['lname']); ?></p>
 
-<?php echo Html::anchor('admin/subject/edit/'.$subject[0]['id'], 'Edit'); ?> |
-<?php echo Html::anchor('admin/subject', 'Back'); ?>
+<?php echo Html::anchor('admin/subject/edit/'.$subject[0]['id'], 'Edit', array('class' => 'btn btn-warning')); ?> |
+<?php echo Html::anchor('admin/subject', 'Back', array('class' => 'btn btn-default')); ?>

@@ -15,10 +15,10 @@
 			<td><?php echo $subject['subj_desc']; ?></td>
 			
 			<td>
-				<?php echo Html::anchor('admin/subject/view/'.$subject['sid'], '', array('class'=>'icon icon-eye-open', 'title'=>'View')); ?> |
-				<?php echo Html::anchor('admin/subject/edit/'.$subject['sid'], '', array('class'=>'icon icon-wrench', 'title'=>'Edit')); ?> |
-				<?php echo Html::anchor('admin/subject/delete/'.$subject['sid'], '', array('onclick' => "return confirm('Are you sure?'),", 'class'=>'icon icon-trash', 'title'=>'Delete')); ?> |
-				<?php echo Html::anchor('admin/subject/student_list/'.$subject['sid'], '', array('class'=>'icon icon-eye-open', 'title'=>'Student List')); ?> 
+				<?php echo Html::anchor('admin/subject/view/'.$subject['sid'], '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info btn-xs', 'title'=>'View')); ?>
+				<?php echo Html::anchor('admin/subject/edit/'.$subject['sid'], '', array('class'=>'glyphicon glyphicon-wrench btn btn-warning btn-xs', 'title'=>'Edit')); ?>
+				<?php echo Html::anchor('admin/subject/delete/'.$subject['sid'], '', array('onclick' => "return confirm('Are you sure?'),", 'class'=>'glyphicon glyphicon-trash btn btn-danger btn-xs', 'title'=>'Delete')); ?>
+				<?php echo Html::anchor('admin/subject/student_list/'.$subject['sid'], '', array('class'=>'glyphicon glyphicon-list btn btn-default btn-xs', 'title'=>'Student List')); ?> 
 
 			</td>
 		</tr>

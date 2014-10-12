@@ -4,5 +4,5 @@
 	<strong>Course name:</strong>
 	<?php echo $course->course_name; ?></p>
 
-<?php echo Html::anchor('admin/course/edit/'.$course->id, 'Edit'); ?> |
-<?php echo Html::anchor('admin/course', 'Back'); ?>
+<?php echo Html::anchor('admin/course/edit/'.$course->id, 'Edit', array('class' => 'btn btn-warning')); ?> |
+<?php echo Html::anchor('admin/course', 'Back',array('class' => 'btn btn-default')); ?>

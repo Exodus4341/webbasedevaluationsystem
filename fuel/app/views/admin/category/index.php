@@ -15,9 +15,9 @@
 			<td><?php echo $category->cat_name; ?></td>
 			<td><?php echo $category->percentage; ?></td>
 			<td>
-				<?php echo Html::anchor('admin/category/view/'.$category->id, '', array('class'=>'icon icon-eye-open', 'title'=>'View')); ?> |
-				<?php echo Html::anchor('admin/category/edit/'.$category->id, '', array('class'=>'icon icon-wrench', 'title'=>'Edit')); ?> |
-				<?php echo Html::anchor('admin/category/delete/'.$category->id, '', array('onclick' => "return confirm('Are you sure?')",'class'=>'icon icon-trash', 'title'=>'Delete')); ?>
+				<?php echo Html::anchor('admin/category/view/'.$category->id, '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info btn-xs', 'title'=>'View')); ?>
+				<?php echo Html::anchor('admin/category/edit/'.$category->id, '', array('class'=>'glyphicon glyphicon-wrench btn btn-warning btn-xs', 'title'=>'Edit')); ?>
+				<?php echo Html::anchor('admin/category/delete/'.$category->id, '', array('onclick' => "return confirm('Are you sure?')",'class'=>'glyphicon glyphicon-trash btn btn-danger btn-xs', 'title'=>'Delete')); ?>
 
 			</td>
 		</tr>

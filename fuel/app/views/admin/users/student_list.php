@@ -23,9 +23,9 @@
 			<td><?php echo $user['year']; ?></td>
 			<td><?php echo $user['email']; ?></td>
 			<td>
-				<?php echo Html::anchor('admin/users/view/'.$user['uid'], '', array('class'=>'icon icon-eye-open', 'title'=>'View')); ?> |
-				<?php echo Html::anchor('admin/users/edit/'.$user['uid'], '', array('class'=>'icon icon-wrench', 'title'=>'Edit')); ?> |
-				<?php echo Html::anchor('admin/users/status/'.$user['uid'], '', array('class'=>'icon icon-remove', 'title'=>'Deactivate')); ?>
+				<?php echo Html::anchor('admin/users/view/'.$user['uid'], '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info btn-xs', 'title'=>'View')); ?>
+				<?php echo Html::anchor('admin/users/edit/'.$user['uid'], '', array('class'=>'glyphicon glyphicon-wrench btn btn-warning btn-xs', 'title'=>'Edit')); ?>
+				<?php echo Html::anchor('admin/users/status/'.$user['uid'], '', array('class'=>'glyphicon glyphicon-trash btn btn-danger btn-xs', 'title'=>'Deactivate')); ?>
 
 			</td>
 		</tr>
@@ -33,16 +33,6 @@
 </table>
 
 <?php else: ?>
-<p>No Users.</p>
+<p>No.Students.</p>
 
-<?php endif; ?><p>
-	<br />
-	<br />
-	<?php echo Html::anchor('admin/users/', 'Admin List'); ?> |
-	<?php echo Html::anchor('admin/users/teacher_list', 'Teacher List'); ?>
-	<br />
-	<br />
-	<?php echo Html::anchor('admin/users/create', 'New Admin User', array('class' => 'btn btn-success')); ?>
-	<?php echo Html::anchor('admin/users/teacher', 'New Teacher', array('class' => 'btn btn-success')); ?>
-	<?php echo Html::anchor('admin/users/student', 'New Student', array('class' => 'btn btn-success')); ?>
-	</p>
+<?php endif; ?>

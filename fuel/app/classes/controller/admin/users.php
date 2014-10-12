@@ -64,7 +64,7 @@ class Controller_Admin_Users extends Controller_Admin
 		$view = View::forge('admin\users/student_list');
 		$data = DB::query("SELECT *, u.`id` AS `uid` FROM  `users` AS u INNER JOIN  `courses` AS c ON u.`course` = c.`id` WHERE u.`group` =  '1' AND u.`status` = 0 ")->execute()->as_array();
 		$view->set_global('users', $data);
-		$this->template->title = "Users";
+		$this->template->title = "Students";
 		$this->template->content = $view ;
 
 	}
@@ -75,7 +75,7 @@ class Controller_Admin_Users extends Controller_Admin
 		// $data['users'] = Model_User::find()->where('group', '=', '50')->get();
 		$data = DB::query("SELECT *, u.`id` AS `uid` FROM  `users` AS u INNER JOIN  `departments` AS d ON u.`department` = d.`id` WHERE u.`group` =  '50' AND u.`status` = 0 ")->execute()->as_array();
 		$view->set_global('users', $data);
-		$this->template->title = "Users";
+		$this->template->title = "Teachers";
 		$this->template->content = $view;
 
 	}
