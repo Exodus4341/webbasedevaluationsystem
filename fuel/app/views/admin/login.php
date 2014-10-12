@@ -2,12 +2,12 @@
 
 <style>
 		body {
-				 margin: 80px; 
-				 background-color: #f5f5f5; 
-				 background: url("../assets/img/Jmc2008.jpg") no-repeat;
-			  background-size: 100%;
-			  background-position: center;
-			}
+			margin: 80px; 
+			background-color: #f5f5f5; 
+			background: url("../assets/img/Jmc2008.jpg") no-repeat;
+			background-size: 100%;
+			background-position: center;
+		}
 		.box{
 			padding: 50px;
 		    border-radius: 10px;
@@ -20,11 +20,7 @@
 		.box {
 			margin: 0px auto;
 		}
-
-		
 	</style>
-
-
 <?php echo Form::open(array()); ?>
 	<?php if (isset($_GET['destination'])): ?>
 		<?php echo Form::hidden('destination',$_GET['destination']); ?>

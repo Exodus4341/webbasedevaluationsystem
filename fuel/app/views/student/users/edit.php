@@ -1,33 +1,33 @@
+<style type="text/css">
+	.box-department{
+		width: 500px;
+		height: 0px auto;
+		border-radius: 10px;
+	}
+</style>
+<h2>Change Username/Password</h2>
 <?php echo Form::open(); ?>
-	<fieldset class="box" >
-	<table>
-		<tr>
-			<th><?php echo Form::label('Username', 'username'); ?></th>
-			<th>
-			<div class="clearfix">
+	<fieldset class="box-department" >
+		<div class="clearfix">
+				<?php echo Form::label('Username', 'username'); ?>
 			<div class="input">
-				<?php echo Form::input('username', Input::post('username', isset($user) ? $user->username : ''), array('class' => 'span4', 'required' => '')); ?>
+				<?php echo Form::input('username', Input::post('username', isset($user) ? $user->username : ''), array('class' => 'form-control', 'required' => '')); ?>
 			</div>
-			</div></th>
-		</tr>
-		<tr>
-			<th><?php echo Form::label('Password', 'password'); ?></th>
-			<th><div class="clearfix">
+		</div>
+			
+		<div class="clearfix">
+			<?php echo Form::label('Password', 'password'); ?>
 			<div class="input">
-				<?php echo Form::password('password', '', array('class' => 'span4', 'required' => '')); ?>
+				<?php echo Form::password('password', '', array('class' => 'form-control', 'required' => '')); ?>
 			</div>
-			</div></th>
-		</tr>
-		<tr>
-			<th><?php echo Form::label('User type', 'group'); ?></th>
-			<th><div class="clearfix">
-			<div class="input">
-				<?php echo Form::select('group', Input::post('group', isset($user) ? $user->group : ''), array(1=>'student') , array('class' => 'span4')); ?>
-			</div>
-			</div></th>
-		</tr>
-	</table>
+		</div>
 		
+		<div class="clearfix">
+			<div class="input">
+				<?php echo Form::select('group', Input::post('group', isset($user) ? $user->group : ''), array(1=>'student') , array('style' => 'display:none;')); ?>
+			</div>
+		</div>
+		<br />
 		<div class="actions">
 			<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
 

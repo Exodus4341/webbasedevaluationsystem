@@ -3,11 +3,14 @@
 <head>
 	<meta charset="utf-8">
 	<title><?php echo $title; ?></title>
-	<?php echo Asset::css('bootstrap.css'); ?>
+	<?php echo Asset::css('bootstrap.min.css'); ?>
+	<?php echo Asset::css('plugins/metisMenu/metisMenu.min.css'); ?>
+	<?php echo Asset::css('sb-admin-2.css'); ?>
 	<?php echo Asset::css('demo_table.css'); ?>
+	<?php echo Asset::css('jquery-ui.css'); ?>
 	<style>
-		body { margin: 80px; }
-.box{
+		/*body { margin: 80px; }*/
+/*.box{
 	border: 1px solid #1b1b1b;
 	padding: 80px;
     border-radius: 10px;
@@ -15,22 +18,21 @@
     height: auto 0px;
     width: 400px;
     background-color: rgb(237, 243, 233);
-}
-.login {
-  background: url("../assets/img/Jmc2008.jpg") no-repeat;
-  background-size: 100%;
-  background-position: center;
-}
+}*/
+	.login {
+	  background: url("../assets/img/Jmc2008.jpg") no-repeat;
+	  background-size: 100%;
+	  background-position: center;
+	}
 	</style>
 	<?php echo Asset::js(array(
-		'jquery.js',
-		'jquery.min.js',
-		'bootstrap.js',
+		'jquery-1.11.0.js',
+		'bootstrap.min.js',
 		'jquery.dataTables.js',
 		'script.js',
-		'jquery.mixitup.min.js',
-		'jquery.vegas.js',
-		'jquery-scrolltofixed-min.js'
+		'jquery-ui.js',
+		'plugins/metisMenu/metisMenu.min.js',
+		'sb-admin-2.js'
 	)); ?>
 	<script>
 		$(function(){ $('.topbar').dropdown(); });
@@ -39,89 +41,105 @@
 <body <?php if (!$current_user) {
 	echo "class='login'";
 } ?>>
-
+<div id="wrapper">
 	<?php if ($current_user): ?>
-	<div class="navbar navbar-fixed-top">
-	    <div class="navbar-inner">
-	        <div class="container">
-	            <a href="#" class="brand">My Site</a>
-	            <ul class="nav">
-	                <li class="<?php echo Uri::segment(2) == '' ? 'active' : '' ?>">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">JMC Web Based Evaluation System</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-nav navbar-right">
+          		
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="glyphicon glyphicon-user"></i> <?php echo $current_user->username ?>  <i class="caret"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                    	<li><?php echo Html::anchor('student/users/edit/'.$current_user->id, 'Change Username/Password') ?></li>
+                    	<li><?php echo Html::anchor('student/users/view/'.$current_user->id, 'View Account')?></li>
+                        <li class="divider">
+                        	<li><?php echo Html::anchor('student/logout', 'Logout') ?></li>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="<?php echo Uri::segment(2) == '' ? 'active' : '' ?>">
 						<?php echo Html::anchor('student', 'Dashboard') ?>
-					</li>
-					<li>
-						<?php echo Html::anchor('#', 'Demo') ?>
-					</li>
-					<li>
-						<?php echo Html::anchor('student/subject', 'Subjects') ?>
-					</li>
-	          </ul>
-
-	          <ul class="nav pull-right">
-
-	            <li class="dropdown">
-	              <a data-toggle="dropdown" class="dropdown-toggle" href="#"><?php echo $current_user->username ?> <b class="caret"></b></a>
-	              <ul class="dropdown-menu">
-	               <li><?php echo Html::anchor('student/users/view/'.$current_user->id, 'View Account')?></li>
-	               <li><?php echo Html::anchor('student/users/edit/'.$current_user->id, 'Change Username/Password') ?></li>
-	               <li><?php echo Html::anchor('student/logout', 'Logout') ?></li>
-	              </ul>
-	            </li>
-	          </ul>
-	        </div>
-	    </div>
-	</div>
-	<?php endif; ?>
-
-	<div class="container">
+						</li>
+						<li>
+							<?php echo Html::anchor('#', 'Demo') ?>
+						</li>
+						<li>
+							<?php echo Html::anchor('student/subject', 'Subjects') ?>
+						</li>	
+                    </ul>
+                </div>
+            </div>
+        </nav>
+<?php endif; ?>
+<br /><br />
+	<div id="page-wrapper">
 		<div class="row">
-			<div class="span12">
+			<div class="col-lg-12">
 				<?php if (!$current_user): ?>
 				<?php else: ?>
 					<?php 
 						$query = DB::query("SELECT * FROM schoolyear")->execute()->as_array();
 						if ($query) {
 							if ($query[0]['scho_year'] == "0") {
-									echo "<h1>First Semester - " .$query[0]['academicyear']."</h1>";
+									echo "<h3 class='pull-right'>First Semester - " .$query[0]['academicyear']."</h3>";
 								}else{
-									echo "<h1>Second Semester - " .$query[0]['academicyear']."</h1>";
+									echo "<h3 class='pull-right'>Second Semester - " .$query[0]['academicyear']."</h3>";
 								}
 						}
 					 ?>
-				<hr>
-			<?php endif ?>
-				<br />
-				
-				<!-- <hr> -->
-<?php if (Session::get_flash('success')): ?>
-				<div class="alert alert-success">
-					<button class="close" data-dismiss="alert">×</button>
-					<p><?php echo implode('</p><p>', (array) Session::get_flash('success')); ?></p>
-				</div>
-<?php endif; ?>
-<?php if (Session::get_flash('error')): ?>
-				<div class="alert alert-error">
-					<button class="close" data-dismiss="alert">×</button>
-					<p><?php echo implode('</p><p>', (array) Session::get_flash('error')); ?></p>
-				</div>
-<?php endif; ?>
+				<?php endif ?>
+				<?php if (Session::get_flash('success')): ?>
+									<br><br><br>
+									<div class="alert alert-success alert-dismissible" role="alert">
+									  <button type="button" class="pull-right close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+									  <p><?php echo implode('</p><p>', (array) Session::get_flash('success')); ?></p>
+									</div>
+					<?php endif; ?>
+					<?php if (Session::get_flash('error')): ?>
+									<br><br><br>
+									<div class="alert alert-danger alert-dismissible" role="alert">
+									  <button type="button" class="pull-right close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+									  <p><?php echo implode('</p><p>', (array) Session::get_flash('error')); ?></p>
+									</div>
+				<?php endif; ?>
 			</div>
-			<div class="span12">
-<?php echo $content; ?>
-			</div>
+				<div class="col-lg-12">
+					<?php echo $content; ?>
+				</div>
 		</div>
-<?php if (!$current_user): ?>
-	
-<?php else: ?>
-		<hr/>
-		<footer>
-			<p class="pull-right">Created by: Team FlappyCodes <i class="icon-thumbs-up"></i></p>
+		 <?php if (!$current_user): ?>
+		 	
+		 <?php else: ?>
+				<hr/>
+				<footer>
+			<p class="pull-right">Created by: Team FlappyCodes <i class="glyphicon glyphicon-thumbs-up"></i></p>
 			<p>
 				<a href="#">Web-E-SMS-Notification-System</a> A Fast Robust Faculty College Evaluation with SMS Technology System.<br>
 				<small>Version: 2.0</small>
 			</p>
 		</footer>
-<?php endif ?>
+	<?php endif ?>
 	</div>
+</div>
 </body>
 </html>

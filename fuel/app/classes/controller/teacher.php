@@ -65,9 +65,7 @@ class Controller_Teacher extends Controller_Base
 				}
 			}
 		}
-
-		$this->template->title = '';
-		$this->template->content = View::forge('teacher/login', array('val' => $val), false);
+		return View::forge('teacher/login', array('val' => $val), false);
 	}
 
 	/**

@@ -20,8 +20,8 @@
 			<td><?php echo $subject['time']; ?></td>
 			<td><?php echo $subject['room']; ?></td>
 			<td>
-				<?php echo Html::anchor('teacher/subject/studentlist/'.$subject['sid'], '', array('class'=>'icon icon-eye-open', 'title'=>'View')); ?> | 
-				<?php echo Html::anchor('teacher/subject/result_evaluation/'.$subject['teacher_id'].'/'.$subject['sid'], '', array('class'=>'icon icon-eye-open', 'title'=>'View Result of Evaluation')); ?>
+				<?php echo Html::anchor('teacher/subject/studentlist/'.$subject['sid'], '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info btn-xs', 'title'=>'View')); ?>
+				<?php echo Html::anchor('teacher/subject/result_evaluation/'.$subject['teacher_id'].'/'.$subject['sid'], '', array('class'=>'glyphicon glyphicon-align-justify btn btn-primary btn-xs', 'title'=>'View Result of Evaluation')); ?>
 			</td>
 		</tr>
 <?php endforeach; ?>	</tbody>

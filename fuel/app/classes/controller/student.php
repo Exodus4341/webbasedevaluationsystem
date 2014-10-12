@@ -65,9 +65,7 @@ class Controller_Student extends Controller_Base
 				}
 			}
 		}
-
-		$this->template->title = '';
-		$this->template->content = View::forge('student/login', array('val' => $val), false);
+		return View::forge('student/login', array('val' => $val), false);
 	}
 
 	/**

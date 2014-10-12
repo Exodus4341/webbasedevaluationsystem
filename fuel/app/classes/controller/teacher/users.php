@@ -12,9 +12,13 @@ class Controller_Teacher_Users extends Controller_Teacher
 
 	public function action_view($id = null)
 	{
-		$data['user'] = Model_User::find($id);
+		// $data['user'] = Model_User::find($id);
+		$view = View::forge('teacher\users/view');
+		$q = "SELECT *, u.`id` AS uid FROM users AS u INNER JOIN departments AS d WHERE u.`department` = d.`id` ";
+		$qw = DB::query($q)->execute()->as_array();
+		$view->set_global('user', $qw);
 		$this->template->title = "User";
-		$this->template->content = View::forge('teacher\users/view', $data);
+		$this->template->content = $view;
 
 	}
 

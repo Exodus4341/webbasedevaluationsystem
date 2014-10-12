@@ -10,16 +10,6 @@
 	<?php echo Asset::css('jquery-ui.css'); ?>
 
 	<style>
-		/*body { margin: 80px; background-color: #f5f5f5; }*/
-		.box{
-		    border: 1px solid #1b1b1b;
-			padding: 80px;
-		    border-radius: 10px;
-		    outline:500px;
-		    height: auto 0px;
-		    width: 400px;
-		    background-color: rgb(237, 243, 233);
-		}
 		.box-modal{
 			width: 500px;
 			height: 0px auto;
@@ -53,7 +43,6 @@
 <body <?php if (!$current_user) {
 	echo "class='login'";
 } ?>>
-
 <div id="wrapper">
 <?php if ($current_user): ?>
         <!-- Navigation -->
@@ -84,7 +73,7 @@
 		                <li><?php echo Html::anchor('admin/SchoolYear', 'Set School Year') ?></li>
 		               	<li><?php echo Html::anchor('admin/academicyear', 'Academic Year') ?></li>
 		               	<li><?php echo Html::anchor('admin/achives', 'Archives') ?></li>
-                        <li class="divider"></li>
+                        <li class="divider">
                         	<li><?php echo Html::anchor('admin/logout', 'Logout') ?></li>
                         </li>
                     </ul>
@@ -169,7 +158,6 @@
 								</div>
 				<?php endif; ?>
 				</div>
-                
                 <div class="col-lg-12">
 					<?php echo $content; ?>
 				</div>
@@ -192,7 +180,7 @@
         </div>
         <!-- /#page-wrapper -->
 
-    </div>
+</div>
     <!-- /#wrapper -->
 
 </body>

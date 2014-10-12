@@ -63,7 +63,7 @@ class Controller_Admin extends Controller_Base
 					}
 					else
 					{
-						return $this->set_global('login_error', '<script>alert("Username or Email and Password Mismatch!")</script>');
+						$this->template->set_global('login_error', '<script>alert("Username or Email and Password Mismatch!")</script>');
 					}
 				}
 			}
