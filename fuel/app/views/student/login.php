@@ -27,10 +27,11 @@
 		<?php echo Form::hidden('destination',$_GET['destination']); ?>
 	<?php endif; ?>
 	<div class="box" align="center">
+		<hr />
 			<?php if (isset($login_error)): ?>
 				<div class="error"><?php echo $login_error; ?></div>
 			<?php endif; ?>
-				<?php echo Asset::img('user-edited.png', array('style' => 'width:170px; height:170px; border-radius:50%; border: 2px solid #1b1b1b;')); ?></th>
+				<?php echo Asset::img('user-edited.png', array('style' => 'width:170px; height:170px; border-radius:50%;')); ?></th>
 				<h2>User</h2>
 				<div class="row">
 					<div class="input"><?php echo Form::input('email', Input::post('email'), array('placeholder' => 'Email or Username', 'class' => 'form-control', 'style' => 'width:220px;')); ?></div>
@@ -44,8 +45,9 @@
 							<div class="error"><?php echo $val->error('password')->get_message(':label cannot be blank'); ?></div>
 						<?php endif; ?>
 				</div>
-		<div class="actions">
-			<?php echo Form::submit(array('value'=>'Login', 'name'=>'submit', 'class' => 'btn btn-primary', 'style' => 'width:220px;')); ?>
-		</div>
+			<div class="actions">
+				<?php echo Form::submit(array('value'=>'Login', 'name'=>'submit', 'class' => 'btn btn-primary', 'style' => 'width:220px;')); ?>
+			</div>
+		<hr />
 	</div>
 <?php echo Form::close(); ?>

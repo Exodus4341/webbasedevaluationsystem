@@ -31,7 +31,7 @@
 				<div class="error"><?php echo $login_error; ?></div>
 			<?php endif; ?>
 			<div align="center">
-				<?php echo Asset::img('admin-edited.png', array('style' => 'width:170px; height:170px; border-radius:50%; border: 2px solid #000000;')); ?>
+				<?php echo Asset::img('admin-edited.png', array('style' => 'width:170px; height:170px; border-radius:50%;')); ?>
 				<h2>Administrator</h2>
 					<div class="row">
 						<th><div class="input-group"><?php echo Form::input('email', Input::post('email'), array('placeholder' => 'Email or Username', 'style' => 'width:220px;', 'class' => 'form-control')); ?></div></th>

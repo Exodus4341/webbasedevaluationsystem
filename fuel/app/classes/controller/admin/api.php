@@ -14,7 +14,7 @@ class Controller_Admin_Api extends Controller_Admin {
 		->where('group', '=', '1')
 		->from(Model_User::table())
 		->execute();
-		return $this->response($data);
+		return Format::forge($data)->to_json();
 	}
 
 	public function get_evaluation_notification()

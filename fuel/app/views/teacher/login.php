@@ -30,7 +30,7 @@
 		<?php if (isset($login_error)): ?>
 			<div class="error"><?php echo $login_error; ?></div>
 		<?php endif; ?>
-			<?php echo Asset::img('teacher-edited.png', array('style' => 'width:170px; height:170px; border-radius:50%; border: 2px solid #1b1b1b;')); ?>
+			<?php echo Asset::img('teacher-edited.png', array('style' => 'width:170px; height:170px; border-radius:50%;')); ?>
 			<h2>Teacher</h2>
 				<div class="row">
 					<div class="input"><?php echo Form::input('email', Input::post('email'), array('placeholder' => 'Email or Username', 'class' => 'form-control', 'style' => 'width:220px;')); ?></div>
