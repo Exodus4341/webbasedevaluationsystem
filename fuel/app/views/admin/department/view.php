@@ -1,4 +1,4 @@
-<h2>Viewing #<?php echo $department->id; ?></h2>
+<!-- <h2>Viewing #<?php //echo $department->id; ?></h2> -->
 
 <p>
 	<strong>Dept name:</strong>

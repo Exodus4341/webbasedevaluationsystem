@@ -1,4 +1,4 @@
-<h2>Listing Teacher</h2>
+<h2>List of Teachers</h2>
 <br>
 
 <?php if ($users): ?>

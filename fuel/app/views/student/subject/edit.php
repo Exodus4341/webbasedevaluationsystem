@@ -2,8 +2,7 @@
 <fieldset>
 	<table>
 		<tr>
-			<td><strong>Picture</strong></td>
-			<td><?php echo Html::img('uploads/'.$subject[0]['pic_url'], array('class' => "thumbnail", "style" => "width:51px; height:51px")); ?></td>
+			<td><?php echo Html::img('uploads/'.$subject[0]['pic_url'], array('class' => "thumbnail", "style" => "width:80px; height:80px")); ?></td>
 		</tr>
 		<tr>
 			<td><strong>Teacher Name:</strong></td>
@@ -28,13 +27,13 @@
 	</table>		
 </fieldset><br><br>
 <?php echo Form::open('student/subject/evaluate/'.$subject[0]['subj_id'].'/'.$subject[0]['id'].'/'.$question[0]['id']); ?>
-	<table border="1px" cellpadding="10" class="table table-hover">
+	<table border="1px" cellpadding="10" class="table table-hover table-striped">
 		<thead>
 			<?php for($y = 0; $y < sizeof($cat_name); $y++){?>
 			<tr>
-				<td><?php echo "<b>".$cat_name[$y]['cat_name']."</b>"; ?></td>
+				<td style="background-color: #000; color:#fff;"><?php echo "<b>".$cat_name[$y]['cat_name']."</b>"; ?></td>
 				<?php for ($p=0; $p <sizeof($choices); $p++) { 
-					echo "<td align='center'>" .ucwords($choices[$p]['choices'])."</td>";
+					echo "<td style='background-color: #000; color:#fff;' align='center'>" .ucwords($choices[$p]['choices'])."</td>";
 				}?>
 			</tr>
 		</thead>

@@ -1,4 +1,4 @@
-<h2>Viewing #<?php echo $course->id; ?></h2>
+<!-- <h2>Viewing #<?php // echo $course->id; ?></h2> -->
 
 <p>
 	<strong>Course name:</strong>

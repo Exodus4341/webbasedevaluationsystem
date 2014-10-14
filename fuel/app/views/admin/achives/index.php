@@ -1,4 +1,12 @@
+<style type="text/css">
+    .box-department{
+        width: 500px;
+        height: 0px auto;
+        border-radius: 10px;
+    }
+</style>
 <?php echo Form::open('admin/achives/search'); ?>
+<div class="box-department">
     <h3>School Year</h3>
     <?php echo Form::select('acadyear', Input::post('acadyear', isset($academicyear) ? $academicyear->acadyear : ''), $years, array('class' => 'span4 date-picker-year-from form-control', 'id' => 'txtYearFrom', 'required' => '')); ?>
     <h3>Semester</h3>
@@ -7,7 +15,7 @@
         array(0 => 'First Semester', 1 => 'Second Semester'),array('class' => 'span4 form-control', 'required' => '')); ?>
     </div>
     <?php echo Form::submit('submit', 'Search', array('class' => 'btn btn-primary')); ?> 
-        
+</div>
 <?php echo Form::close(); ?>
 
 

@@ -18,7 +18,7 @@
 		<div class="clearfix">
 			<?php echo Form::label('Question', 'question'); ?>
 			<div class="input">
-				<?php echo Form::textarea('question', Input::post('question', isset($question) ? $question->question : ''), array('class' => 'form-control')); ?>
+				<?php echo Form::textarea('question', Input::post('question', isset($question) ? $question->question : ''), array('class' => 'form-control', 'required' => '')); ?>
 			</div>
 		</div>		
 	</fieldset>

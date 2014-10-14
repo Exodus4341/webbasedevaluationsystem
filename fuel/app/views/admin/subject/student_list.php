@@ -1,4 +1,4 @@
-<h2>List of Students with the Faculty Teacher and Schedules</h2>
+<h2>List of Students</h2>
 <br />
 
 <?php if ($teachers): ?>

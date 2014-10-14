@@ -1,4 +1,4 @@
-<h2>Listing studentevaluations</h2>
+<h2>List of Teachers</h2>
 <br>
 <?php if ($teacher): ?>
 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped display" id="example" width="100%">

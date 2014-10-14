@@ -1,3 +1,4 @@
+<h1>Set The School Year</h1>
 <br>
 <?php if ($index): ?>
 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped display" id="example" width="100%">

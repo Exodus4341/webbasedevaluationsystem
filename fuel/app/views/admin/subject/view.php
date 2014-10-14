@@ -1,4 +1,4 @@
-<h2>Viewing #<?php echo $subject[0]['id']; ?></h2>
+<!-- <h2>Viewing #<?php // echo $subject[0]['sid']; ?></h2> -->
 <p>
 	<strong>subject Code:</strong>
 	<?php echo $subject[0]['subj_code']; ?></p>
@@ -18,5 +18,5 @@
 	<strong>Teacher Name:</strong>
 	<?php echo ucwords($subject[0]['fname'])." ".ucwords($subject[0]['mname'])." ".ucwords($subject[0]['lname']); ?></p>
 
-<?php echo Html::anchor('admin/subject/edit/'.$subject[0]['id'], 'Edit', array('class' => 'btn btn-warning')); ?> |
+<?php echo Html::anchor('admin/subject/edit/'.$subject[0]['sid'], 'Edit', array('class' => 'btn btn-warning')); ?> |
 <?php echo Html::anchor('admin/subject', 'Back', array('class' => 'btn btn-default')); ?>

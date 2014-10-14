@@ -16,7 +16,7 @@ class Controller_Admin_Question extends Controller_Admin
 	public function action_view($id = null)
 	{
 		$view = View::forge('admin\question/view');
-		$q = "SELECT *, q.`id` AS qid FROM questions AS q INNER JOIN categories AS c WHERE q.`category` = c.`id` ";
+		$q = "SELECT *, q.`id` AS qid FROM questions AS q INNER JOIN categories AS c WHERE q.`category` = c.`id` AND q.`id` = '".$id."' ";
 		$qw = DB::query($q)->execute()->as_array();
 		$view->set_global('questions', $qw);
 		$this->template->title = "Question";

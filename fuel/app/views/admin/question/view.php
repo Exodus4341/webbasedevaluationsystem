@@ -1,4 +1,4 @@
-<h2>Viewing #<?php echo $questions[0]['qid']; ?></h2>
+<!-- <h2>Viewing #<?php // echo $questions[0]['qid']; ?></h2> -->
 <p>
 	<strong>Category:</strong>
 	<?php echo $questions[0]['cat_name']; ?></p>

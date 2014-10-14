@@ -42,10 +42,7 @@
                         <a class="page-scroll" href="#about">About</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">Contact Us</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">The Makers</a>
+                        <a class="page-scroll" href="#contact">Our Team</a>
                     </li>
                     <li>
                     	<?php echo Html::anchor('student/login', 'Login') ?>
@@ -61,7 +58,7 @@
     <section id="intro" class="intro-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 ">
                     <h2>JMC Web Based Evaluation System</h2>
                     <?php echo Asset::img('user-edited.png', array('style' => 'height: 300px; widht: 400px;')); ?>
                     <p><a href="#">Web-E-SMS-Notification-System</a> A Fast Robust Faculty College Evaluation with SMS Technology System.</p>
@@ -73,54 +70,42 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container">
+    <div id="about" class="about-section">
+        <div class="">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 about-sec">
                     <h1>About</h1>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1>Contact Us</h1>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                	<?php //echo Asset::img('images1.jpg'); ?>
-                    <h1>The Makers</h1>
+            <div class="">
+                <div class="row ">
+                    <div class="col-lg-12 our-sec">
+                        <h1>Our Team</h1>
+                    </div>
                 </div>
             </div>
-        </div>
     </section>
 </body>
 </html>
 <script>
-// $.vegas('slideshow', {
- //  delay:5000,
- //  backgrounds:[
- //     { src:'<?php echo Config::get("base_url");?>assets/img/Jmc2008.jpg', fade:2000 },
-	//  { src:'<?php echo Config::get("base_url");?>assets/img/Jmc2008.jpg', fade:2000 },
- //    { src:'<?php echo Config::get("base_url");?>assets/img/Jmc2008.jpg', fade:2000 },
-	//  { src:'<?php echo Config::get("base_url");?>assets/img/Jmc2008.jpg', fade:2000 },
- //    { src:'<?php echo Config::get("base_url");?>assets/img/Jmc2008.jpg', fade:2000 },
- //    { src:'<?php echo Config::get("base_url");?>assets/img/Jmc2008.jpg', fade:2000 },
-	//  { src:'<?php echo Config::get("base_url");?>assets/img/Jmc2008.jpg', fade:2000 },
-	//    { src:'<?php echo Config::get("base_url");?>assets/img/Jmc2008.jpg', fade:2000 } 
- //  ]
-	// })('overlay', {
-	// src:'<?php echo Config::get("base_url");?>assets/img/images1.jpg'
-	// });
+$.vegas('slideshow', {
+  delay:5000,
+  backgrounds:[
+     { src:'<?php echo Config::get("base_url");?>assets/img/anniversary.jpg', fade:2000 },
+     { src:'<?php echo Config::get("base_url");?>assets/img/buwan_1.jpg', fade:2000 },
+    { src:'<?php echo Config::get("base_url");?>assets/img/fire-drill-2014-41.jpg', fade:2000 },
+     { src:'<?php echo Config::get("base_url");?>assets/img/Jmc2008.jpg', fade:2000 },
+    { src:'<?php echo Config::get("base_url");?>assets/img/silverlion.jpg', fade:2000 },
+    { src:'<?php echo Config::get("base_url");?>assets/img/smart-jump-in.jpg', fade:2000 },
+     { src:'<?php echo Config::get("base_url");?>assets/img/fire-drill-2014-41.jpg', fade:2000 },
+       { src:'<?php echo Config::get("base_url");?>assets/img/Jmc2008.jpg', fade:2000 } 
+  ]
+    })('overlay', {
+    src:'<?php echo Config::get("base_url");?>assets/img/overlay1.png'
+    });
  </script>

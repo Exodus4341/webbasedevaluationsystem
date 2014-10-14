@@ -12,7 +12,7 @@
 			<?php echo Form::label('Course name', 'course_name'); ?>
 
 			<div class="input">
-				<?php echo Form::input('course_name', Input::post('course_name', isset($course) ? $course->course_name : ''), array('class' => 'form-control')); ?>
+				<?php echo Form::input('course_name', Input::post('course_name', isset($course) ? $course->course_name : ''), array('class' => 'form-control', 'required' => '')); ?>
 			</div>
 		</div>
 		<br />

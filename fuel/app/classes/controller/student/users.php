@@ -5,14 +5,13 @@ class Controller_Student_Users extends Controller_Student
 	public function action_index()
 	{
 		$data['users'] = Model_User::find('all');
-		$this->template->title = "Users";
+		$this->template->title = "Student";
 		$this->template->content = View::forge('student\users/index', $data);
 
 	}
 
 	public function action_view($id = null)
 	{
-		// $data['user'] = Model_User::find($id);
 		$view = View::forge('student\users/view');
 		$q = "SELECT *, u.`id` AS uid FROM users AS u INNER JOIN courses AS c WHERE u.`course` = c.`id` ";
 		$qw = DB::query($q)->execute()->as_array();
@@ -65,7 +64,7 @@ class Controller_Student_Users extends Controller_Student
 			$this->template->set_global('user', $user, false);
 		}
 		$view->set_global('courses', Arr::assoc_to_keyval(Model_Course::find('all'), 'id', 'course_name'));
-		$this->template->title = "Users";
+		$this->template->title = "Student";
 		$this->template->content = $view;
 
 	}

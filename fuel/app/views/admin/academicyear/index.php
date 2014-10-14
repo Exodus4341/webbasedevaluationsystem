@@ -1,4 +1,4 @@
-<h2>Listing Academic Year</h2>
+<h2>List of Academic Year</h2>
 <br>
 <?php if ($years): ?>
 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped display" id="example" width="100%">

@@ -11,7 +11,7 @@
 			<?php echo Form::label('Year', 'year'); ?>
 
 			<div class="input">
-				<?php echo Form::input('year', Input::post('year', isset($year) ? $year->year : ''), array('class' => 'form-control')); ?>
+				<?php echo Form::input('year', Input::post('year', isset($year) ? $year->year : ''), array('class' => 'form-control', 'required' => '')); ?>
 
 			</div>
 		</div>

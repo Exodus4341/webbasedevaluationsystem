@@ -54,7 +54,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">JMC Web Based Evaluation System</a>
+                <a class="navbar-brand" href="index.html">JMC Web-E-SMS-Notification-System</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -65,16 +65,16 @@
                         <i class="glyphicon glyphicon-user"></i> <?php echo $current_user->username ?>  <i class="caret"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                    	<li><a href="#" data-toggle="modal" data-target="#admin">New Admin User</a></li>
-                    	<li><a href="#" data-toggle="modal" data-target="#teacher">New Teacher</a></li>
-                    	<li><a href="#" data-toggle="modal" data-target="#student">New Student</a></li>
-                    	<li><?php echo Html::anchor('admin/users/deactivate', 'Deactivated Students') ?></li>
-                    	<li><?php echo Html::anchor('admin/users/deactivate_teacher', 'Deactivated Teachers') ?></li>
-		                <li><?php echo Html::anchor('admin/SchoolYear', 'Set School Year') ?></li>
-		               	<li><?php echo Html::anchor('admin/academicyear', 'Academic Year') ?></li>
-		               	<li><?php echo Html::anchor('admin/achives', 'Archives') ?></li>
+                    	<li><a href="#" data-toggle="modal" data-target="#admin"><i class="glyphicon glyphicon-plus"></i> New Admin User</a></li>
+                    	<li><a href="#" data-toggle="modal" data-target="#teacher"><i class="glyphicon glyphicon-plus"></i> New Teacher</a></li>
+                    	<li><a href="#" data-toggle="modal" data-target="#student"><i class="glyphicon glyphicon-plus"></i> New Student</a></li>
+                    	<li><?php echo Html::anchor('admin/users/deactivate', '<i class="glyphicon glyphicon-ban-circle"></i> Deactivated Students') ?></li>
+                    	<li><?php echo Html::anchor('admin/users/deactivate_teacher', '<i class="glyphicon glyphicon-ban-circle"></i> Deactivated Teachers') ?></li>
+		                <li><?php echo Html::anchor('admin/SchoolYear', '<i class="glyphicon glyphicon-pencil"></i> Set School Year') ?></li>
+		               	<li><?php echo Html::anchor('admin/academicyear', '<i class="glyphicon glyphicon-font"></i> Academic Year') ?></li>
+		               	<li><?php echo Html::anchor('admin/achives', '<i class="glyphicon glyphicon-briefcase"></i> Archives') ?></li>
                         <li class="divider">
-                        	<li><?php echo Html::anchor('admin/logout', 'Logout') ?></li>
+                        	<li><?php echo Html::anchor('admin/logout', '<i class="glyphicon glyphicon-log-out"></i> Logout') ?></li>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -86,37 +86,37 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="<?php echo Uri::segment(2) == '' ? 'active' : '' ?>">
-                        	<?php echo Html::anchor('admin', 'Dashboard') ?>
+                        	<?php echo Html::anchor('admin', '<i class="glyphicon glyphicon-home"></i> Dashboard') ?>
                         </li>
                         <li>
-                        	<?php echo Html::anchor('admin/department', 'Department') ?>
+                        	<?php echo Html::anchor('admin/department', '<i class="glyphicon glyphicon-list-alt"></i> Department') ?>
                         </li>
                         <li>
-                        	<?php echo Html::anchor('admin/category', 'Category') ?>
+                        	<?php echo Html::anchor('admin/category', '<i class="glyphicon glyphicon-list-alt"></i> Category') ?>
                         </li>
                         <li>
-                        	<?php echo Html::anchor('admin/question', 'Question') ?>
+                        	<?php echo Html::anchor('admin/question', '<i class="glyphicon glyphicon-list-alt"></i> Question') ?>
                         </li>
                         <li>
-                        	<?php echo Html::anchor('admin/studentevaluation', 'Student Evaluations') ?>
+                        	<?php echo Html::anchor('admin/studentevaluation', '<i class="glyphicon glyphicon-list-alt"></i> Student Evaluations') ?>
                         </li>
                         <li>
-                        	<?php echo Html::anchor('admin/subject', 'Subject') ?>
+                        	<?php echo Html::anchor('admin/subject', '<i class="glyphicon glyphicon-list-alt"></i> Subject') ?>
                         </li>
                         <li>
-                        	<?php echo Html::anchor('admin/course', 'Course') ?>
+                        	<?php echo Html::anchor('admin/course', '<i class="glyphicon glyphicon-list-alt"></i> Course') ?>
                         </li>
                         <li>
 							<?php echo Html::anchor('admin/users', 'Users  <span class="pull-right glyphicon glyphicon-chevron-down"></span>') ?>
 							 <ul class="nav nav-second-level">
                                 <li>
-                                    <?php echo Html::anchor('admin/users', 'Administrators') ?>
+                                    <?php echo Html::anchor('admin/users', '<i class="glyphicon glyphicon-list-alt"></i> Administrators') ?>
                                 </li>
                                 <li>
-                                    <?php echo Html::anchor('admin/users/student_list', 'Students') ?>
+                                    <?php echo Html::anchor('admin/users/student_list', '<i class="glyphicon glyphicon-list-alt"></i> Students') ?>
                                 </li>
                                 <li>
-                                    <?php echo Html::anchor('admin/users/teacher_list', 'Teachers') ?>
+                                    <?php echo Html::anchor('admin/users/teacher_list', '<i class="glyphicon glyphicon-list-alt"></i> Teachers') ?>
                                 </li>
                             </ul> 
 						</li>
@@ -171,7 +171,7 @@
 			<footer>
 				<p class="pull-right">Created by: Team FlappyCodes <i class="glyphicon glyphicon-thumbs-up"></i></p>
 				<p>
-					<a href="#">Web-E-SMS-Notification-System</a> A Fast Robust Faculty College Evaluation with SMS Technology System.<br>
+					<a href="#">JMC Web-E-SMS-Notification-System</a> A Fast Robust Faculty College Evaluation with SMS Technology System.<br>
 					<small>Version: 101</small>
 				</p>
 			</footer>
@@ -196,7 +196,7 @@
         <h4 class="modal-title" id="myModalLabel">New Admin User</h4>
       </div>
       <div class="modal-body">
-        <?php echo Form::open(); ?>
+        <?php echo Form::open('admin/users/create'); ?>
 		<fieldset class="box-modal">
 			<div class="clearfix">
 				<?php echo Form::label('Username', 'username'); ?>
@@ -233,6 +233,7 @@
   </div>
 </div>
 
+
 <!-- Modal teachers -->
 <div class="modal fade" id="teacher" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -242,10 +243,10 @@
         <h4 class="modal-title" id="myModalLabel">New Teacher</h4>
       </div>
       <div class="modal-body">
-       	<?php echo Form::open(array('method' => 'post', 'enctype' => 'multipart/form-data')); ?>
+       	<?php echo Form::open('admin/users/teacher', array('method' => 'post', 'enctype' => 'multipart/form-data')); ?>
 			<fieldset class="box-department">
 					<div class="clearfix">
-						<?php echo Form::label('Student Profile', 'student_profile'); ?>
+						<?php // echo Form::label('Student Profile', 'student_profile'); ?>
 						<img id="PreviewHolder" style="width:100px; height:100px; border-radius:10%; border: 2px solid #1b1b1b;"/>
 						<div class="input">
 							<?php echo Form::input('pic_url', Input::post('pic_url', isset($user) ? $user->pic_url : ''), array('class' => 'form-control', 'id' => 'pic_url','type' => 'file')); ?>
@@ -333,11 +334,11 @@
         <h4 class="modal-title" id="myModalLabel">New Student</h4>
       </div>
       <div class="modal-body">
-		        <?php echo Form::open(array('method' => 'post', 'enctype' => 'multipart/form-data')); ?>
+		        <?php echo Form::open('admin/users/student', array('method' => 'post', 'enctype' => 'multipart/form-data')); ?>
 					<fieldset class="box-modal">
 						 <?php //echo Html::img('uploads/'.$user->pic_url, array('class' => "thumbnail", "style" => "width:80px; height:80px")); ?>
 					<div class="clearfix">
-						<?php echo Form::label('Student Profile', 'student_profile'); ?>
+						<?php // echo Form::label('Student Profile', 'student_profile'); ?>
 					<img id="PreviewHolder" style="width:100px; height:100px; border-radius:10%; border: 2px solid #1b1b1b;"/>
 						<div class="input">
 							<?php echo Form::input('pic_url', Input::post('pic_url', isset($user) ? $user->pic_url : ''), array('class' => 'form-control', 'id' => 'pic_url', 'type' => 'file')); ?>

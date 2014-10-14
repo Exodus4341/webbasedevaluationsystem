@@ -1,4 +1,4 @@
-<h2>Listing Departments</h2>
+<h2>List of Departments</h2>
 <br>
 <?php if ($departments): ?>
 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped display" id="example" width="100%">
@@ -27,5 +27,5 @@
 <?php endif; ?><p>
 	<br />
 	<br />
-	<?php echo Html::anchor('admin/department/create', 'Add new Department', array('class' => 'btn btn-success')); ?>
+	<?php echo Html::anchor('admin/department/create', 'New Department', array('class' => 'btn btn-success')); ?>
 </p>

@@ -9,10 +9,10 @@
 	<fieldset>
 	<div class="box-department">
 		<div class="clearfix">
-			<?php echo Form::label('Dept name', 'dept_name'); ?>
+			<?php echo Form::label('Department name', 'dept_name'); ?>
 
 			<div class="input">
-				<?php echo Form::input('dept_name', Input::post('dept_name', isset($department) ? $department->dept_name : ''), array('class' => 'form-control')); ?>
+				<?php echo Form::input('dept_name', Input::post('dept_name', isset($department) ? $department->dept_name : ''), array('class' => 'form-control', 'required' => '')); ?>
 			</div>
 		</div>
 		<br />

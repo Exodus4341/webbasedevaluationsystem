@@ -5,7 +5,7 @@
 		border-radius: 10px;
 	}
 </style>
-<h2>Editing Subject</h2>
+<h2>Update Subject</h2>
 <?php echo Form::open(); ?>
 <div class="box-department">
 	<fieldset>

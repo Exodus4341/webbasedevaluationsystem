@@ -1,4 +1,4 @@
-<h2>Listing Courses</h2>
+<h2>Lisf of Courses</h2>
 <br>
 <?php if ($courses): ?>
 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped display" id="example" width="100%">

@@ -1,4 +1,4 @@
-<h2>Listing Student</h2>
+<h2>List of Deactivated Students</h2>
 <br>
 
 <?php if ($deactivate): ?>

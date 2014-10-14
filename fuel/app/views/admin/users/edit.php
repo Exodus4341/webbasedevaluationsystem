@@ -1,4 +1,4 @@
-<h2>Editing User</h2>
+<h2>Update User</h2>
 <br>
 
 <?php

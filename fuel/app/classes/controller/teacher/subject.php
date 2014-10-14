@@ -16,6 +16,10 @@ class Controller_Teacher_Subject extends Controller_Teacher
 	{
 		$view = View::forge('teacher\subject/result_evaluation');
 
+		$q = "SELECT * FROM users AS u INNER JOIN subjects AS s WHERE u.`id` = '".$teach_id."' AND s.`id` = '".$subj_id."' ";
+		$qw = DB::query($q)->execute()->as_array();
+		$view->set_global('teacher_subjects', $qw);
+
 		$sql1 = "SELECT id, cat_name, percentage FROM categories";
 
 		$category = DB::query($sql1)->execute()->as_array();
@@ -73,6 +77,11 @@ class Controller_Teacher_Subject extends Controller_Teacher
 		$result = DB::query($sql)->execute()->as_array();
 		
 
+		$comm = "SELECT * FROM subj_stud AS ss INNER JOIN users AS u ON ss.`subj_id` = '".$subj_id."' WHERE u.`id` = '".$teach_id."' ";
+		$comment = DB::query($comm)->execute()->as_array();
+		$view->set_global('comments', $comment);
+
+		
 		$this->template->title = "Evaluaton results";
 		$view->set_global('evaluated', $result);
 		$view->set_global('category', $category);
@@ -95,7 +104,6 @@ class Controller_Teacher_Subject extends Controller_Teacher
 	public function action_view($id = null)
 	{
 		$data['subject'] = Model_Subject::find($id);
-
 		$this->template->title = "Subject";
 		$this->template->content = View::forge('teacher\subject/student', $data);
 

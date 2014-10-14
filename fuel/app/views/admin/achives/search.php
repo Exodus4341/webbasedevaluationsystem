@@ -1,3 +1,5 @@
+<h1>Search Result</h1>
+<br />
 <?php if ($search): ?>
     <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="example" width="100%">
         <thead>
@@ -23,5 +25,5 @@
         <?php endforeach; ?>    </tbody>
     </table>
     <?php else: ?>
-        <p>No Data Find!</p>
+        <p>No Data Found!</p>
 <?php endif ?>

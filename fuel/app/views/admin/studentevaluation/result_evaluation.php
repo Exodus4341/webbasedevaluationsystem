@@ -34,16 +34,16 @@ if ($teachers) {
 echo "";
 	if ($evaluated) {
 		$sum = 0;
-		echo "<table class='table'>";
+		echo "<table class='table table-hover table-striped'>";
 		echo "<tr>
-					<td><b>Category</b></td>
-					<td><b>Percentage</b></td>
-					<td><b>Poor</b></td>
-					<td><b>Fair</b></td>
-					<td><b>Good</b></td>
-					<td><b>Very Good</b></td>
-					<td><b>Excellent</b></td>
-					<td><b>Majority Votes</b></td>
+					<td style='background-color: #000; color:#fff;'><b>Category</b></td>
+					<td style='background-color: #000; color:#fff;'><b>Percentage</b></td>
+					<td style='background-color: #000; color:#fff;'><b>Poor</b></td>
+					<td style='background-color: #000; color:#fff;'><b>Fair</b></td>
+					<td style='background-color: #000; color:#fff;'><b>Good</b></td>
+					<td style='background-color: #000; color:#fff;'><b>Very Good</b></td>
+					<td style='background-color: #000; color:#fff;'><b>Excellent</b></td>
+					<td style='background-color: #000; color:#fff;'><b>Majority Votes</b></td>
 			</tr>";
 		for ($y=0; $y < sizeof($evaluated) ; $y++) { 
 			$max_value = max($evaluated[$y]['choice_poor'],$evaluated[$y]['choice_fair'],$evaluated[$y]['choice_good'],
@@ -52,7 +52,7 @@ echo "";
 			$percent = $category[$y]['percentage']/100;
 
 			$percnt = $max_value * $percent;
-			echo "<tr style='background-color:orange;'>
+			echo "<tr>
 					<td>".$category[$y]['cat_name']. " </td>
 					<td>".$max_value * $percent."%</td>
 					<td>".$evaluated[$y]['choice_poor']."</td>
@@ -70,20 +70,20 @@ echo "";
 		echo "<tr>
 					<td>Total Percentage: </td>
 					<td><b>".$total."%</b> out of 100%</td>
-				</tr>";
+				</tr><br><br><br>";
 
 		 if ($comments){
-		 	echo "<table class='table'>
+		 	echo "<table>
 					<thead>
 						<tr>
-							<th><h2>Comments</h2></th>
+							<th>Comments</th>
 						</tr>
 					</thead>
 					<tbody>";
 			foreach ($comments as $comment) {
-				echo "<tr style='background-color:orange;'>
-								<td>".ucwords($comment['comment'])."</td>
-						</tr>";
+				echo "<tr>
+						<td>".ucwords($comment['comment'])."</td>
+					</tr>";
 			}
 			   echo "</tbody></table>";
 		 }

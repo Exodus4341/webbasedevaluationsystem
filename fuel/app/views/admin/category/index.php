@@ -1,4 +1,4 @@
-<h2>Listing category</h2>
+<h2>List of Category</h2>
 <br>
 <?php if ($categories): ?>
 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped display" id="example" width="100%">

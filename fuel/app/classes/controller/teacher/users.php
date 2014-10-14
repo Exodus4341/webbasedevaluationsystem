@@ -5,7 +5,7 @@ class Controller_Teacher_Users extends Controller_Teacher
 	public function action_index()
 	{
 		$data['users'] = Model_User::find('all');
-		$this->template->title = "Users";
+		$this->template->title = "Teachers";
 		$this->template->content = View::forge('teacher\users/index', $data);
 
 	}
@@ -14,10 +14,10 @@ class Controller_Teacher_Users extends Controller_Teacher
 	{
 		// $data['user'] = Model_User::find($id);
 		$view = View::forge('teacher\users/view');
-		$q = "SELECT *, u.`id` AS uid FROM users AS u INNER JOIN departments AS d WHERE u.`department` = d.`id` ";
+		$q = "SELECT *, u.`id` AS uid FROM users AS u INNER JOIN departments AS d WHERE u.`department` = d.`id` AND u.`id` = '".$id."' ";
 		$qw = DB::query($q)->execute()->as_array();
 		$view->set_global('user', $qw);
-		$this->template->title = "User";
+		$this->template->title = "Teachers";
 		$this->template->content = $view;
 
 	}
@@ -31,13 +31,6 @@ class Controller_Teacher_Users extends Controller_Teacher
 		{
 			$user->username = Input::post('username');
 			$user->password = Auth::instance()->hash_password(Input::post('password'));
-			// $user->fname = Input::post('fname');
-			// $user->lname = Input::post('lname');
-			// $user->mname = Input::post('mname');
-			// $user->department = Input::post('id');
-			// $user->course = Input::post('course');
-			// $user->year = Input::post('year');
-			// $user->email = Input::post('email');
 			$user->group = Input::post('group');
 			$user->profile_fields = Input::post('profile_fields');
 			$user->last_login = Input::post('last_login');
@@ -62,13 +55,6 @@ class Controller_Teacher_Users extends Controller_Teacher
 			{
 				$user->username = $val->validated('username');
 				$user->password = $val->validated('password');
-				// $user->fname = $val->validated('fname');
-				// $user->lname = $val->validated('lname');
-				// $user->mname = $val->validated('mname');
-				// $user->department = $val->validated('department');
-				// $user->course = $val->validated('course');
-				// $user->year = $val->validated('year');
-				// $user->email = $val->validated('email');
 				$user->group = $val->validated('group');
 				$user->profile_fields = $val->validated('profile_fields');
 				$user->last_login = $val->validated('last_login');
@@ -79,7 +65,7 @@ class Controller_Teacher_Users extends Controller_Teacher
 			$this->template->set_global('user', $user, false);
 		}
 		$view->set_global('departments', Arr::assoc_to_keyval(Model_Department::find('all'), 'id', 'dept_name'));
-		$this->template->title = "Users";
+		$this->template->title = "Teachers";
 		$this->template->content = $view;
 
 	}

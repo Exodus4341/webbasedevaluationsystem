@@ -1,4 +1,4 @@
-<h2>Listing Subjects</h2>
+<h2>List of Subjects</h2>
 <br>
 <?php $date = date("Y-m-d"); ?>
 <?php if ($users2): ?>

@@ -8,7 +8,7 @@
 <?php echo Form::open(array('method' => 'post', 'enctype' => 'multipart/form-data')); ?>
 	<fieldset class="box-department">
 			<div class="clearfix">
-				<?php echo Form::label('Student Profile', 'student_profile'); ?>
+				<?php //echo Form::label('Student Profile', 'student_profile'); ?>
 				<img id="PreviewHolder" style="width:100px; height:100px; border-radius:10%; border: 2px solid #1b1b1b;"/>
 				<div class="input">
 					<?php echo Form::input('pic_url', Input::post('pic_url', isset($user) ? $user->pic_url : ''), array('class' => 'form-control', 'id' => 'pic_url','type' => 'file')); ?>

@@ -1,4 +1,4 @@
-<h2>Listing Users</h2>
+<h2>List of Admin</h2>
 <br>
 <?php if ($users): ?>
 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped display" id="example" width="100%">

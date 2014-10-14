@@ -1,4 +1,5 @@
-<h2>Listing Student</h2>
+<h2>Lisf of
+ Student</h2>
 <br>
 
 <?php if ($users): ?>

@@ -1,4 +1,4 @@
-<h2>Listing Subjects</h2>
+<h2>List of Subjects</h2>
 <br>
 <?php if ($users2): ?>
 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped display" id="example" width="100%">
@@ -19,7 +19,6 @@
 				<?php echo Html::anchor('admin/subject/edit/'.$subject['sid'], '', array('class'=>'glyphicon glyphicon-wrench btn btn-warning btn-xs', 'title'=>'Edit')); ?>
 				<?php echo Html::anchor('admin/subject/delete/'.$subject['sid'], '', array('onclick' => "return confirm('Are you sure?'),", 'class'=>'glyphicon glyphicon-trash btn btn-danger btn-xs', 'title'=>'Delete')); ?>
 				<?php echo Html::anchor('admin/subject/student_list/'.$subject['sid'], '', array('class'=>'glyphicon glyphicon-list btn btn-default btn-xs', 'title'=>'Student List')); ?> 
-
 			</td>
 		</tr>
 <?php endforeach; ?>	</tbody>
@@ -33,5 +32,4 @@
 	<br />
 	<br />
 	<?php echo Html::anchor('admin/subject/create', 'Add new Subject', array('class' => 'btn btn-success')); ?>
-	<?php //echo date("Y"); ?>
 </p>

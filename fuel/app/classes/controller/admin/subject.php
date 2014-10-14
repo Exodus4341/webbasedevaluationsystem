@@ -5,7 +5,7 @@ class Controller_Admin_Subject extends Controller_Admin
 	public function action_index()
 	{
 		$view = View::forge('admin\subject/index');
-		$sqlQ = DB::query("SELECT *, s.`id` AS sid FROM `users` AS u INNER JOIN `subjects` AS s ON u.`id` = s.`teacher_id` INNER JOIN `schoolyear` AS sy ON sy.`academicyear` = s.`academicyear` AND s.`semester` = sy.`scho_year` WHERE u.`group` = '50' ")->execute()->as_array();
+		$sqlQ = DB::query("SELECT *, s.`id` AS `sid` FROM `users` AS u INNER JOIN `subjects` AS s ON u.`id` = s.`teacher_id` INNER JOIN `schoolyear` AS sy ON sy.`academicyear` = s.`academicyear` AND s.`semester` = sy.`scho_year` WHERE u.`group` = '50' ")->execute()->as_array();
 		$view->set_global('users2', $sqlQ);
 		$this->template->title = "Subjects";
 		$this->template->content = $view;		
@@ -24,7 +24,7 @@ class Controller_Admin_Subject extends Controller_Admin
 	public function action_view($id = null)
 	{
 		$view = View::forge('admin\subject/view');
-		$data = DB::query("SELECT * FROM `users` AS u INNER JOIN `subjects` AS s ON u.`id` = s.`teacher_id` WHERE u.`group` = '50' ")->execute()->as_array();
+		$data = DB::query("SELECT *, s.`id` AS `sid` FROM `users` AS u INNER JOIN `subjects` AS s ON u.`id` = s.`teacher_id` WHERE u.`group` = '50' AND s.`id` = '".$id."' ")->execute()->as_array();
 		$view->set_global('subject', $data);
 		$this->template->title = "Subject";
 		$this->template->content = $view;

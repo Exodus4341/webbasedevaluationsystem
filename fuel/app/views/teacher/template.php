@@ -10,6 +10,9 @@
 	<?php echo Asset::css('jquery-ui.css'); ?>
 	<style>
 		/*body { margin: 80px; }*/
+	.padding-img{
+		padding: 5px;
+	}
 	.login {
 	  background: url("../assets/img/Jmc2008.jpg") no-repeat;
 	  background-size: 100%;
@@ -53,13 +56,13 @@
           		
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="glyphicon glyphicon-user"></i> <?php echo $current_user->username ?>  <i class="caret"></i>
+                        <i class="glyphicon glyphicon-cog"></i> <?php echo $current_user->username;  ?>  <i class="caret"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                    	<li><?php echo Html::anchor('teacher/users/edit/'.$current_user->id, 'Change Username/Password')?></li>
-		             	<li><?php echo Html::anchor('teacher/users/view/'.$current_user->id, 'View Account')?></li>
+                    	<li><?php echo Html::anchor('teacher/users/edit/'.$current_user->id, '<i class="glyphicon glyphicon-pencil"></i>  Change Username/Password')?></li>
+		             	<li><?php echo Html::anchor('teacher/users/view/'.$current_user->id, '<i class="glyphicon glyphicon-eye-open"></i>  View Account')?></li>
                         <li class="divider">
-                        	<li><?php echo Html::anchor('teacher/logout', 'Logout') ?></li>
+                        	<li><?php echo Html::anchor('teacher/logout', '<i class="glyphicon glyphicon-log-out"></i>  Logout') ?></li>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -70,11 +73,15 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
+                    	<li class="padding-img" align="center">
+                    		<?php echo Html::img('uploads/'.$current_user['pic_url'], array('class' => "img-circle", "style" => "width:100px; height:100px")) ; ?>
+                    		<p>Hello, <?php echo ucwords($current_user->fname)." ".ucwords($current_user->mname).". ".ucwords($current_user->lname); ?></p>
+                    	</li>
                         <li class="<?php echo Uri::segment(2) == '' ? 'active' : '' ?>">
-                        	<?php echo Html::anchor('teacher', 'Dashboard') ?>
-                        </li>
+                        	<?php echo Html::anchor('teacher', '<i class="glyphicon glyphicon-home"></i> Dashboard') ?>
+                        </li> 
                         <li>
-                        	<?php echo Html::anchor('teacher/subject', 'Subjects') ?>
+                        	<?php echo Html::anchor('teacher/subject', '<i class="glyphicon glyphicon-link"></i> Subjects') ?>
                         </li>	
                     </ul>
                 </div>
