@@ -34,49 +34,38 @@ if ($teachers) {
 echo "";
 	if ($evaluated) {
 		$sum = 0;
-		echo "<table class='table table-hover table-striped'>";
+		echo "<table class='table table-striped table-hover'>";
 		echo "<tr>
 					<td style='background-color: #000; color:#fff;'><b>Category</b></td>
-					<td style='background-color: #000; color:#fff;'><b>Percentage</b></td>
-					<td style='background-color: #000; color:#fff;'><b>Poor</b></td>
-					<td style='background-color: #000; color:#fff;'><b>Fair</b></td>
-					<td style='background-color: #000; color:#fff;'><b>Good</b></td>
-					<td style='background-color: #000; color:#fff;'><b>Very Good</b></td>
-					<td style='background-color: #000; color:#fff;'><b>Excellent</b></td>
-					<td style='background-color: #000; color:#fff;'><b>Majority Votes</b></td>
+					<td style='background-color: #000; color:#fff;'><b>Total Sum</b></td>
+					<td style='background-color: #000; color:#fff;'><b>Total Items</b></td>
+					<td style='background-color: #000; color:#fff;'><b>Total Percentage</b></td>
 			</tr>";
-		for ($y=0; $y < sizeof($evaluated) ; $y++) { 
-			$max_value = max($evaluated[$y]['choice_poor'],$evaluated[$y]['choice_fair'],$evaluated[$y]['choice_good'],
-				$evaluated[$y]['choice_very_good'],$evaluated[$y]['choice_excellent']);
+		for ($y=0, $x = 1; $y < sizeof($evaluated) ; $y++, $x++) { 
 		
-			$percent = $category[$y]['percentage']/100;
-
-			$percnt = $max_value * $percent;
+			$percentage = ($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$y]['percentage']/100);
+			$total = $sum += $percentage;
 			echo "<tr>
 					<td>".$category[$y]['cat_name']. " </td>
-					<td>".$max_value * $percent."%</td>
-					<td>".$evaluated[$y]['choice_poor']."</td>
-					<td>".$evaluated[$y]['choice_fair']."</td>
-					<td>".$evaluated[$y]['choice_good']."</td>
-					<td>".$evaluated[$y]['choice_very_good']."</td>
-					<td>".$evaluated[$y]['choice_excellent']."</td>
-					<td>".$max_value."</td>
+					<td>".$evaluated[$y]['category_sum'.$x]."</td>
+					<td>".$questionsum[$y]['category'.$x]."</td>
+					<td>".number_format($percentage, 2, '.', '')." %</td>
 					</tr>";					
-				 $total = $sum += $percnt;
-			// echo "category: ". " " . $max_value."% <br />";
 		}
+		echo "<footer>
+				<td><b>Total Percentage:</b></td>
+				<td></td>
+				<td></td>
+				<td><b>".number_format($total, 2, '.', '')." %</b></td>
+			</footer>";
 		echo "</table>";
-		echo "<hr />";
-		echo "<tr>
-					<td>Total Percentage: </td>
-					<td><b>".$total."%</b> out of 100%</td>
-				</tr><br><br><br>";
+		
 
 		 if ($comments){
 		 	echo "<table>
 					<thead>
 						<tr>
-							<th>Comments</th>
+							<th><h2>Comments</h2></th>
 						</tr>
 					</thead>
 					<tbody>";

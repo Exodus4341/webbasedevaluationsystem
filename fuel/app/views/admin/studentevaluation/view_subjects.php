@@ -13,61 +13,49 @@
 				</tr>
 			</tabe>";
 } ?>
-<?php if ($subjects): ?>
+<?php if ($evaluated): ?>
 	<table cellpadding="0" cellspacing="0" border="0" class="table table-striped display" id="example" width="100%">
 <br />
-<h2>List of Subjects</h2>
 <br />
 	<thead>
 		<tr>
-			<th>Subject Code</th>
-			<th>Subeject Description</th>
-			<th>Schedule</th>
-			<th>Time</th>
-			<th>Room</th>
-			<th>Date Of Evaluation</th>
-			<th>Total Percentage</th>
-			<th></th>
+			<th style='background-color: #000; color:#fff;'>Subject Code</th>
+			<th style='background-color: #000; color:#fff;'>Subeject Desc</th>
+			<th style='background-color: #000; color:#fff;'>Schedule</th>
+			<th style='background-color: #000; color:#fff;'>Time</th>
+			<th style='background-color: #000; color:#fff;'>Room</th>
+			<th style='background-color: #000; color:#fff;'>Date Of Evaluation</th>
+			<th style='background-color: #000; color:#fff;'>Total Percentage</th>
+			<th style='background-color: #000; color:#fff;'></th>
 		</tr>
 	</thead>
 	<tbody>
-<?php foreach ($subjects as $subject): ?>		<tr>
-			<td><?php echo $subject['subj_code']; ?></td>
-			<td><?php echo $subject['subj_desc']; ?></td>
-			<td><?php echo $subject['schedule']; ?></td>
-			<td><?php echo $subject['time']; ?></td>
-			<td><?php echo $subject['room']; ?></td>
-			<td><?php echo $subject['dateevaluation']; ?></td>
-				<td>
 				<?php 
-			if ($percent != 0) {
-				$sum = 0;
-					for ($y=0; $y < sizeof($percent) ; $y++) { 
-						$max_value = max($percent[$y]['choice_poor'],$percent[$y]['choice_fair'],$percent[$y]['choice_good'],
-							$percent[$y]['choice_very_good'],$percent[$y]['choice_excellent']);
 					
-						$percent = $category[$y]['percentage']/100;
+		for ($y=0; $y < sizeof($evaluated) ; $y++) { 
 
-						$percnt = $max_value * $percent;
-						$total = $sum += $percnt;
-						echo $total."% out of 100%";
+			echo "<tr>
+					<td>".$evaluated[$y]['subj_code']."</td>
+					<td>".$evaluated[$y]['subj_desc']."</td>
+					<td>".$evaluated[$y]['schedule']."</td>
+					<td>".$evaluated[$y]['time']."</td>
+					<td>".$evaluated[$y]['room']."</td>
+					<td>".$evaluated[$y]['dateevaluation']."</td>";
+			   
+			 for ($i=0,$x = 1; $i < sizeof($category); $i++, $x++) { 
+				$percnt1[$y][$x] = ($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100); 
 					}
-				}
-			else
-			{
-				echo "No Evalation Conducted!";
+
+					echo "<td>".number_format(array_sum($percnt1[$y]), 2, '.', '')." %</td>";
+					echo "<td>".Html::anchor('admin/studentevaluation/result_evaluation/'.$evaluated[$y]['teacher_id'].'/'.$evaluated[$y]['subj_id'], '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info
+					 btn-xs', 'title'=>'View Results Evaluation'))."</td>
+
+				  </tr>";
+			
 			}
 			 ?>
-			</td>
-
-			<td>
-				<?php echo Html::anchor('admin/studentevaluation/result_evaluation/'.$subject['teacher_id'].'/'.$subject['sid'], '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info
-				 btn-xs', 'title'=>'View Results Evaluation')); ?>
-			</td>
-		</tr>
-<?php endforeach; ?>	</tbody>
+	</tbody>
 </table>
-
 <?php else: ?>
 <p>No Subjects on this semester.</p>
 
