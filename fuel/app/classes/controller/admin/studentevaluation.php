@@ -19,74 +19,60 @@ class Controller_Admin_Studentevaluation extends Controller_Admin
 		$sql1 = "SELECT id, cat_name, percentage FROM categories";
 		$category = DB::query($sql1)->execute()->as_array();
 
-		// $stud_list = "SELECT u.`id` AS uid FROM subj_stud AS ss 
-		// 			  INNER JOIN subjects AS s ON ss.`subj_id` = s.`id`
-		// 			  INNER JOIN users AS u ON u.`id` = ss.`stud_id`
-		// 			  WHERE ss.`subj_id` = '2' ";
+		$q_query = "SELECT 
+				  *,";
 
-		// $stud_l = DB::query($stud_list)->execute()->as_array();
+			for($x = 1; $x <= sizeof($category); $x++){
+			$q_query.= "(SELECT 
+				    COUNT(category) 
+				  FROM
+				    questions 
+				  WHERE subj_id ='".$subj_id."'
+				    AND category = '".$x."') AS category$x,";
+			}
 
+			$q_query = rtrim($q_query,',');
+			$q_query.=" FROM
+				  questions AS q 
+				WHERE q.subj_id = '".$subj_id."'
+				GROUP BY q.category";
+
+		$questionsum = DB::query($q_query)->execute()->as_array();
 
 		$sql = "SELECT 
+				  cat_name,
 				  stud_id,
 				  teacher_id,
 				  subj_id,
 				  category_id,
-				  (SELECT 
-				    COUNT(answer) 
-				  FROM
-				    studentevaluations 
-				  WHERE category_id = ct.`id` 
-				    AND answer = '1'  AND teacher_id ='".$teach_id."' AND subj_id = '".$subj_id."') AS choice_poor,
-				  (SELECT 
-				    COUNT(answer) 
-				  FROM
-				    studentevaluations 
-				  WHERE category_id = ct.`id` 
-				    AND answer = '2'  AND teacher_id ='".$teach_id."' AND subj_id = '".$subj_id."') AS choice_fair,
-				  (SELECT 
-				    COUNT(answer) 
-				  FROM
-				    studentevaluations 
-				  WHERE category_id = ct.`id` 
-				    AND answer = '3'  AND teacher_id ='".$teach_id."' AND subj_id = '".$subj_id."') AS choice_good,
-				  (SELECT 
-				    COUNT(answer) 
-				  FROM
-				    studentevaluations 
-				  WHERE category_id = ct.`id` 
-				    AND answer = '4' AND teacher_id ='".$teach_id."' AND subj_id = '".$subj_id."') AS choice_very_good,
-				  (SELECT 
-				    COUNT(answer) 
-				  FROM
-				    studentevaluations 
-				  WHERE category_id = ct.`id` 
-				    AND answer = '5'  AND teacher_id ='".$teach_id."' AND subj_id = '".$subj_id."') AS choice_excellent
-				FROM
-				 studentevaluations AS se
-				  INNER JOIN categories AS ct 
-				   ON ct.`id` = category_id 
-				  INNER JOIN choices AS ch 
-				    ON ch.`id` = answer
-				WHERE category_id IN (";
-		
+				  answer, ";
+				 
 		for($x = 1; $x <= sizeof($category); $x++){
-			$sql.="'$x',";
+		$sql.= "(SELECT 
+				    SUM(answer) 
+				  FROM
+				    studentevaluations
+					WHERE teacher_id = '".$teach_id."' 
+				    AND subj_id = '".$subj_id."' 
+				    AND category_id = '".$x."') AS category_sum$x,";
 		}
+
 		$sql = rtrim($sql,',');
 
-
-		$sql.=") AND teacher_id ='".$teach_id."' AND subj_id = '".$subj_id."' GROUP BY category_id";
-		//  AND subj_id IN(";
-			
-		// for($a = 0; $a < sizeof($stud_l); $a++){
-		// 	$sql.="'".$stud_l[$a]['uid']."' ";
-		// }
-		// $sql.=") GROUP BY category_id";
+		$sql.=" FROM
+				  studentevaluations 
+				  INNER JOIN categories AS ct 
+				    ON ct.`id` = category_id 
+				WHERE teacher_id = '".$teach_id."' 
+				  AND subj_id = '".$subj_id."'
+				  GROUP BY category_id";
 
 		$result = DB::query($sql)->execute()->as_array();
+
 		// var_dump($result);
-		$q = "SELECT * FROM `users` AS u INNER JOIN `subjects` AS s ON u.`id` = s.`teacher_id` WHERE u.`id` = '".$teach_id."'";
+		// exit();
+	
+		$q = "SELECT * FROM `users` AS u INNER JOIN `subjects` AS s ON u.`id` = s.`teacher_id` WHERE u.`id` = '".$teach_id."' AND s.`id` = '".$subj_id."'";
 		$que = DB::query($q)->execute()->as_array();
 		$view->set_global('teachers', $que);
 
@@ -97,15 +83,17 @@ class Controller_Admin_Studentevaluation extends Controller_Admin
 		$this->template->title = "Evaluaton results";
 		$view->set_global('evaluated', $result);
 		$view->set_global('category', $category);
+		$view->set_global('questionsum', $questionsum);
+
 		$this->template->content = $view;
 	}
+
+
 	public function action_view_subjects($id = null)
 	{
 		$view = View::forge('admin\studentevaluation/view_subjects');
-		// $date = date("Y");
-		// INNER JOIN `schoolyear` AS sy 
-		// sy.`scho_year` + '".$date."' = s.`semester` + s.`created_at` AND
-		$query = DB::query("SELECT *, s.`id` AS sid FROM `subjects` AS s INNER JOIN `schoolyear` AS sy ON sy.`academicyear` = s.`academicyear` AND s.`semester` = sy.`scho_year` WHERE s.`teacher_id` = ".$id." GROUP BY s.`subj_code` ")->execute()->as_array();
+
+		$subjects = DB::query("SELECT *, s.`id` AS sid FROM `subjects` AS s INNER JOIN `schoolyear` AS sy ON sy.`academicyear` = s.`academicyear` AND s.`semester` = sy.`scho_year` WHERE s.`teacher_id` = ".$id." GROUP BY s.`subj_code` ")->execute()->as_array();
 
 		$sql1 = "SELECT id, cat_name, percentage FROM categories";
 		$category = DB::query($sql1)->execute()->as_array();
@@ -114,65 +102,73 @@ class Controller_Admin_Studentevaluation extends Controller_Admin
 		$user = DB::query($u)->execute()->as_array();
 		$view->set_global('teacher_name', $user);
 
-		  
-		$sql = "SELECT
-				  stud_id,
-				  subj_id,
-				  category_id,
-				  (SELECT 
-				    COUNT(answer) 
-				  FROM
-				    studentevaluations AS se
-				  WHERE category_id = ct.`id` 
-				    AND answer = '1' AND se.`teacher_id` = '".$id."' AND subj_id = s.`id` ) AS choice_poor,
-				  (SELECT 
-				    COUNT(answer) 
-				  FROM
-				    studentevaluations AS se
-				  WHERE category_id = ct.`id` 
-				    AND answer = '2'  AND se.`teacher_id` = '".$id."' AND subj_id = s.`id` ) AS choice_fair,
-				  (SELECT 
-				    COUNT(answer) 
-				  FROM
-				    studentevaluations AS se
-				  WHERE category_id = ct.`id` 
-				    AND answer = '3'  AND se.`teacher_id` = '".$id."' AND subj_id = s.`id` ) AS choice_good,
-				  (SELECT 
-				    COUNT(answer) 
-				  FROM
-				    studentevaluations AS se
-				  WHERE category_id = ct.`id` 
-				    AND answer = '4' AND se.`teacher_id` = '".$id."' AND subj_id = s.`id` ) AS choice_very_good,
-				  (SELECT 
-				    COUNT(answer) 
-				  FROM
-				    studentevaluations AS se
-				  WHERE category_id = ct.`id` 
-				    AND answer = '5'  AND se.`teacher_id` = '".$id."' AND subj_id = s.`id` ) AS choice_excellent
-				FROM
-				 studentevaluations AS se
-				  INNER JOIN categories AS ct 
-				   ON ct.`id` = category_id 
-				  INNER JOIN choices AS ch
-				    ON ch.`id` = answer INNER JOIN `subjects` AS s
-				WHERE category_id IN (";
+		$q_query = "SELECT 
+				  *,";
 		
 		for($x = 1; $x <= sizeof($category); $x++){
-			$sql.="'$x',";
+			$q_query.= "(SELECT 
+				    COUNT(category) 
+				  FROM
+				    questions 
+				  WHERE subj_id = s.`id`
+				    AND category = '".$x."') AS category$x,";
+			}
+
+			$q_query = rtrim($q_query,',');
+			$q_query.=" FROM
+				  questions AS q 
+				INNER JOIN subjects AS s 
+				    ON s.`id` = q.`subj_id` 
+				WHERE q.subj_id = s.`id` 
+				AND s.`teacher_id` = '".$id."'
+				GROUP BY q.subj_id ";
+
+		$questionsum = DB::query($q_query)->execute()->as_array();
+
+		$sql = "SELECT DISTINCT 
+				  s.`subj_code`,
+				  s.`subj_desc`,
+				  s.`room`,
+				  s.`time`,
+				  s.`schedule`,
+				  s.`dateevaluation`,
+				  se.stud_id,
+				  se.teacher_id,
+				  se.subj_id,
+				  se.category_id, ";
+				 
+		for($x = 1; $x <= sizeof($category); $x++){
+		$sql.= "(SELECT 
+				    SUM(answer) 
+				  FROM
+				    studentevaluations
+					WHERE teacher_id = '".$id."' 
+				    AND subj_id = s.id
+				    AND category_id = '".$x."') AS category_sum$x,";
 		}
+
 		$sql = rtrim($sql,',');
 
-		$sql.=") AND se.`teacher_id` = '".$id."' AND subj_id = s.`id` GROUP BY category_id";
+		$sql.=" FROM
+				  studentevaluations AS se 
+				    INNER JOIN categories AS ct 
+				    ON ct.`id` = category_id  
+				  INNER JOIN subjects AS s 
+				    ON s.`id` = se.`subj_id` 
+				WHERE se.teacher_id ='".$id."' 
+				  AND se.subj_id = s.id 
+				  GROUP BY se.`subj_id`";
 
-		$result = DB::query($sql)->execute()->as_array();
+		$evaluated = DB::query($sql)->execute()->as_array();
 
-	
 
-		// var_dump($result);
+		// var_dump($evaluated);
+		// exit();
 
-		$view->set_global('percent', $result);
-		$view->set_global('subjects', $query);
+		$view->set_global('evaluated', $evaluated);
+		$view->set_global('subjects', $subjects);
 		$view->set_global('category', $category);
+		$view->set_global('questionsum', $questionsum);
 		$this->template->title = "Subjects";
 		$this->template->content = $view;
 	}
