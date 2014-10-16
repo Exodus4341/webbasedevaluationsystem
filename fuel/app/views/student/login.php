@@ -45,6 +45,7 @@
 							<div class="error"><?php echo $val->error('password')->get_message(':label cannot be blank'); ?></div>
 						<?php endif; ?>
 				</div>
+				<br/>
 			<div class="actions">
 				<?php echo Form::submit(array('value'=>'Login', 'name'=>'submit', 'class' => 'btn btn-primary', 'style' => 'width:220px;')); ?>
 			</div>
