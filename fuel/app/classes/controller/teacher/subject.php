@@ -24,56 +24,54 @@ class Controller_Teacher_Subject extends Controller_Teacher
 
 		$category = DB::query($sql1)->execute()->as_array();
 
+		$q_query = "SELECT 
+				  *,";
+
+			for($x = 1; $x <= sizeof($category); $x++){
+			$q_query.= "(SELECT 
+				    COUNT(category) 
+				  FROM
+				    questions 
+				  WHERE subj_id ='".$subj_id."'
+				    AND category = '".$x."') AS category$x,";
+			}
+
+			$q_query = rtrim($q_query,',');
+			$q_query.=" FROM
+				  questions AS q 
+				WHERE q.subj_id = '".$subj_id."'
+				GROUP BY q.category";
+
+		$questionsum = DB::query($q_query)->execute()->as_array();
+
 		$sql = "SELECT 
+				  cat_name,
 				  stud_id,
 				  teacher_id,
 				  subj_id,
 				  category_id,
-				  (SELECT 
-				    COUNT(answer) 
-				  FROM
-				    studentevaluations 
-				  WHERE category_id = ct.`id` 
-				    AND answer = '1'  AND teacher_id ='".$teach_id."' AND subj_id = '".$subj_id."') AS choice_poor,
-				  (SELECT 
-				    COUNT(answer) 
-				  FROM
-				    studentevaluations 
-				  WHERE category_id = ct.`id` 
-				    AND answer = '2'  AND teacher_id ='".$teach_id."' AND subj_id = '".$subj_id."') AS choice_fair,
-				  (SELECT 
-				    COUNT(answer) 
-				  FROM
-				    studentevaluations 
-				  WHERE category_id = ct.`id` 
-				    AND answer = '3'  AND teacher_id ='".$teach_id."' AND subj_id = '".$subj_id."') AS choice_good,
-				  (SELECT 
-				    COUNT(answer) 
-				  FROM
-				    studentevaluations 
-				  WHERE category_id = ct.`id` 
-				    AND answer = '4' AND teacher_id ='".$teach_id."' AND subj_id = '".$subj_id."') AS choice_very_good,
-				  (SELECT 
-				    COUNT(answer) 
-				  FROM
-				    studentevaluations 
-				  WHERE category_id = ct.`id` 
-				    AND answer = '5'  AND teacher_id ='".$teach_id."' AND subj_id = '".$subj_id."') AS choice_excellent
-				FROM
-				 studentevaluations 
-				  INNER JOIN categories AS ct 
-				   ON ct.`id` = category_id 
-				  INNER JOIN choices AS ch 
-				    ON ch.`id` = answer  
-				WHERE category_id IN (";
-		
+				  answer, ";
+				 
 		for($x = 1; $x <= sizeof($category); $x++){
-			$sql.="'$x',";
+		$sql.= "(SELECT 
+				    SUM(answer) 
+				  FROM
+				    studentevaluations 
+					WHERE teacher_id = '".$teach_id."' 
+				    AND subj_id = '".$subj_id."' 
+				    AND category_id = '".$x."') AS category_sum$x,";
 		}
+
 		$sql = rtrim($sql,',');
 
-		$sql.=") AND teacher_id ='".$teach_id."' AND subj_id = '".$subj_id."' GROUP BY category_id";
-
+		$sql.=" FROM
+				    studentevaluations 
+				  INNER JOIN categories AS ct 
+				   ON ct.`id` = category_id 
+				WHERE teacher_id = '".$teach_id."' 
+				  AND subj_id = '".$subj_id."'
+				  GROUP BY category_id";
+		
 		$result = DB::query($sql)->execute()->as_array();
 		
 
@@ -85,6 +83,7 @@ class Controller_Teacher_Subject extends Controller_Teacher
 		$this->template->title = "Evaluaton results";
 		$view->set_global('evaluated', $result);
 		$view->set_global('category', $category);
+		$view->set_global('questionsum', $questionsum);
 		$this->template->content = $view;
 	}
 
