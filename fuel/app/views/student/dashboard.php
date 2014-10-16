@@ -11,6 +11,10 @@
 	}
 </style>
 
+<ol class="breadcrumb">
+  <li class="active">Dashboard</li>
+</ol>
+
 <!-- slider -->
 <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">

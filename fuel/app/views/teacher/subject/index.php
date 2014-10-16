@@ -1,3 +1,6 @@
+<ol class="breadcrumb">
+  <li class="active">Subjects</li>
+</ol>
 <h2>List of Subjects</h2>
 <br>
 <?php if ($subjects): ?>

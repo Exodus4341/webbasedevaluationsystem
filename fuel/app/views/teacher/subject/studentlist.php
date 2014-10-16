@@ -1,3 +1,7 @@
+<ol class="breadcrumb">
+	<li><?php echo Html::anchor('teacher/subject', 'Subjects'); ?></li>
+  <li class="active">List of Students</li>
+</ol>
 <h2>List of Students</h2>
 <br>
 <?php if ($subjects): ?>

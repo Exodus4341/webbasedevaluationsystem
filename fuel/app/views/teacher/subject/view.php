@@ -16,4 +16,4 @@
 	<strong>Question id:</strong>
 	<?php echo $subject->question_id; ?></p>
 
-<?php echo Html::anchor('admin/subject', 'Back'); ?>
+<?php echo Html::anchor('teacher/subject', 'Back'); ?>
