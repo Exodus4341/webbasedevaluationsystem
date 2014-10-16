@@ -5,6 +5,9 @@
 		border-radius: 10px;
 	}
 </style>
+<ol class="breadcrumb">
+  <li class="active">Change Username / Password</li>
+</ol>
 <h2>Change Username/Password</h2>
 <?php echo Form::open(); ?>
 	<fieldset class="box-department" >

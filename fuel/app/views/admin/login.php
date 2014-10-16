@@ -34,20 +34,21 @@
 				<?php echo Asset::img('admin-edited.png', array('style' => 'width:170px; height:170px; border-radius:50%;')); ?>
 				<h2>Administrator</h2>
 					<div class="row">
-						<th><div class="input-group"><?php echo Form::input('email', Input::post('email'), array('placeholder' => 'Email or Username', 'style' => 'width:220px;', 'class' => 'form-control')); ?></div></th>
+						<th><div class="input-group"><?php echo Form::input('email', Input::post('email'), array('placeholder' => 'Email or Username', 'style' => 'width:300px;', 'class' => 'form-control')); ?></div></th>
 						<?php if ($val->error('email')): ?>
 							<div class="error"><?php echo $val->error('email')->get_message('You must provide a username or email'); ?></div>
 						<?php endif; ?>
 					</div>
 					<div class="row">
-						<div class="input-group"><?php echo Form::password('password', Input::post(''), array('placeholder' => 'Password', 'style' => 'width:220px;', 'class' => 'form-control')); ?></div>
+						<div class="input-group"><?php echo Form::password('password', Input::post(''), array('placeholder' => 'Password', 'style' => 'width:300px;', 'class' => 'form-control')); ?></div>
 						<?php if ($val->error('password')): ?>
 							<div class="error"><?php echo $val->error('password')->get_message(':label cannot be blank'); ?></div>
 						<?php endif; ?>
 					</div>
 			</div>
+			<br />
 		<div class="actions" align="center">
-			<?php echo Form::submit(array('value'=>'Login', 'name'=>'submit', 'class' => 'btn btn-primary', 'style' => 'width:220px;')); ?>
+			<?php echo Form::submit(array('value'=>'Login', 'name'=>'submit', 'class' => 'btn btn-primary', 'style' => 'width:300px;')); ?>
 		</div>
 		<hr />
 	</div>
