@@ -77,12 +77,26 @@ class Controller_Admin_Subject extends Controller_Admin
 				Session::set_flash('error', $val->error());
 			}
 		}
+
 		$data = DB::query("SELECT * FROM `users` AS u INNER JOIN `subjects` AS s ON u.`id` = s.`teacher_id` WHERE s.`id` = '".$id."' ")->execute()->as_array();
-		$sql1 = DB::query("SELECT *, u.`id` AS `uid` FROM `users` AS u INNER JOIN `courses` AS c ON u.`course` = c.`id` INNER JOIN `subj_stud` AS ss  ON ss.`stud_id` != u.`id` WHERE ss.`subj_id` = '".$id."' ")->execute()->as_array();
-		// $load_stud = DB::query("SELECT * FROM `users` AS u INNER JOIN `subj_stud` AS ss WHERE ss.`stud_id` != u.`id` AND ss.`subj_id` = '".$id."' AND u.`group` = '1' ")->execute()->as_array();
-		// $view->set_global('q', $load_stud);
+	
+		$existing_stud = DB::query("SELECT stud_id FROM subj_stud WHERE subj_id = '".$id."'")->execute()->as_array();
+
+		$stud_list_query = "SELECT *, u.`id` AS uid FROM users AS u INNER JOIN courses AS c ON c.`id` = u.`course` WHERE u.`group` = 1 AND u.`id` NOT IN (";
+		
+		foreach ($existing_stud as $stud) {
+			$stud_list_query .= "'".$stud['stud_id']."',";
+		}
+		$stud_list_query = rtrim($stud_list_query,",");
+		$stud_list_query .= ")";
+		
+		$stud_list = DB::query($stud_list_query)->execute()->as_array();
+
+		// var_dump($stud_list);
+		// exit();
+
 		$view->set_global('subject', $data);
-		$view->set_global('students', $sql1);
+		$view->set_global('students', $stud_list);
 		$this->template->title = "Subjects";
 		$this->template->content = $view;
 	}
