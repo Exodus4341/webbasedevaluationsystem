@@ -4,14 +4,17 @@
 <?php Asset::js('js/docs.min.js'); ?>
 
 <style type="text/css">
-	.half-rule{
-		width: 450px;
-	}
-	.txt-align{
-		text-align: center;
-	}
+  .half-rule{
+    width: 450px;
+  }
+  .txt-align{
+    text-align: center;
+  }
 </style>
 
+<ol class="breadcrumb">
+  <li class="active">Dashboard</li>
+</ol>
 <!-- slider -->
 <div id="carousel-example-captions" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -26,35 +29,35 @@
           <?php echo Asset::img('anniversary.jpg');?>
           <div class="carousel-caption">
             <h3>Jose Maria College</h3>
-        	<p>Anniversary</p>
+          <p>Anniversary</p>
           </div>
         </div>
         <div class="item">
           <?php echo Asset::img('buwan_1.jpg');?>
           <div class="carousel-caption">
             <h3>Jose Maria College</h3>
-       		<p>Buwan ng weka</p>
+          <p>Buwan ng weka</p>
           </div>
         </div>
         <div class="item">
           <?php echo Asset::img('fire-drill-2014-41.jpg');?>
           <div class="carousel-caption">
             <h3>Jose Maria College </h3>
-        	<p>Fire Drill 2014</p>
+          <p>Fire Drill 2014</p>
           </div>
         </div>
         <div class="item">
           <?php echo Asset::img('silverlion.jpg');?>
           <div class="carousel-caption">
             <h3>Jose Maria College</h3>
-       		<p>Team Jaguars</p>
+          <p>Team Jaguars</p>
           </div>
         </div>
         <div class="item">
           <?php echo Asset::img('smart-jump-in.jpg');?>
           <div class="carousel-caption">
             <h3>Jose Maria College</h3>
-        	<p>Smart Jump In</p>
+          <p>Smart Jump In</p>
           </div>
         </div>
       </div>

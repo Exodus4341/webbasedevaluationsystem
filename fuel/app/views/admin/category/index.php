@@ -1,3 +1,6 @@
+<ol class="breadcrumb">
+  <li class="active">Category</li>
+</ol>
 <h2>List of Category</h2>
 <br>
 <?php if ($categories): ?>
