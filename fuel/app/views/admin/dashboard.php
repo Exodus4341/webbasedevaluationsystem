@@ -36,7 +36,7 @@
           <?php echo Asset::img('buwan_1.jpg');?>
           <div class="carousel-caption">
             <h3>Jose Maria College</h3>
-          <p>Buwan ng weka</p>
+          <p>Buwan ng wika</p>
           </div>
         </div>
         <div class="item">
