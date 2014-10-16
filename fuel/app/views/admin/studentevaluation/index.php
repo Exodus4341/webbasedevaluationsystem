@@ -1,3 +1,6 @@
+<ol class="breadcrumb">
+  <li class="active">Teachers</li>
+</ol>
 <h2>List of Teachers</h2>
 <br>
 <?php if ($teacher): ?>

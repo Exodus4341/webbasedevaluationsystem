@@ -1,6 +1,8 @@
+<ol class="breadcrumb">
+  <li class="active">List of Teachers</li>
+</ol>
 <h2>List of Teachers</h2>
 <br>
-
 <?php if ($users): ?>
 <table cellpadding="0" cellspacing="0" border="0" class="table table-striped display" id="example" width="100%">
 	<thead>

@@ -1,4 +1,8 @@
 <!-- <h2>Viewing #<?php // echo $subject[0]['sid']; ?></h2> -->
+<ol class="breadcrumb">
+  <li><?php echo Html::anchor('admin/subject', 'Subject'); ?></li>
+  <li class="active">View Subject</li>
+</ol>
 <p>
 	<strong>subject Code:</strong>
 	<?php echo $subject[0]['subj_code']; ?></p>

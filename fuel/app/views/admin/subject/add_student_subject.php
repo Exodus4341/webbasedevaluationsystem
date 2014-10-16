@@ -1,3 +1,8 @@
+<ol class="breadcrumb">
+  <li><?php echo Html::anchor('admin/subject', 'Subject'); ?></li>
+  <li><?php echo Html::anchor('admin/subject/student_list/'.$subject[0]['sid'], 'List of Students'); ?></li>
+  <li class="active">Add Student Subjects</li>
+</ol>
 <?php echo Form::open(); ?>
 <h2>Add Student Subjects</h2>
 <?php 

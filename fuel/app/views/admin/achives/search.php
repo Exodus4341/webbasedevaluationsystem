@@ -1,3 +1,7 @@
+<ol class='breadcrumb'>
+    <li><?php echo Html::anchor('admin/achives', 'Archives'); ?></li>
+    <li class='active'>Search Result</li>
+</ol>
 <h1>Search Result</h1>
 <br />
 <?php if ($search): ?>

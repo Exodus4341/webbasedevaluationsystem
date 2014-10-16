@@ -1,3 +1,6 @@
+<ol class="breadcrumb">
+  <li class="active">List of Departments</li>
+</ol>
 <h2>List of Departments</h2>
 <br>
 <?php if ($departments): ?>

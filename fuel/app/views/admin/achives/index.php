@@ -5,6 +5,9 @@
         border-radius: 10px;
     }
 </style>
+<ol class='breadcrumb'>
+    <li class='active'>School Year</li>
+</ol>
 <?php echo Form::open('admin/achives/search'); ?>
 <div class="box-department">
     <h3>School Year</h3>

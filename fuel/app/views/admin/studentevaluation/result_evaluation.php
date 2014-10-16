@@ -1,3 +1,8 @@
+<ol class="breadcrumb">
+  <li><?php echo Html::anchor('admin/studentevaluation', 'Teachers'); ?></li>
+  <li><?php echo Html::anchor('admin/studentevaluation/view_subjects/'.$teachers[0]['uid'], 'View Subjects'); ?></li>
+  <li class="active">Result Evaluation</li>
+</ol>
 <?php 
  // var_dump($teachers);
 if ($teachers) {

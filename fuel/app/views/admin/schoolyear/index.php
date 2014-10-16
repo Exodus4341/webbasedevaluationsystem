@@ -1,3 +1,6 @@
+<ol class='breadcrumb'>
+	<li class='active'>Set The School Year</li>
+</ol>
 <h1>Set The School Year</h1>
 <br>
 <?php if ($index): ?>

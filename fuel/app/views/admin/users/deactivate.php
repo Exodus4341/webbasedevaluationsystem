@@ -1,3 +1,7 @@
+<ol class='breadcrumb'>
+	<li><?php echo Html::anchor('admin/users', 'Users'); ?></li>
+	<li class='active'>Deactivated Students</li>
+</ol>
 <h2>List of Deactivated Students</h2>
 <br>
 

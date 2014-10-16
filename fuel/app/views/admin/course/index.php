@@ -1,3 +1,6 @@
+<ol class="breadcrumb">  
+  <li class="active">Lisf of Courses</li>
+</ol>
 <h2>Lisf of Courses</h2>
 <br>
 <?php if ($courses): ?>

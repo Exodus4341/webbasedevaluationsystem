@@ -15,7 +15,7 @@ class Controller_Admin_Subject extends Controller_Admin
 	{	
 		$view = View::forge('admin\subject/student_list');
 		$query = DB::query("SELECT *, ss.`created_at` AS `ssc`, ss.`id` AS ssid FROM `subj_stud` AS ss INNER JOIN `users` AS u ON ss.`stud_id` = u.`id` LEFT JOIN `subjects` AS s ON s.`id` = ss.`subj_id` WHERE ss.`subj_id` = '".$subj_code."' ")->execute()->as_array();
-		$sqlQ = DB::query("SELECT * FROM  `users` AS u INNER JOIN  `subjects` AS s ON u.`id` = s.`teacher_id` WHERE u.`group` =  '50' AND s.`id` =  '".$subj_code."' GROUP BY s.`subj_code` ")->execute()->as_array();
+		$sqlQ = DB::query("SELECT * FROM `users` AS u INNER JOIN  `subjects` AS s ON u.`id` = s.`teacher_id` WHERE u.`group` =  '50' AND s.`id` =  '".$subj_code."' GROUP BY s.`subj_code` ")->execute()->as_array();
 		$view->set_global('studentlist', $query);
 		$view->set_global('teachers', $sqlQ);
 		$this->template->title = "Subjects";
@@ -78,7 +78,7 @@ class Controller_Admin_Subject extends Controller_Admin
 			}
 		}
 
-		$data = DB::query("SELECT * FROM `users` AS u INNER JOIN `subjects` AS s ON u.`id` = s.`teacher_id` WHERE s.`id` = '".$id."' ")->execute()->as_array();
+		$data = DB::query("SELECT *, s.`id` AS sid FROM `users` AS u INNER JOIN `subjects` AS s ON u.`id` = s.`teacher_id` WHERE s.`id` = '".$id."' ")->execute()->as_array();
 	
 		$existing_stud = DB::query("SELECT stud_id FROM subj_stud WHERE subj_id = '".$id."'")->execute()->as_array();
 
