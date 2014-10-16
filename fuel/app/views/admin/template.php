@@ -187,7 +187,7 @@
 </html>
 
 
-<!-- Modal -->
+<!-- Modal Admin -->
 <div class="modal fade" id="admin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -243,7 +243,7 @@
         <h4 class="modal-title" id="myModalLabel">New Teacher</h4>
       </div>
       <div class="modal-body">
-       	<?php echo Form::open('admin/users/teacher', array('method' => 'post', 'enctype' => 'multipart/form-data')); ?>
+      <form action="admin/users/teacher" method="POST" enctype="multipart/form-data">
 			<fieldset class="box-department">
 					<div class="clearfix">
 						<?php // echo Form::label('Student Profile', 'student_profile'); ?>
@@ -261,13 +261,13 @@
 					<div class="clearfix">
 						<?php echo Form::label('Generated Password', 'password'); ?>
 						<div class="input">
-							<?php echo Form::input('genpassword', Str::random('alnum', 10), array('class' => 'form-control','id' => 'genpass','readonly')); ?>
+							<?php echo Form::input('genpassword', Str::random('alnum', 10), array('class' => 'form-control','id' => 'genpasss','readonly')); ?>
 						</div>
 					</div>
 					<div class="clearfix">
 						<?php echo Form::label('Password', 'password'); ?>
 						<div class="input">
-							<?php echo Form::password('password', '', array('class' => 'form-control', 'id' =>'pass', 'required' => '')); ?>
+							<?php echo Form::password('password', '', array('class' => 'form-control', 'id' =>'passs', 'required' => '')); ?>
 						</div>
 					</div>
 					<div class="clearfix">
@@ -311,13 +311,30 @@
 							<?php echo Form::select('group', Input::post('group', isset($user) ? $user->group : ''), array(50=>'teacher'), array('class' => 'form-control', 'style' => 'display:none;')); ?>
 						</div>
 					</div>			
-      </div>
-      <div class="modal-footer">
-        <div class="actions">
+			      </div>
+			      <div class="modal-footer">
+			        <div class="actions">
 					<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
 				</div>
 			</fieldset>
-		<?php echo Form::close(); ?>
+		</form>
+		<script type="text/javascript">
+		  	var genpasss = $('#genpasss').val();
+		  	var passs = $('#passs').val(genpasss);
+
+		  	function readURL(input){
+		  		if(input.files && input.files[0]){
+		  			var reader = new FileReader();
+		  			reader.onload = function(e){
+		  				$('#PreviewHolder').attr('src', e.target.result);
+		  			}
+		  			reader.readAsDataURL(input.files[0]);
+		  		}
+		  	}
+		  	$("#pic_url").change(function(){
+		  		readURL(this);
+		  	});
+		</script>
       </div>
     </div>
   </div>
@@ -334,14 +351,12 @@
         <h4 class="modal-title" id="myModalLabel">New Student</h4>
       </div>
       <div class="modal-body">
-		        <?php echo Form::open('admin/users/student', array('method' => 'post', 'enctype' => 'multipart/form-data')); ?>
-					<fieldset class="box-modal">
-						 <?php //echo Html::img('uploads/'.$user->pic_url, array('class' => "thumbnail", "style" => "width:80px; height:80px")); ?>
+      <form action="admin/users/student" method="POST" enctype="multipart/form-data">
+				<fieldset class="box-modal">
 					<div class="clearfix">
-						<?php // echo Form::label('Student Profile', 'student_profile'); ?>
-					<img id="PreviewHolder" style="width:100px; height:100px; border-radius:10%; border: 2px solid #1b1b1b;"/>
+					<img id="PreviewHolders" style="width:100px; height:100px; border-radius:10%; border: 2px solid #1b1b1b;"/>
 						<div class="input">
-							<?php echo Form::input('pic_url', Input::post('pic_url', isset($user) ? $user->pic_url : ''), array('class' => 'form-control', 'id' => 'pic_url', 'type' => 'file')); ?>
+							<?php echo Form::input('pic_url', Input::post('pic_url', isset($user) ? $user->pic_url : ''), array('class' => 'form-control', 'id' => 'pic_urls', 'type' => 'file')); ?>
 						</div>
 					</div>
 					<div class="clearfix">
@@ -415,27 +430,26 @@
 					<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
 				</div>
 			</fieldset>
-		<?php echo Form::close(); ?>
+		</form>
+			<script type="text/javascript">
+			  	var genpass = $('#genpass').val();
+			  	var pass = $('#pass').val(genpass);
+
+			  	function readURL(input){
+			  		if(input.files && input.files[0]){
+			  			var reader = new FileReader();
+			  			reader.onload = function(e){
+			  				$('#PreviewHolders').attr('src', e.target.result);
+			  			}
+			  			reader.readAsDataURL(input.files[0]);
+			  		}
+			  	}
+			  	$("#pic_urls").change(function(){
+			  		readURL(this);
+			  	});
+			</script>
       </div>
     </div>
   </div>
 </div>
 
-<script type="text/javascript">
-		  	var genpass = $('#genpass').val();
-		  	var pass = $('#pass').val(genpass);
-
-		  	function readURL(input){
-		  		if(input.files && input.files[0]){
-		  			var reader = new FileReader();
-		  			reader.onload = function(e){
-		  				$('#PreviewHolder').attr('src', e.target.result);
-		  			}
-		  			reader.readAsDataURL(input.files[0]);
-		  		}
-		  	}
-
-		  	$("#pic_url").change(function(){
-		  		readURL(this);
-		  	});
-</script>
