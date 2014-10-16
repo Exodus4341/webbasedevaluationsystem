@@ -315,14 +315,14 @@
 			      <div class="modal-footer">
 			        <div class="actions">
 					<?php echo Form::submit('submit', 'Save', array('class' => 'btn btn-primary')); ?>
-				</div>
+				 </div>
 			</fieldset>
 		</form>
 		<script type="text/javascript">
 		  	var genpasss = $('#genpasss').val();
 		  	var passs = $('#passs').val(genpasss);
 
-		  	function readURL(input){
+		  	function readURLs(input){
 		  		if(input.files && input.files[0]){
 		  			var reader = new FileReader();
 		  			reader.onload = function(e){
@@ -332,7 +332,7 @@
 		  		}
 		  	}
 		  	$("#pic_url").change(function(){
-		  		readURL(this);
+		  		readURLs(this);
 		  	});
 		</script>
       </div>
@@ -437,11 +437,11 @@
 
 			  	function readURL(input){
 			  		if(input.files && input.files[0]){
-			  			var reader = new FileReader();
-			  			reader.onload = function(e){
+			  			var readers = new FileReader();
+			  			readers.onload = function(e){
 			  				$('#PreviewHolders').attr('src', e.target.result);
 			  			}
-			  			reader.readAsDataURL(input.files[0]);
+			  			readers.readAsDataURL(input.files[0]);
 			  		}
 			  	}
 			  	$("#pic_urls").change(function(){
