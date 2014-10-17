@@ -1,3 +1,7 @@
+<ol class="breadcrumb">
+	<li><?php echo Html::anchor('admin/studentevaluation', 'List of teachers'); ?></li>
+ 	<li class="active">View Subjects</li>
+</ol>
 <?php if ($teacher_name) {
 	echo "<table>
 				<tr>
@@ -45,7 +49,6 @@
 			 for ($i=0,$x = 1; $i < sizeof($category); $i++, $x++) { 
 				$percnt1[$y][$x] = ($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100); 
 					}
-
 					echo "<td>".number_format(array_sum($percnt1[$y]), 2, '.', '')." %</td>";
 					echo "<td>".Html::anchor('admin/studentevaluation/result_evaluation/'.$evaluated[$y]['teacher_id'].'/'.$evaluated[$y]['subj_id'], '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info
 					 btn-xs', 'title'=>'View Results Evaluation'))."</td>

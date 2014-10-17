@@ -1,6 +1,9 @@
+<ol class="breadcrumb">
+	<li><?php echo Html::anchor('admin/subject', 'Subject'); ?></li>
+ 	<li class="active">List of Students</li>
+</ol>
 <h2>List of Students</h2>
 <br />
-
 <?php if ($teachers): ?>
 	<table>
 		<tr>

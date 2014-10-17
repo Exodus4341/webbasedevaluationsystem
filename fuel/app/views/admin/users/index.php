@@ -1,3 +1,6 @@
+<ol class="breadcrumb">
+ 	<li class="active">List of Admin</li>
+</ol>
 <h2>List of Admin</h2>
 <br>
 <?php if ($users): ?>

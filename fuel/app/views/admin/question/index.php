@@ -1,3 +1,6 @@
+<ol class="breadcrumb">
+  <li class="active">Questionnaires</li>
+</ol>
 <h2>List of Questionnaires</h2>
 <br>
 <?php if ($questions): ?>

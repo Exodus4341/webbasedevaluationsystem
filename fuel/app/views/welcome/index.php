@@ -109,7 +109,7 @@
                         <?php echo Asset::img('jmc_logo.png', array('style' => 'height: 300px; widht: 400px;')); ?>
                         <p class="font-color"><a href="#">Web-E-SMS-Notification-System</a> A Fast Robust Faculty College Evaluation with SMS Technology System.</p>
                         <br />
-                        <a class="btn btn-primary page-scroll" href="#about">Click Me</a>
+                        <a class="btn btn-primary page-scroll" href="#about">ABOUT</a>
                     </div>
                 </center>
                 </div>

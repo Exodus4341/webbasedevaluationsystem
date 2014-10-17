@@ -1,4 +1,8 @@
 <!-- <h2>Viewing #<?php // echo $questions[0]['qid']; ?></h2> -->
+<ol class="breadcrumb">
+	<li><?php echo Html::anchor('admin/question', 'Questionnaires'); ?></li>
+ 	<li class="active">View Questionnaire</li>
+</ol>
 <p>
 	<strong>Category:</strong>
 	<?php echo $questions[0]['cat_name']; ?></p>

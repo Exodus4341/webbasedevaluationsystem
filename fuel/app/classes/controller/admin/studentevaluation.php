@@ -72,7 +72,7 @@ class Controller_Admin_Studentevaluation extends Controller_Admin
 		// var_dump($result);
 		// exit();
 
-		$q = "SELECT * FROM `users` AS u INNER JOIN `subjects` AS s ON u.`id` = s.`teacher_id` WHERE u.`id` = '".$teach_id."' AND s.`id` = '".$subj_id."'";
+		$q = "SELECT *, u.`id` AS `uid` FROM `users` AS u INNER JOIN `subjects` AS s ON u.`id` = s.`teacher_id` WHERE u.`id` = '".$teach_id."' AND s.`id` = '".$subj_id."'";
 		$que = DB::query($q)->execute()->as_array();
 		$view->set_global('teachers', $que);
 
