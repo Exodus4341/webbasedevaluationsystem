@@ -200,7 +200,15 @@
 		    </ul>
 		    <div id="myTabContent" class="tab-content">
 		      <div class="tab-pane fade in active" id="home">
-		       <?php echo Form::open('admin/users/create'); ?>
+		       <?php 
+		      		if($_SERVER['REQUEST_URI'] == '/webbasedevaluationsystem/public/admin/users'){
+		      			$action = '/webbasedevaluationsystem/public/admin/users/create';
+		      		}
+		      		else{
+		      			$action = '/webbasedevaluationsystem/public/admin/users/create';
+		      		}
+		      	?>
+		        <form action="<?= $action?>" method="POST" enctype="multipart/form-data">
 					<fieldset class="box-department">
 						<div class="clearfix">
 							<?php echo Form::label('Username', 'username'); ?>
@@ -235,7 +243,15 @@
 				<?php echo Form::close(); ?>
 		      </div>
 		      <div class="tab-pane fade" id="new_teacher">
-		        <form action="users/teacher" method="POST" enctype="multipart/form-data">
+		      	<?php 
+		      		if($_SERVER['REQUEST_URI'] == '/webbasedevaluationsystem/public/admin/users'){
+		      			$action = '/webbasedevaluationsystem/public/admin/users/teacher';
+		      		}
+		      		else{
+		      			$action = '/webbasedevaluationsystem/public/admin/users/teacher';
+		      		}
+		      	?>
+		        <form action="<?= $action?>" method="POST" enctype="multipart/form-data">
 					<fieldset class="box-department">
 							<div class="clearfix">
 								<img id="PreviewHolder" style="width:100px; height:100px; border-radius:10%; border: 2px solid #1b1b1b;"/>
@@ -328,7 +344,15 @@
 					</script>
 		      </div>
 		      <div class="tab-pane fade" id="new_student">
-		        <form action="student" method="POST" enctype="multipart/form-data">
+		      	<?php 
+		      		if($_SERVER['REQUEST_URI'] == '/webbasedevaluationsystem/public/admin/users'){
+		      			$action = '/webbasedevaluationsystem/public/admin/users/student';
+		      		}
+		      		else{
+		      			$action = '/webbasedevaluationsystem/public/admin/users/student';
+		      		}
+		      	?>
+		        <form action="<?= $action?>" method="POST" enctype="multipart/form-data">
 							<fieldset class="box-department">
 								<div class="clearfix">
 								<img id="PreviewHolders" style="width:100px; height:100px; border-radius:10%; border: 2px solid #1b1b1b;"/>
