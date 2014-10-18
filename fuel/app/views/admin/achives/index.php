@@ -8,13 +8,13 @@
 <ol class='breadcrumb'>
     <li class='active'>School Year</li>
 </ol>
-<?php echo Form::open('admin/achives/search'); ?>
+<?php echo Form::open('admin/achives/search');?>
 <div class="box-department">
     <h3>School Year</h3>
-    <?php echo Form::select('acadyear', Input::post('acadyear', isset($academicyear) ? $academicyear->acadyear : ''), $years, array('class' => 'span4 date-picker-year-from form-control', 'id' => 'txtYearFrom', 'required' => '')); ?>
+    <?php echo Form::select('acadyear', Input::post('acadyear', isset($search) ? $search->academicyear : ''), $years, array('class' => 'span4 date-picker-year-from form-control', 'id' => 'txtYearFrom', 'required' => '')); ?>
     <h3>Semester</h3>
     <div class="form-group">
-        <?php echo Form::select('semester', Input::post('semester', isset($academicyear) ? $academicyear->Semester : ''), 
+        <?php echo Form::select('semester', Input::post('semester', isset($search) ? $search->semester : ''), 
         array(0 => 'First Semester', 1 => 'Second Semester'),array('class' => 'span4 form-control', 'required' => '')); ?>
     </div>
     <?php echo Form::submit('submit', 'Search', array('class' => 'btn btn-primary')); ?> 

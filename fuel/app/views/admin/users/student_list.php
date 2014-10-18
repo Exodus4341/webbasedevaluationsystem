@@ -27,7 +27,7 @@
 			<td>
 				<?php echo Html::anchor('admin/users/view/'.$user['uid'], '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info btn-xs', 'title'=>'View')); ?>
 				<?php echo Html::anchor('admin/users/edit/'.$user['uid'], '', array('class'=>'glyphicon glyphicon-wrench btn btn-warning btn-xs', 'title'=>'Edit')); ?>
-				<?php echo Html::anchor('admin/users/status/'.$user['uid'], '', array('class'=>'glyphicon glyphicon-trash btn btn-danger btn-xs', 'title'=>'Deactivate')); ?>
+				<?php echo Html::anchor('admin/users/status/'.$user['uid'], '', array('class'=>'glyphicon glyphicon-remove btn btn-danger btn-xs', 'title'=>'Deactivate')); ?>
 
 			</td>
 		</tr>

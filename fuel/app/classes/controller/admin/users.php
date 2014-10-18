@@ -49,21 +49,14 @@ class Controller_Admin_Users extends Controller_Admin
 		}
 		
 	}	
-
-	public function action_deactivate_teacher()
+	public function action_deactivated()
 	{
-		$view = View::forge('admin\users/deactivate_teacher');
-		$deactivate_teacher = DB::query("SELECT *, u.`id` AS `uid` FROM  `users` AS u INNER JOIN  `departments` AS d ON u.`department` = d.`id` WHERE u.`group` =  '50' AND u.`status` = 1 ")->execute()->as_array();
-		$view->set_global('deactivate_teacher', $deactivate_teacher);
-		$this->template->title = "Users";
-		$this->template->content = $view;
-	}
-
-	public function action_deactivate()
-	{
-		$view = View::forge('admin\users/deactivate');
+		$view = View::forge('admin\users/deactivated');
 		$deactivate = DB::query("SELECT *, u.`id` AS `uid` FROM  `users` AS u INNER JOIN  `courses` AS c ON u.`course` = c.`id` WHERE u.`group` =  '1' AND u.`status` = 1 ")->execute()->as_array();
 		$view->set_global('deactivate', $deactivate);
+
+		$deactivate_teacher = DB::query("SELECT *, u.`id` AS `uid` FROM  `users` AS u INNER JOIN  `departments` AS d ON u.`department` = d.`id` WHERE u.`group` =  '50' AND u.`status` = 1 ")->execute()->as_array();
+		$view->set_global('deactivate_teacher', $deactivate_teacher);
 		$this->template->title = "Users";
 		$this->template->content = $view ;
 	}

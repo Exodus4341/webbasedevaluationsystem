@@ -27,35 +27,35 @@
       </ol>
       <div class="carousel-inner">
         <div class="item active">
-          <img src="../assets/img/anniversary.jpg" alt="First slide image">
+          <?php echo Asset::img('anniversary.jpg');?>
           <div class="carousel-caption">
             <h3>Jose Maria College</h3>
         	<p>Anniversary</p>
           </div>
         </div>
         <div class="item">
-          <img src="../assets/img/buwan_1.jpg" alt="Second slide image">
+          <?php echo Asset::img('buwan_1.jpg');?>
           <div class="carousel-caption">
             <h3>Jose Maria College</h3>
-       		<p>Buwan ng weka</p>
+       		<p>Buwan ng wika</p>
           </div>
         </div>
         <div class="item">
-          <img src="../assets/img/fire-drill-2014-41.jpg" alt="Third slide image">
+          <?php echo Asset::img('fire-drill-2014-41.jpg');?>
           <div class="carousel-caption">
             <h3>Jose Maria College </h3>
         	<p>Fire Drill 2014</p>
           </div>
         </div>
         <div class="item">
-          <img src="../assets/img/silverlion.jpg" alt="Third slide image">
+          <?php echo Asset::img('silverlion.jpg');?>
           <div class="carousel-caption">
             <h3>Jose Maria College</h3>
        		<p>Team Jaguars</p>
           </div>
         </div>
         <div class="item">
-          <img src="../assets/img/smart-jump-in.jpg" alt="Third slide image">
+          <?php echo Asset::img('smart-jump-in.jpg');?>
           <div class="carousel-caption">
             <h3>Jose Maria College</h3>
         	<p>Smart Jump In</p>
