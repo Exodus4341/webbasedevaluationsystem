@@ -1,3 +1,4 @@
+<link rel="shortcut icon" href="<?php echo Config::get('base_url');?>/assets/img/jmc_logo.ico"/>
 <?php echo Asset::css('bootstrap.min.css'); ?>
 
 <style>
