@@ -76,10 +76,13 @@ class Controller_Teacher_Subject extends Controller_Teacher
 				  GROUP BY se.`subj_id`";
 
 		$evaluated = DB::query($sql)->execute()->as_array();
+
+		$ranges = DB::query("SELECT * FROM ranges")->execute()->as_array();
 		
 		$view->set_global('evaluated', $evaluated);
 		$view->set_global('category', $category);
 		$view->set_global('questionsum', $questionsum);
+		$view->set_global('ranges', $ranges);
 		$this->template->title = "Evaluations";
 		$this->template->content = $view;
 	}
