@@ -9,6 +9,13 @@ class Controller_Admin_Users extends Controller_Admin
 		$this->template->content = View::forge('admin\users/index', $data);
 
 	}
+	
+	public function action_add_users()
+	{
+		$view = View::forge('admin\users/add_users');
+		$this->template->title = "Add Users";
+		$this->template->content = $view;
+	}
 
 	public function action_teacher_subjects($id = null)
 	{
