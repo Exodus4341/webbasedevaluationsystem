@@ -67,6 +67,8 @@
 					}
 					elseif ($overall <= $range['excellent'] AND $overall > $range['excellent']) {
 						$rate = "Excellent";
+					}else{
+						$rate = "Excellent";
 					}
 			  	}
 		echo "<td><b>".$rate."</b></td>";
