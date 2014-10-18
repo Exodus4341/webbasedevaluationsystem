@@ -10,6 +10,16 @@ class Controller_Admin_Users extends Controller_Admin
 
 	}
 
+	public function action_teacher_subjects($id = null)
+	{
+		$view = View::forge('admin\users/teacher_subjects');
+		$q = "SELECT * FROM subjects AS s INNER JOIN users AS u ON s.`teacher_id` = u.`id` INNER JOIN schoolyear AS sy ON sy.`scho_year` = s.`semester` AND sy.`academicyear` = s.`academicyear` WHERE s.`teacher_id` = '".$id."' ";
+		$qw = DB::query($q)->execute()->as_array();
+		$view->set_global('teacher_subjects', $qw);
+		$this->template->title = "Teacher Subjects";
+		$this->template->content = $view;
+	}
+
 	public function action_activate($id = null)
 	{
 		$status = 0;

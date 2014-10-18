@@ -82,6 +82,9 @@
                         </li> 
                         <li>
                         	<?php echo Html::anchor('teacher/subject', '<i class="glyphicon glyphicon-link"></i> Subjects') ?>
+                        </li>
+                        <li>
+                        	<?php echo Html::anchor('teacher/subject/evaluations', '<i class="glyphicon glyphicon-link"></i> Results of Evaluation'); ?>
                         </li>	
                     </ul>
                 </div>

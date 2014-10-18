@@ -5,8 +5,16 @@ class Controller_Teacher_Subject extends Controller_Teacher
 	public function action_index()
 	{
 		$view = View::forge('teacher\subject/index');
-		// $query = DB::query("SELECT *, s.`id` AS sid FROM `subjects` AS s INNER JOIN `schoolyear` AS sy ON sy.`academicyear` = s.`academicyear` AND s.`semester` = sy.`scho_year` WHERE s.`teacher_id` = ".$this->current_user->id." GROUP BY s.`subj_code` ")->execute()->as_array();
-		// $view->set_global('subjects', $query);
+		$query = DB::query("SELECT *, s.`id` AS sid FROM `subjects` AS s INNER JOIN `schoolyear` AS sy ON sy.`academicyear` = s.`academicyear` AND s.`semester` = sy.`scho_year` WHERE s.`teacher_id` = ".$this->current_user->id." GROUP BY s.`subj_code` ")->execute()->as_array();
+		$view->set_global('subjects', $query);
+		$this->template->title = "Subjects";
+		$this->template->content = $view;
+
+	}
+
+	public function action_evaluations()
+	{
+		$view = View::forge('teacher\subject/evaluations');
 		$sql1 = "SELECT id, cat_name, percentage FROM categories";
 		$category = DB::query($sql1)->execute()->as_array();
 
@@ -72,9 +80,8 @@ class Controller_Teacher_Subject extends Controller_Teacher
 		$view->set_global('evaluated', $evaluated);
 		$view->set_global('category', $category);
 		$view->set_global('questionsum', $questionsum);
-		$this->template->title = "Subjects";
+		$this->template->title = "Evaluations";
 		$this->template->content = $view;
-
 	}
 
 	public function action_result_evaluation($teach_id = null, $subj_id = null)
