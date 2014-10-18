@@ -161,14 +161,16 @@ class Controller_Admin_Studentevaluation extends Controller_Admin
 
 		$evaluated = DB::query($sql)->execute()->as_array();
 
+		$ranges = DB::query("SELECT * FROM ranges")->execute()->as_array();
 	
-		// var_dump($evaluated);
+		// var_dump($ranges);
 		// exit();
 
 		$view->set_global('evaluated', $evaluated);
 		$view->set_global('subjects', $subjects);
 		$view->set_global('category', $category);
 		$view->set_global('questionsum', $questionsum);
+		$view->set_global('ranges', $ranges);
 		$this->template->title = "Subjects";
 		$this->template->content = $view;
 	}

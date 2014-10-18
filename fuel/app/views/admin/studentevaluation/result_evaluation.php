@@ -36,29 +36,34 @@ if ($teachers) {
 				</tr>
 			</tabe>";
 }
-echo "";
+
 	if ($evaluated) {
 		$sum = 0;
 		echo "<table class='table table-striped table-hover'>";
 		echo "<tr>
 					<td style='background-color: #000; color:#fff;'><b>Category</b></td>
-					<td style='background-color: #000; color:#fff;'><b>Total Sum</b></td>
 					<td style='background-color: #000; color:#fff;'><b>Total Items</b></td>
-					<td style='background-color: #000; color:#fff;'><b>Total Percentage</b></td>
+					<td style='background-color: #000; color:#fff;'><b>Total Sum</b></td>
+					<td style='background-color: #000; color:#fff;'><b>Quotient</b></td>
+					<td style='background-color: #000; color:#fff;'><b>Total Percentage Per Category</b></td>
 			</tr>";
 		for ($y=0, $x = 1; $y < sizeof($evaluated) ; $y++, $x++) { 
-		
-			$percentage = ($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$y]['percentage']/100);
+			
+			$quotient = ($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]);
+			$cat_percent = $category[$y]['percentage']/100;
+			$percentage = ($quotient) * ($cat_percent);
 			$total = $sum += $percentage;
 			echo "<tr>
 					<td>".$category[$y]['cat_name']. " </td>
-					<td>".$evaluated[$y]['category_sum'.$x]."</td>
 					<td>".$questionsum[$y]['category'.$x]."</td>
-					<td>".number_format($percentage, 2, '.', '')." %</td>
+					<td>".$evaluated[$y]['category_sum'.$x]."</td>
+					<td>".$evaluated[$y]['category_sum'.$x]." / ".$questionsum[$y]['category'.$x]." = "."<b>".number_format($quotient, 2, '.', '')."</b></td>
+					<td>".number_format($quotient, 2, '.', '')." x ".$cat_percent." = <b>".number_format($percentage, 2, '.', '')." %</b></td>
 					</tr>";					
 		}
 		echo "<footer>
-				<td><b>Total Percentage:</b></td>
+				<td><b>Overall Percentage of ".$teachers[0]['subj_desc'].":</b></td>
+				<td></td>
 				<td></td>
 				<td></td>
 				<td><b>".number_format($total, 2, '.', '')." %</b></td>
