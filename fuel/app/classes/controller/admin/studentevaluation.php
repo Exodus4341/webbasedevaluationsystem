@@ -154,7 +154,7 @@ class Controller_Admin_Studentevaluation extends Controller_Admin
 				    INNER JOIN categories AS ct 
 				    ON ct.`id` = category_id  
 				  INNER JOIN subjects AS s 
-				    ON s.`id` = se.`subj_id` 
+				    ON s.`id` = se.`subj_id` INNER JOIN schoolyear AS sy ON s.`academicyear` = sy.`academicyear` AND s.`semester` = sy.`scho_year`
 				WHERE se.teacher_id ='".$id."' 
 				  AND se.subj_id = s.id 
 				  GROUP BY se.`subj_id`";
