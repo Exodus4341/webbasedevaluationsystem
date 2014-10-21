@@ -68,7 +68,7 @@
                     <ul class="dropdown-menu dropdown-user">
                     	<li><?php echo Html::anchor('admin/users/add_users', '<i class="glyphicon glyphicon-plus"></i> New User') ?></li>
                     	<li><?php echo Html::anchor('admin/users/deactivated', '<i class="glyphicon glyphicon-ban-circle"></i> Deactivated Users') ?></li>
-		                <li><?php echo Html::anchor('admin/SchoolYear', '<i class="glyphicon glyphicon-pencil"></i> Set School Year') ?></li>
+		                <li><?php echo Html::anchor('admin/SchoolYear', '<i class="glyphicon glyphicon-wrench"></i> Set School Year') ?></li>
 		               	<li><?php echo Html::anchor('admin/academicyear', '<i class="glyphicon glyphicon-font"></i> Academic Year') ?></li>
 		               	<li><?php echo Html::anchor('admin/achives', '<i class="glyphicon glyphicon-briefcase"></i> Archives') ?></li>
                         <li class="divider">
@@ -84,37 +84,37 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="<?php echo Uri::segment(2) == '' ? 'active' : '' ?>">
-                        	<?php echo Html::anchor('admin', '<i class="glyphicon glyphicon-home"></i> Dashboard') ?>
+                        	<?php echo Html::anchor('admin', '<i class="glyphicon glyphicon-dashboard"></i> Dashboard') ?>
                         </li>
                         <li>
-                        	<?php echo Html::anchor('admin/department', '<i class="glyphicon glyphicon-list-alt"></i> Department') ?>
+                        	<?php echo Html::anchor('admin/department', '<i class="glyphicon glyphicon-bookmark"></i> Department') ?>
                         </li>
                         <li>
-                        	<?php echo Html::anchor('admin/category', '<i class="glyphicon glyphicon-list-alt"></i> Category') ?>
+                        	<?php echo Html::anchor('admin/category', '<i class="glyphicon glyphicon-copyright-mark"></i> Category') ?>
                         </li>
                         <li>
-                        	<?php echo Html::anchor('admin/question', '<i class="glyphicon glyphicon-list-alt"></i> Question') ?>
+                        	<?php echo Html::anchor('admin/question', '<i class="glyphicon glyphicon-question-sign"></i> Questionnaires') ?>
                         </li>
                         <li>
-                        	<?php echo Html::anchor('admin/studentevaluation', '<i class="glyphicon glyphicon-list-alt"></i> Student Evaluations') ?>
+                        	<?php echo Html::anchor('admin/studentevaluation', '<i class="glyphicon glyphicon-edit"></i> Student Evaluations') ?>
                         </li>
                         <li>
-                        	<?php echo Html::anchor('admin/subject', '<i class="glyphicon glyphicon-list-alt"></i> Subject') ?>
+                        	<?php echo Html::anchor('admin/subject', '<i class="glyphicon glyphicon-book"></i> Subject') ?>
                         </li>
                         <li>
-                        	<?php echo Html::anchor('admin/course', '<i class="glyphicon glyphicon-list-alt"></i> Course') ?>
+                        	<?php echo Html::anchor('admin/course', '<i class="glyphicon glyphicon-subtitles"></i> Course') ?>
                         </li>
                         <li>
 							<?php echo Html::anchor('admin/users', 'Users  <span class="pull-right glyphicon glyphicon-chevron-down"></span>') ?>
 							 <ul class="nav nav-second-level">
                                 <li>
-                                    <?php echo Html::anchor('admin/users', '<i class="glyphicon glyphicon-list-alt"></i> Administrators') ?>
+                                    <?php echo Html::anchor('admin/users', '<i class="glyphicon glyphicon-user"></i> Administrators') ?>
                                 </li>
                                 <li>
-                                    <?php echo Html::anchor('admin/users/student_list', '<i class="glyphicon glyphicon-list-alt"></i> Students') ?>
+                                    <?php echo Html::anchor('admin/users/student_list', '<i class="glyphicon glyphicon-user"></i> Students') ?>
                                 </li>
                                 <li>
-                                    <?php echo Html::anchor('admin/users/teacher_list', '<i class="glyphicon glyphicon-list-alt"></i> Teachers') ?>
+                                    <?php echo Html::anchor('admin/users/teacher_list', '<i class="glyphicon glyphicon-user"></i> Teachers') ?>
                                 </li>
                             </ul> 
 						</li>
@@ -168,7 +168,7 @@
 				<p class="pull-right">Created by: Team FlappyCodes <i class="glyphicon glyphicon-thumbs-up"></i></p>
 				<p>
 					<a href="#">JMC Web-E-SMS-Notification-System</a> A Fast Robust Faculty College Evaluation with SMS Technology System.<br>
-					<small>Version: 101</small>
+					<small><i class="glyphicon glyphicon-copyright-mark"></i> Version: 101</small>
 				</p>
 			</footer>
 		<?php endif ?>

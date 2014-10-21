@@ -13,6 +13,9 @@
 	.padding-img{
 		padding: 5px;
 	}
+	.alignment{
+		text-align: center;
+	}
 	.login {
 	  background: url("../assets/img/Jmc2008.jpg") no-repeat;
 	  background-size: 100%;
@@ -46,7 +49,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">JMC Web Based Evaluation System</a>
+                <a class="navbar-brand" href="#">JMC Web Based Evaluation System</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -57,7 +60,7 @@
                         <i class="glyphicon glyphicon-user"></i> <?php echo $current_user->username ?>  <i class="caret"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                    	<li><?php echo Html::anchor('student/users/edit/'.$current_user->id, '<i class="glyphicon glyphicon-pencil"></i> Change Username/Password') ?></li>
+                    	<li><?php echo Html::anchor('student/users/edit/'.$current_user->id, '<i class="glyphicon glyphicon-wrench"></i> Change Username/Password') ?></li>
                     	<li><?php echo Html::anchor('student/users/view/'.$current_user->id, '<i class="glyphicon glyphicon-eye-open"></i> View Account')?></li>
                         <li class="divider">
                         	<li><?php echo Html::anchor('student/logout', '<i class="glyphicon glyphicon-log-out"></i> Logout') ?></li>
@@ -71,15 +74,15 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                    	<li class="padding-img" align="center">
+                    	<li class="padding-img alignment">
                     		<?php echo Html::img('uploads/'.$current_user['pic_url'], array('class' => "img-circle", "style" => "width:100px; height:100px")) ; ?>
                     		<p>Hello, <?php echo ucwords($current_user->fname)." ".ucwords($current_user->mname).". ".ucwords($current_user->lname); ?></p>
                     	</li>
                         <li class="<?php echo Uri::segment(2) == '' ? 'active' : '' ?>">
-						<?php echo Html::anchor('student', '<i class="glyphicon glyphicon-home"></i> Dashboard') ?>
+						<?php echo Html::anchor('student', '<i class="glyphicon glyphicon-dashboard"></i> Dashboard') ?>
 						</li>
 						<li>
-							<?php echo Html::anchor('student/subject', '<i class="glyphicon glyphicon-link"></i> Subjects') ?>
+							<?php echo Html::anchor('student/subject', '<i class="glyphicon glyphicon-book"></i> Subjects') ?>
 						</li>	
                     </ul>
                 </div>
@@ -130,7 +133,7 @@
 			<p class="pull-right">Created by: Team FlappyCodes <i class="glyphicon glyphicon-thumbs-up"></i></p>
 			<p>
 				<a href="#">Web-E-SMS-Notification-System</a> A Fast Robust Faculty College Evaluation with SMS Technology System.<br>
-				<small>Version: 2.0</small>
+				<small><i class="glyphicon glyphicon-copyright-mark"></i> Version: 2.0</small>
 			</p>
 		</footer>
 	<?php endif ?>
