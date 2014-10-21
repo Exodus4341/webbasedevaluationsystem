@@ -15,9 +15,14 @@
 					<td>Department: </td>
 					<td>".ucwords($teacher_name[0]['dept_name'])."</td>
 				</tr>
-			</tabe>";
+			</table>";
 } ?>
-<?php if ($evaluated): ?>
+<?php if ($evaluated):
+	// for ($y=0; $y < sizeof($evaluated);) {  
+		echo Html::anchor('admin/studentevaluation/print_summary/'.$evaluated[0]['teacher_id'], '', array('class'=>'glyphicon glyphicon-print btn btn-success
+						 btn-sm', 'title'=>'Print Summary Reports', 'style' => 'float:right'));
+	// }
+?>
 	<table cellpadding="0" cellspacing="0" border="0" class="table table-striped display" id="example" width="100%">
 <br />
 <br />
