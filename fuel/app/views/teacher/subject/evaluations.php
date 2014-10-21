@@ -32,7 +32,7 @@
 			 }
 
 					echo "<td>".number_format(array_sum($percnt1[$y]), 2, '.', '')." %</td>";
-					echo "<td>".Html::anchor('teacher/subject/result_evaluation/'.$evaluated[$y]['teacher_id'].'/'.$evaluated[$y]['subj_id'], '', array('class'=>'glyphicon glyphicon-align-justify btn btn-info
+					echo "<td>".Html::anchor('teacher/subject/result_evaluation/'.$evaluated[$y]['teacher_id'].'/'.$evaluated[$y]['subj_id'], '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info
 					 btn-xs', 'title'=>'View Results Evaluation'))."</td>
 
 				  </tr>";

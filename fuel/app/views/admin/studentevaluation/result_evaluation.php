@@ -75,7 +75,7 @@ if ($teachers) {
 		 	echo "<table>
 					<thead>
 						<tr>
-							<th><h2>Comments</h2></th>
+							<th><h2>Comments <i class='glyphicon glyphicon-comment'></i><hr style='clear:both;'/></h2></th>
 						</tr>
 					</thead>
 					<tbody>";

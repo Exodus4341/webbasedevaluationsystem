@@ -86,8 +86,8 @@
       </div>
       <div class="col-sm-4">
         <img src="../assets/img/buwan_1.jpg" alt="Responsive across devices" class="img-responsive img-thumbnail">
-        <h3 class="txt-align">Buwan nang Weka 2014</h3>
-        <p class="txt-align">2014 Jose Maria College Buwan nang Weka at sky gym.</p>
+        <h3 class="txt-align">Buwan nang Wika 2014</h3>
+        <p class="txt-align">2014 Jose Maria College Buwan nang Wika at sky gym.</p>
       </div>
       <div class="col-sm-4">
         <img src="../assets/img/smart-jump-in.jpg" alt="Components" class="img-responsive img-thumbnail">
