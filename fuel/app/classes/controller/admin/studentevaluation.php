@@ -259,8 +259,7 @@ class Controller_Admin_Studentevaluation extends Controller_Admin
 		$view->set_global('questionsum', $questionsum);
 		$view->set_global('ranges', $ranges);
 
-		$this->template->title = "Teacher Summary Reports";
-		$this->template->content = $view;
+		return $view;
 	}
 
 

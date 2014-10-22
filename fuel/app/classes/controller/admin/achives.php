@@ -15,14 +15,6 @@ class Controller_Admin_Achives extends Controller_Admin
 		
 		$view = View::forge('admin/achives/report');
 
-		$pdf = new FPDF();
-		$pdf->AddPage();
-		$pdf->SetFont('Arial','B',12);
-		foreach ($users as $user) {
-			$pdf->Cell(40,10, $user['username'],0,0,1);
-		}
-		$pdf->Output();
-
 	 	$this->template->title = "Archives";
 		$this->template->content = $view;
 	}

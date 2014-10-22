@@ -1,4 +1,5 @@
 <?php
+
 class Summary_Reports extends FPDF
 {
 //Page Header
@@ -278,7 +279,6 @@ function Footer()
 }//End Class
 
 $pdf = new Summary_Reports('L','mm','legal');
-
 // Data loading
 $pdf->SetFont('Arial','',14);
 $pdf->AddPage();
@@ -286,6 +286,5 @@ $pdf->TeacherInfo($teacher_name);
 $pdf->EvaluationData($evaluated, $category, $questionsum);
 $pdf->AliasNbPages();
 $pdf->Output();
-
 
 ?>
