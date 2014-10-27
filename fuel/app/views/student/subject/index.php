@@ -31,15 +31,13 @@
 			<td><?php echo $subject['room']; ?></td>
 			<td><?php echo $subject['dateevaluation']; ?></td>
 			<td><?php echo $subject['createdat']; ?></td>
-			<?php if ($subject['status'] == '0' AND $subject['dateevaluation'] == $date): ?>
-			<td>
-				<?php echo Html::anchor('student/subject/evaluate/'.$subject['stud_subj_id'].'/'.$subject['uid'].'/'.$subject['sid'], 'Evaluate', array('class' => 'btn btn-success')); ?>
-			</td>
-			<?php else: ?>
-			<td>
-				<?php echo Html::anchor('#', 'Evaluate', array('class' => 'btn btn-success', 'disabled')); ?>
-			</td>
-			<?php endif ?>
+			<?php if ($subject['status'] == '0' AND $subject['dateevaluation'] == $date) {
+				echo "<td>".Html::anchor('student/subject/evaluate/'.$subject['stud_subj_id'].'/'.$subject['uid'].'/'.$subject['sid'], 'Evaluate', array('class' => 'btn btn-success'))."</td>";
+			} elseif ($subject['status'] == '0' AND $subject['dateevaluation'] != $date) {
+				echo "<td>".Html::anchor('#', 'Not Evaluate', array('class' => 'btn btn-danger', 'disabled'))."</td>";
+			} else {
+			 	echo "<td>".Html::anchor('#', 'Evaluated', array('class' => 'btn btn-info', 'disabled'))."</td>";
+			 } ?>
 		</tr>
 <?php endforeach; ?>	</tbody>
 </table>

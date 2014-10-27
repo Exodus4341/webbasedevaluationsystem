@@ -16,6 +16,12 @@
 			</div>
 		</div>
 		<div class="clearfix">
+			<div class="input">
+				<?php echo Form::input('order_no', Input::post('order_no', isset($question) ? $question->order_no : ''), array('class' => 'form-control', 'style' => 'display:none;', 'required' => '')); ?>
+			</div>
+		</div>
+		<br />
+		<div class="clearfix">
 			<?php echo Form::label('Question', 'question'); ?>
 			<div class="input">
 				<?php echo Form::textarea('question', Input::post('question', isset($question) ? $question->question : ''), array('class' => 'form-control', 'required' => '')); ?>
@@ -38,7 +44,7 @@
 	</thead>
 	<tbody>
 	<?php foreach ($subjects as $value): ?><tr>
-		<td><?php echo Form::checkbox('subj_id[]', $value['sid'], array('sid'=>'stud_id'));?></td>
+		<td><?php echo Form::checkbox('subj_id[]', $value['sid'], true, array('sid'=>'stud_id', 'required' => ''));?></td>
 		<td><?php echo $value['subj_code']; ?></td>
 		<td><?php echo $value['subj_desc']; ?></td>
 		<td><?php echo $value['schedule']; ?></td>

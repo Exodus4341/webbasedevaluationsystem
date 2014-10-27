@@ -33,9 +33,9 @@ class Controller_Admin_Question extends Controller_Admin
 			if ($val->run())
 			{
 				$subj_id = $_POST['subj_id'];
-				$query = "INSERT INTO `questions` (`category`,`question`, `subj_id`) VALUES";
+				$query = "INSERT INTO `questions` (`category`, `order_no`, `question`, `subj_id`) VALUES";
 				for ($i=0; $i<sizeof($subj_id); $i++){
-					$query .= "('".Input::post('category')."','".Input::post('question')."','".$subj_id[$i]."'),";
+					$query .= "('".Input::post('category')."', '".Input::post('order_no')."', '".Input::post('question')."', '".$subj_id[$i]."'),";
 				}
 				$query = rtrim($query,',');
 
@@ -59,7 +59,7 @@ class Controller_Admin_Question extends Controller_Admin
 				Session::set_flash('error', $val->error());
 			}
 		}
-		$subjects = DB::query("SELECT * FROM subjects AS s INNER JOIN `schoolyear` AS sy ON sy.`academicyear` = s.`academicyear` AND s.`semester` = sy.`scho_year` GROUP BY s.`subj_code` ")->execute()->as_array();
+		$subjects = DB::query("SELECT *, s.`id` AS sid FROM subjects AS s INNER JOIN `schoolyear` AS sy ON sy.`academicyear` = s.`academicyear` AND s.`semester` = sy.`scho_year` GROUP BY s.`subj_code` ")->execute()->as_array();
 		$view->set_global('subjects', $subjects);
 		// print_r($query);
 
@@ -69,7 +69,7 @@ class Controller_Admin_Question extends Controller_Admin
 
 	}
 
-	public function action_add_question_subject($id = null, $quest = null)
+	public function action_add_question_subject($id = null, $c_id = null, $orderNo = null)
 	{
 		$question = Model_Question::find($id);
 		$val = Model_Question::validate('add_question_subject');
@@ -77,9 +77,9 @@ class Controller_Admin_Question extends Controller_Admin
 		if ($val->run())
 		{
 			$subj_id = $_POST['subj_id'];
-			$query = "INSERT INTO `questions` (`category`,`question`, `subj_id`) VALUES";
+			$query = "INSERT INTO `questions` (`category`, `order_no`, `question`, `subj_id`) VALUES";
 			for ($i=0; $i<sizeof($subj_id); $i++){
-				$query .= "('".Input::post('category')."','".Input::post('question')."','".$subj_id[$i]."'),";
+				$query .= "('".Input::post('category')."', '".Input::post('order_no')."', '".Input::post('question')."','".$subj_id[$i]."'),";
 			}
 				$query = rtrim($query,',');
 				$question = DB::query($query)->execute();
@@ -111,17 +111,17 @@ class Controller_Admin_Question extends Controller_Admin
 			$this->template->set_global('question', $question, false);
 		} 
 		
-		$existing_subject = DB::query("SELECT subj_id, question FROM questions WHERE question = '".$quest."' ")->execute()->as_array();
-		$subjects = "SELECT *, s.`id` AS sid FROM subjects AS s WHERE s.`id` NOT IN (";
+		$existing_subject = DB::query("SELECT subj_id, category, order_no FROM questions WHERE category = '".$c_id."' AND order_no = '".$orderNo."' ")->execute()->as_array();
+		$subjects = "SELECT *, s.`id` AS `sid` FROM subjects AS s INNER JOIN `schoolyear` AS sy ON sy.`academicyear` = s.`academicyear` AND s.`semester` = sy.`scho_year` WHERE s.`id` NOT IN (";
 			foreach ($existing_subject as $exist_subj) {
 				$subjects .= "'".$exist_subj['subj_id']."',";
 			}	
-		// var_dump($subjects);
-		// exit();
+		
 		$subjects = rtrim($subjects, ",");
 		$subjects .= " )";
 		$subjectss = DB::query($subjects)->execute()->as_array();
-
+		// var_dump($subjects);
+		// exit();
 		//$subjects = DB::query("SELECT *, s.`id` AS sid FROM subjects AS s INNER JOIN questions AS q ON q.`subj_id` INNER JOIN `schoolyear` AS sy ON sy.`academicyear` = s.`academicyear` AND s.`semester` = sy.`scho_year` GROUP BY s.`subj_code` ")->execute()->as_array();
 		$view->set_global('subjects', $subjectss);
 		// print_r($query);
