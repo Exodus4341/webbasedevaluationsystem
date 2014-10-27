@@ -29,7 +29,7 @@ class Model_Question extends \Orm\Model
 		$val->add_field('category', 'Category', 'required|max_length[50]');
 		$val->add_field('question', 'Question', 'required');
 		
-		$val->add_field('subj_id[0]', 'Subj Id', 'required|valid_string[numeric]');
+		$val->add_field('subj_id[0]', 'Subj Id', 'valid_string[numeric]');
 
 		return $val;
 	}

@@ -5,8 +5,7 @@ class Controller_Admin_Question extends Controller_Admin
 	public function action_index()
 	{
 		$view = View::forge('admin\question/index');
-		// $data['questions'] = Model_Question::find('all');
-		$query = DB::query("SELECT * FROM `categories` AS c INNER JOIN `questions` AS q ON c.`id` = q.`category` GROUP BY q.`question` ")->execute()->as_array();
+		$query = DB::query("SELECT *, q.`id` AS qid FROM `categories` AS c INNER JOIN `questions` AS q ON c.`id` = q.`category` GROUP BY q.`question` ")->execute()->as_array();
 		$view->set_global('questions', $query);
 		$this->template->title = "Question";
 		$this->template->content = $view;
@@ -60,7 +59,7 @@ class Controller_Admin_Question extends Controller_Admin
 				Session::set_flash('error', $val->error());
 			}
 		}
-		$subjects = DB::query("SELECT * FROM subjects AS c GROUP BY c.`subj_code` ")->execute()->as_array();
+		$subjects = DB::query("SELECT * FROM subjects AS s INNER JOIN `schoolyear` AS sy ON sy.`academicyear` = s.`academicyear` AND s.`semester` = sy.`scho_year` GROUP BY s.`subj_code` ")->execute()->as_array();
 		$view->set_global('subjects', $subjects);
 		// print_r($query);
 
@@ -70,6 +69,68 @@ class Controller_Admin_Question extends Controller_Admin
 
 	}
 
+	public function action_add_question_subject($id = null, $quest = null)
+	{
+		$question = Model_Question::find($id);
+		$val = Model_Question::validate('add_question_subject');
+		$view = View::forge('admin\question/add_question_subject');
+		if ($val->run())
+		{
+			$subj_id = $_POST['subj_id'];
+			$query = "INSERT INTO `questions` (`category`,`question`, `subj_id`) VALUES";
+			for ($i=0; $i<sizeof($subj_id); $i++){
+				$query .= "('".Input::post('category')."','".Input::post('question')."','".$subj_id[$i]."'),";
+			}
+				$query = rtrim($query,',');
+				$question = DB::query($query)->execute();
+
+			if ($question)
+			{
+				Session::set_flash('success', e('Successfully Updated'));
+
+				Response::redirect('admin/question');
+			}
+
+			else
+			{
+				Session::set_flash('error', e('Could not update question #' . $id));
+			}
+		}
+
+		else
+		{
+			if (Input::method() == 'POST')
+			{
+				$question->category = $val->validated('category');
+				$question->question = $val->validated('question');
+				$question->subj_id = $val->validated('subj_id');
+
+				Session::set_flash('error', $val->error());
+			}
+
+			$this->template->set_global('question', $question, false);
+		} 
+		
+		$existing_subject = DB::query("SELECT subj_id, question FROM questions WHERE question = '".$quest."' ")->execute()->as_array();
+		$subjects = "SELECT *, s.`id` AS sid FROM subjects AS s WHERE s.`id` NOT IN (";
+			foreach ($existing_subject as $exist_subj) {
+				$subjects .= "'".$exist_subj['subj_id']."',";
+			}	
+		// var_dump($subjects);
+		// exit();
+		$subjects = rtrim($subjects, ",");
+		$subjects .= " )";
+		$subjectss = DB::query($subjects)->execute()->as_array();
+
+		//$subjects = DB::query("SELECT *, s.`id` AS sid FROM subjects AS s INNER JOIN questions AS q ON q.`subj_id` INNER JOIN `schoolyear` AS sy ON sy.`academicyear` = s.`academicyear` AND s.`semester` = sy.`scho_year` GROUP BY s.`subj_code` ")->execute()->as_array();
+		$view->set_global('subjects', $subjectss);
+		// print_r($query);
+
+		$view->set_global('category', Arr::assoc_to_keyval(Model_Category::find('all'), 'id', 'cat_name'));
+		$this->template->title = "Add Question Subject";
+		$this->template->content = $view;
+	}
+
 	public function action_edit($id = null)
 	{
 		$question = Model_Question::find($id);
@@ -77,20 +138,20 @@ class Controller_Admin_Question extends Controller_Admin
 		$view = View::forge('admin\question/edit');
 		if ($val->run())
 		{
-			// $question->category = Input::post('category');
-			// $question->question = Input::post('question');
+			$question->category = Input::post('category');
+			$question->question = Input::post('question');
 			// $question->subj_id = Input::post('subj_id');
-			$subj_id = $_POST['subj_id'];
-			for ($i=0; $i < sizeof($subj_id); $i++) { 
-				$query = "UPDATE `questions` SET `category` = '".Input::post('category')."', `question` = 
-				'".Input::post('question')."', `subj_id` =  '".$subj_id[$i]."' WHERE `id` = '".$id."' ";
-				$query = rtrim($query,',');
+			// $subj_id = $_POST['subj_id'];
+			// for ($i=0; $i < sizeof($subj_id); $i++) { 
+			// 	$query = "UPDATE `questions` SET `category` = '".Input::post('category')."', `question` = 
+			// 	'".Input::post('question')."', `subj_id` =  '".$subj_id[$i]."' WHERE `id` = '".$id."' ";
+			// 	$query = rtrim($query,',');
 
-				$question = DB::query($query)->execute();
+			// 	$question = DB::query($query)->execute();
 
-			}
+			// }
 
-			if ($question)
+			if ($question->save())
 			{
 				Session::set_flash('success', e('Successfully Updated'));
 

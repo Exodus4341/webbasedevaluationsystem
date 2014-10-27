@@ -55,7 +55,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">JMC Web-E-SMS-Notification-System</a>
+                <a class="navbar-brand" href="#">JMC Web-E-SMS-Notification-System</a>
             </div>
             <!-- /.navbar-header -->
 

@@ -71,7 +71,7 @@
 				</table>
 
 				<?php else: ?>
-					<br />
+					<br /><br /><br />
 				<p style="text-align:center;">No Deactivated Teachers</p>
 
 				<?php endif; ?>

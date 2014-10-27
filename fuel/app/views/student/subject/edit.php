@@ -30,7 +30,7 @@
 		</tr>
 	</table>		
 </fieldset><br><br>
-<?php echo Form::open('student/subject/evaluate/'.$subject[0]['subj_id'].'/'.$subject[0]['id'].'/'.$question[0]['id']); ?>
+<?php echo Form::open('student/subject/evaluate/'.$subject[0]['subj_id'].'/'.$subject[0]['id'].'/'.$question[0]['qid']); ?>
 	<table border="1px" cellpadding="10" class="table table-hover table-striped">
 		<thead>
 			<?php for($y = 0; $y < sizeof($cat_name); $y++){?>

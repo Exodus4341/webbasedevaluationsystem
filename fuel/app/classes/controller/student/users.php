@@ -13,7 +13,7 @@ class Controller_Student_Users extends Controller_Student
 	public function action_view($id = null)
 	{
 		$view = View::forge('student\users/view');
-		$q = "SELECT *, u.`id` AS uid FROM users AS u INNER JOIN courses AS c WHERE u.`course` = c.`id` ";
+		$q = "SELECT *, u.`id` AS uid FROM users AS u INNER JOIN courses AS c WHERE u.`course` = c.`id` AND u.`id` = '".$id."' ";
 		$qw = DB::query($q)->execute()->as_array();
 		$view->set_global('user', $qw);
 		$this->template->title = "Student";

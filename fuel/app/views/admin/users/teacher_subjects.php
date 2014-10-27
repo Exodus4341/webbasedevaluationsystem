@@ -29,6 +29,6 @@
 </table>
 
 <?php else: ?>
-<p>No.Students.</p>
+<p>No Subjects.</p>
 
 <?php endif; ?>

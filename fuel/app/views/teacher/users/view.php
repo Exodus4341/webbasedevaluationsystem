@@ -1,4 +1,3 @@
-
 <?php
 	// echo "<h2>Viewing #" .$user[0]['uid']. "</h2></br>";
 	if ($user[0]['group'] == 50) {

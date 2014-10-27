@@ -283,6 +283,46 @@ class Controller_Admin_Users extends Controller_Admin
 
 	}
 
+	public function action_edit_admin($id = null)
+	{
+		$user = Model_User::find($id);
+		$val = Model_User::validate('edit_admin');
+		$view = View::forge('admin\users/edit');
+		if ($val->run())
+		{
+			$user->username = Input::post('username');
+			$user->password = Auth::instance()->hash_password(Input::post('password'));
+			$user->email = Input::post('email');
+			$user->group = Input::post('group');					
+			if ($user and $user->save())
+				{
+					Session::set_flash('success', e('Added user # '.$user->username.'.'));
+					Response::redirect('admin/users');
+				}
+
+			else
+				{
+					Session::set_flash('error', e('Could not save user.'));
+				}
+		}
+
+		else
+		{
+			if (Input::method() == 'POST')
+			{
+				$user->username = $val->validated('username');
+				$user->password = $val->validated('password');
+				$user->email = $val->validated('email');
+				$user->group = $val->validated('group');
+				Session::set_flash('error', $val->error());
+			}
+
+			$this->template->set_global('user', $user, false);
+		}
+		$this->template->title = "Users";
+		$this->template->content = $view;
+	}
+
 	public function action_edit($id = null)
 	{
 		$user = Model_User::find($id);

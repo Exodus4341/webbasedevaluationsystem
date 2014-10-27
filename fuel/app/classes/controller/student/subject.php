@@ -35,7 +35,7 @@ class Controller_Student_Subject extends Controller_Student
 
 		$cat_name = DB::query("SELECT * FROM categories")->execute()->as_array();
 		
-		$questions = DB::query("SELECT *,q.`id` AS qid FROM questions AS q
+		$questions = DB::query("SELECT *, q.`id` AS qid FROM questions AS q
 			INNER JOIN categories AS c ON c.`id` = q.`category`
 			INNER JOIN subjects AS s ON s.`id` = q.`subj_id`
 			WHERE q.`subj_id` = ".$sid."  ORDER BY c.`id` ")->execute()->as_array();

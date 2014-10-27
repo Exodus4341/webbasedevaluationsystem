@@ -7,7 +7,7 @@
 	<strong>subject Code:</strong>
 	<?php echo $subject[0]['subj_code']; ?></p>
 <p>
-	<strong>subject Code:</strong>
+	<strong>subject Description:</strong>
 	<?php echo $subject[0]['subj_desc']; ?></p>
 <p>
 	<strong>Schedule:</strong>

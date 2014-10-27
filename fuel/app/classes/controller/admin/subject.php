@@ -87,6 +87,7 @@ class Controller_Admin_Subject extends Controller_Admin
 		foreach ($existing_stud as $stud) {
 			$stud_list_query .= "'".$stud['stud_id']."',";
 		}
+		
 		$stud_list_query = rtrim($stud_list_query,",");
 		$stud_list_query .= ")";
 		

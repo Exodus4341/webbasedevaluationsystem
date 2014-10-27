@@ -40,7 +40,7 @@
 	</thead>
 	<tbody>
 	<?php foreach ($subjects as $key => $value): ?><tr>
-		<td><?php echo Form::checkbox('subj_id[]', $value['id'], array('id'=>'stud_id'));?></td>
+		<td><?php echo Form::checkbox('subj_id[]', $value['id'], array('id'=>'stud_id', 'required' => ''));?></td>
 		<td><?php echo $value['subj_code']; ?></td>
 		<td><?php echo $value['subj_desc']; ?></td>
 		<td><?php echo $value['schedule']; ?></td>
@@ -59,6 +59,6 @@
 	</div>
 <?php echo Form::close(); ?>
 <?php else: ?>
-<p>No Users.</p>
+<p>No Subjects.</p>
 
 <?php endif; ?>

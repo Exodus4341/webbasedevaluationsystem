@@ -18,9 +18,20 @@
 		background-color: rgba(237, 243, 233, 0.6);
 		margin: 0px auto;
 	}
-	.box{
-		margin: 0px auto;
-	}		
+	.text-box{
+			width:300px;
+		}
+	@media(max-width: 767px){
+			body{
+				background-size: 1000px;
+			}
+			.box{
+				width: 100%;
+			}
+			.text-box{
+				width:100%;
+			}
+		}		
 </style>
 <?php echo Form::open(array()); ?>
 	<?php if (isset($_GET['destination'])): ?>
@@ -47,7 +58,7 @@
 				</div>
 				<br />
 		<div class="actions">
-			<?php echo Form::submit(array('value'=>'Login', 'name'=>'submit', 'class' => 'btn btn-primary', 'style' => 'width:300px;')); ?>
+			<?php echo Form::submit(array('value'=>'Login', 'name'=>'submit', 'class' => 'btn btn-primary text-box')); ?>
 		</div>
 	<hr />
 	</div>

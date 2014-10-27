@@ -18,8 +18,19 @@
 		    background-color: rgba(237, 243, 233, 0.6);
 		    margin: 0px auto;
 		}
-		.box {
-			margin: 0px auto;
+		.text-box{
+			width:300px;
+		}
+		@media(max-width: 767px){
+			body{
+				background-size: 1000px;
+			}
+			.box{
+				width: 100%;
+			}
+			.text-box{
+				width:100%;
+			}
 		}
 	</style>
 <?php echo Form::open(array()); ?>
@@ -35,7 +46,7 @@
 				<?php echo Asset::img('admin-edited.png', array('style' => 'width:170px; height:170px; border-radius:50%;')); ?>
 				<h2>Administrator</h2>
 					<div class="row">
-						<th><div class="input-group"><?php echo Form::input('email', Input::post('email'), array('placeholder' => 'Email or Username', 'style' => 'width:300px;', 'class' => 'form-control')); ?></div></th>
+						<div class="input-group"><?php echo Form::input('email', Input::post('email'), array('placeholder' => 'Email or Username', 'style' => 'width:300px;', 'class' => 'form-control')); ?></div>
 						<?php if ($val->error('email')): ?>
 							<div class="error"><?php echo $val->error('email')->get_message('You must provide a username or email'); ?></div>
 						<?php endif; ?>
@@ -49,7 +60,7 @@
 			</div>
 			<br />
 		<div class="actions" align="center">
-			<?php echo Form::submit(array('value'=>'Login', 'name'=>'submit', 'class' => 'btn btn-primary', 'style' => 'width:300px;')); ?>
+			<?php echo Form::submit(array('value'=>'Login', 'name'=>'submit', 'class' => 'btn btn-primary text-box')); ?>
 		</div>
 		<hr />
 	</div>

@@ -35,6 +35,6 @@
 </table>
 
 <?php else: ?>
-<p>No.Students.</p>
+<p>No Students List.</p>
 
 <?php endif; ?>

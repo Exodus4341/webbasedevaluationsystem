@@ -1,6 +1,5 @@
-<?php if ($user[0]['group'] == '1'): ?>
-	<?php
-	 //echo "<h2>Viewing #" .$user[0]['uid']. "</h2></br>";
+	<?php if ($user[0]['group'] == '1'){
+		//echo "<h2>Viewing #" .$user[0]['uid']. "</h2></br>";
 		echo "<ol class='breadcrumb'>
 		  <li class='active'>Update Username / Password</li>
 		</ol>";
@@ -10,6 +9,7 @@
 		echo "<p><strong>Course: </strong>" .$user[0]['course_name']."</p>";
 		echo "<p><strong>Year: </strong>" .$user[0]['year']."</p>";
 		echo "<p><strong>Email: </strong>" .$user[0]['email']."</p>";
+	}
+	 
 ?>
 	<?php echo Html::anchor('student', 'Back', array('class' => 'btn btn-default')); ?>
-<?php endif; ?>

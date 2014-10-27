@@ -18,7 +18,7 @@
 			<td><?php echo $user->email; ?></td>
 			<td>	
 				<?php echo Html::anchor('admin/users/view/'.$user->id, '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info btn-xs', 'title'=>'View')); ?>
-				<?php echo Html::anchor('admin/users/edit/'.$user->id, '', array('class'=>'glyphicon glyphicon-wrench btn btn-warning btn-xs', 'title'=>'Edit')); ?>
+				<?php echo Html::anchor('admin/users/edit_admin/'.$user->id, '', array('class'=>'glyphicon glyphicon-wrench btn btn-warning btn-xs', 'title'=>'Edit')); ?>
 				<?php echo Html::anchor('admin/users/delete/'.$user->id, '', array('onclick' => "return confirm('Are you sure?')", 'class'=>'glyphicon glyphicon-trash btn btn-danger btn-xs', 'title'=>'Delete')); ?>
 			</td>
 		</tr>
