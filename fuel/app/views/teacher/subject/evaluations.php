@@ -1,4 +1,6 @@
 <?php if ($evaluated): ?>
+	<?php echo Html::anchor('teacher/subject/print_summary/'.$evaluated[0]['teacher_id'], '', array('class'=>'glyphicon glyphicon-print btn btn-success
+						 btn-sm', 'title'=>'Print Summary Reports', 'style' => 'float:right')); ?>
 	<table cellpadding="0" cellspacing="0" border="0" class="table table-striped display" id="example" width="100%">
 <br />
 <br />

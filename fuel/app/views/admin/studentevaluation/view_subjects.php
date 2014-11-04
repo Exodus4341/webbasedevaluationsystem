@@ -5,7 +5,7 @@
 <?php if ($teacher_name) {
 	echo "<table>
 				<tr>
-					<td>".Html::img('uploads/'.$teacher_name[0]['pic_url'], array('class' => "thumbnail", "style" => "width:50px; height:50px"))."</td>
+					<td>".Html::img('uploads/'.$teacher_name[0]['pic_url'], array('class' => "thumbnail", "style" => "width:150px; height:150px"))."</td>
 				</tr>
 				<tr>
 					<td>Name: </td>

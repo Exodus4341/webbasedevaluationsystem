@@ -22,6 +22,12 @@
 			</div>
 		</div>
 		<div class="clearfix">
+			<?php echo Form::label('Order Number', 'order_no'); ?>
+			<div class="input">
+				<?php echo Form::input('order_no', Input::post('order_no', isset($question) ? $question->order_no : ''), array('class' => 'form-control', 'required' => '')); ?>
+			</div>
+		</div>
+		<div class="clearfix">
 			<?php echo Form::label('Question', 'question'); ?>
 			<div class="input">
 				<?php echo Form::textarea('question', Input::post('question', isset($question) ? $question->question : ''), array('class' => 'form-control', 'required' => '')); ?>

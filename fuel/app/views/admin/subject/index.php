@@ -9,6 +9,7 @@
 		<tr>
 			<th>Subject Code</th>
 			<th>Subject Description</th>
+			<th>Date Evaluation</th>
 			<th>Action</th>
 		</tr>
 	</thead>
@@ -16,6 +17,7 @@
 <?php foreach ($users2 as $subject): ?>		<tr>
 			<td><?php echo $subject['subj_code']; ?></td>
 			<td><?php echo $subject['subj_desc']; ?></td>
+			<td><?php echo $subject['dateevaluation']; ?></td>
 			
 			<td>
 				<?php echo Html::anchor('admin/subject/view/'.$subject['sid'], '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info btn-xs', 'title'=>'View')); ?>

@@ -7,7 +7,7 @@
 <h2>Add Student Subjects</h2>
 <?php 
 	if ($subject) {
-		echo "<input type='hidden' name='subj_ids' value='".$subject[0]['id']."'>";
+		echo "<input type='hidden' name='subj_id' value='".$subject[0]['id']."'>";
 		echo "<table>
 				<tr>
 					<td>".Html::img('uploads/'.$subject[0]['pic_url'], array('class' => "thumbnail", "style" => "width:50px; height:50px"))."</td>

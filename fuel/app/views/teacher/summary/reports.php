@@ -1,6 +1,6 @@
 <?php
 
-class Summary_Reports extends FPDF
+class Teacher_Summary_Reports extends FPDF
 {
 //Page Header
 function Header()
@@ -27,7 +27,8 @@ function Header()
 	
 }
 
-function TeacherInfo($teacher_name){
+function TeacherInfo($teacher_name
+    ){
 	if ($teacher_name) {
 		$this->SetY(35);
 		$this->Image('../public/uploads/'.$teacher_name[0]['pic_url'],25,40,20,20);
@@ -35,7 +36,7 @@ function TeacherInfo($teacher_name){
 		$this->SetFont("Arial", "", "11");
 		$this->Cell(0, 4, "Teacher's Name: ".ucwords($teacher_name[0]['fname']) ." ". ucwords($teacher_name[0]['mname']) .". ". ucwords($teacher_name[0]['lname']), 0, 1, "L");
 		$this->SetXY(50,45);
-		$this->Cell(0, 4, "Position/Desigtnation: ");
+		$this->Cell(0, 4, "Position/Desigtnation: Teacher");
 		$this->SetXY(50,50);
 		$this->Cell(0, 4, "No. of Class/Subject(s) Evaluated: ");
 	}
@@ -487,7 +488,7 @@ function EvaluationData($evaluated, $category, $questionsum)
     $this->SetFont('Arial','',10);
     $this->Cell($td2[0],6,'Description',1,1,'L',true);
 
-    $this->SetXY(55,142);
+    $this->SetXY(55,150);
     $this->SetFillColor(224,0,0);
     $this->SetTextColor(255);
     $this->SetFont('Arial','',10);
@@ -511,7 +512,7 @@ function Footer()
 
 }//End Class
 
-$pdf = new Summary_Reports('L','mm','legal');
+$pdf = new Teacher_Summary_Reports('L','mm','legal');
 // Data loading
 $pdf->SetFont('Arial','',14);
 $pdf->AddPage();

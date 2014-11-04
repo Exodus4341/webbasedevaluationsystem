@@ -4,22 +4,24 @@
   <li class="active">Result Evaluation</li>
 </ol>
 <?php 
+	echo Html::anchor('admin/studentevaluation/reports_per_subject/'.$evaluated[0]['teacher_id'].'/'.$evaluated[0]['subj_id'], '', array('class'=>'glyphicon glyphicon-print btn btn-success
+						 btn-sm', 'title'=>'Print Summary Reports', 'style' => 'float:right'));
  // var_dump($teachers);
 if ($teachers) {
 	echo "<table>
 				<tr>
-					<td>".Html::img('uploads/'.$teachers[0]['pic_url'], array('class' => "thumbnail", "style" => "width:50px; height:50px"))."</td>
+					<td>".Html::img('uploads/'.$teachers[0]['pic_url'], array('class' => "thumbnail", "style" => "width:120px; height:120px"))."</td>
 				</tr>
 				<tr>
 					<td>Name: </td>
 					<td>".ucwords($teachers[0]['fname']) ." ". ucwords($teachers[0]['mname']) .". ". ucwords($teachers[0]['lname']) ."</td>
 				</tr>
 				<tr>
-					<td>teachersde: </td>
+					<td>Subject Code: </td>
 					<td>".$teachers[0]['subj_code']."</td>
 				</tr>
 				<tr>
-					<td>teachersscription: </td>
+					<td>Subject Description: </td>
 					<td>".$teachers[0]['subj_desc']."</td>
 				</tr>
 				<tr>
@@ -61,12 +63,31 @@ if ($teachers) {
 					<td>".number_format($quotient, 2, '.', '')." x ".$cat_percent." = <b>".number_format($percentage, 2, '.', '')." %</b></td>
 					</tr>";					
 		}
+		foreach ($ranges as $range) {
+                        if($total <= $range['poor'] AND $total < $range['fair']){
+                            $rate = "Poor";
+                        }
+                        elseif ($total <= $range['fair'] AND $total < $range['good']) {
+                            $rate = "Fair";
+                        }
+                        elseif ($total <= $range['good'] AND $total < $range['very_good']) {
+                            $rate = "Good";
+                        }
+                        elseif ($total <= $range['very_good'] AND $total < $range['excellent']) {
+                            $rate = "Very Good";
+                        }
+                        elseif ($total <= $range['excellent'] AND $total > $range['excellent']) {
+                            $rate = "Excellent";
+                        }else{
+                            $rate = "Excellent";
+                        }
+                    }
 		echo "<footer>
 				<td><b>Overall Percentage of ".$teachers[0]['subj_desc'].":</b></td>
 				<td></td>
 				<td></td>
 				<td></td>
-				<td><b>".number_format($total, 2, '.', '')." %</b></td>
+				<td><b>".number_format($total, 2, '.', '')." % ".$rate."</b></td>
 			</footer>";
 		echo "</table>";
 		

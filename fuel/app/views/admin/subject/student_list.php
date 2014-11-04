@@ -7,31 +7,35 @@
 <?php if ($teachers): ?>
 	<table>
 		<tr>
-			<td><?php echo Html::img('uploads/'.$teachers[0]['pic_url'], array('class' => "thumbnail", "style" => "width:50px; height:50px")); ?></td>
+			<td><?php echo Html::img('uploads/'.$teachers[0]['pic_url'], array('class' => "thumbnail", "style" => "width:150px; height:150px")); ?></td>
 		</tr>
 		<tr>
 			<td>Name: </td>
-			<td><?php echo ucwords($teachers[0]['fname']) ." ". ucwords($teachers[0]['mname']) .". ". ucwords($teachers[0]['lname']);  ?></td>
+			<td><strong><?php echo ucwords($teachers[0]['fname']) ." ". ucwords($teachers[0]['mname']) .". ". ucwords($teachers[0]['lname']);  ?></strong></td>
 		</tr>
 		<tr>
 			<td>Subject Code: </td>
-			<td><?php echo $teachers[0]['subj_code']; ?></td>
+			<td><strong><?php echo $teachers[0]['subj_code']; ?></strong></td>
 		</tr>
 		<tr>
 			<td>Subject Description: </td>
-			<td><?php echo $teachers[0]['subj_desc']; ?></td>
+			<td><strong><?php echo $teachers[0]['subj_desc']; ?></strong></td>
 		</tr>
 		<tr>
 			<td>Schedule: </td>
-			<td><?php echo $teachers[0]['schedule']; ?></td>
+			<td><strong><?php echo $teachers[0]['schedule']; ?></strong></td>
 		</tr>
 		<tr>
 			<td>Time: </td>
-			<td><?php echo $teachers[0]['time']; ?></td>
+			<td><strong><?php echo $teachers[0]['time']; ?></strong></td>
 		</tr>
 		<tr>
 			<td>Room: </td>
-			<td><?php echo $teachers[0]['room']; ?></td>
+			<td><strong><?php echo $teachers[0]['room']; ?></strong></td>
+		</tr>
+		<tr>
+			<td>Date of evaluation: </td>
+			<td><strong><?php echo $teachers[0]['dateevaluation']; ?></strong></td>
 		</tr>
 	</table>
 	<br />

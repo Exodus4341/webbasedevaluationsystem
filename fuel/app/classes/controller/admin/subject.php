@@ -45,18 +45,20 @@ class Controller_Admin_Subject extends Controller_Admin
 	public function action_add_student_subject($id = null)
 	{
 		$view = View::forge('admin\subject/add_student_subject');
+		$val = Model_Subject::validate('add_student_subject');
 		if (Input::method() == 'POST')
 		{
-			$val = Model_Subject::validate('create');
-
 			if ($val->run())
 			{
 				// $subj_ids = $_POST['subj_ids'];
 				$stud_id = $_POST['stud_id'];
-				$query = "INSERT INTO `subj_stud` (`stud_id`,`subj_id`) VALUES";
+				$status = 0;
+				$query = "INSERT INTO `subj_stud` (`stud_id`, `subj_id`, `status`) VALUES";
 				for ($i=0; $i<sizeof($stud_id); $i++){
-					$query .= "('".$stud_id[$i]."','".$_POST['subj_ids']."'),";
+					$query .= "('".$stud_id[$i]."', '".$_POST['subj_id']."', '".$status."'),";
 				}
+				// var_dump($query);
+				// exit();
 				$query = rtrim($query,',');
 				
 				$query = DB::query($query)->execute();

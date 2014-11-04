@@ -40,21 +40,25 @@ class Controller_Student_Subject extends Controller_Student
 			INNER JOIN subjects AS s ON s.`id` = q.`subj_id`
 			WHERE q.`subj_id` = ".$sid."  ORDER BY c.`id` ")->execute()->as_array();
 
+			// var_dump($questions);
+			// exit();
 		$choices = DB::query("SELECT * FROM choices")->execute()->as_array();
 
 		if (Input::method() == 'POST')
 		{
-		    $status = "1";
-		    $stat = "UPDATE `subj_stud` SET `status` = '".$status."', `created_at` = NOW(), `comment` = '".$_POST['comments']."' WHERE `subj_id` = ".$stud_subj_id." AND `stud_id` = ".$this->current_user->id." ";
+			$status = "1";
+			$stat = "UPDATE `subj_stud` SET `status` = '".$status."', `created_at` = NOW(), `comment` = '".$_POST['comments']."' WHERE `subj_id` = ".$stud_subj_id." AND `stud_id` = ".$this->current_user->id." ";
 			$evaluation = "INSERT INTO `studentevaluations` (`question_id`,`subj_id`,`teacher_id`,`category_id`, `stud_id`, `answer`) VALUES";
 			for($x = 0; $x < sizeof($questions); $x++){
-			 $evaluation .= "('".$questions[$x]['qid']."','".$stud_subj_id."','".$uid."','".$questions[$x]['category']."', '".$this->current_user->id."','".$_POST['choices'.$x]."' ),";
+				$evaluation .= "('".$questions[$x]['qid']."','".$stud_subj_id."','".$uid."','".$questions[$x]['category']."', '".$this->current_user->id."','".$_POST['choices'.$x]."' ),";
 			}
-
+			var_dump($questions);
+			exit();
+				
 			$evaluation = rtrim($evaluation,',');
-		 
+			 
 			$eval = DB::query($evaluation)->execute();
-
+			
 			$STATS = DB::query($stat)->execute();
 
 			if ($eval)
@@ -62,7 +66,6 @@ class Controller_Student_Subject extends Controller_Student
 				Session::set_flash('success', e('Successfully Evaluated'));
 				Response::redirect('student/subject');
 			}
-
 			else
 			{
 				Session::set_flash('error', e('Could not Evaluate the teacher.'));

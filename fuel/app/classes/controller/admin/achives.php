@@ -14,7 +14,7 @@ class Controller_Admin_Achives extends Controller_Admin
 		$users = Model_User::find('all');
 		
 		$view = View::forge('admin/achives/report');
-
+		
 	 	$this->template->title = "Archives";
 		$this->template->content = $view;
 	}
