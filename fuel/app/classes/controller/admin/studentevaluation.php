@@ -5,7 +5,7 @@ class Controller_Admin_Studentevaluation extends Controller_Admin
 	public function action_index()
 	{
 		$view = View::forge('admin\studentevaluation/index');
-		$teacher = DB::query("SELECT *, u.`id` AS `uid` FROM  `users` AS u INNER JOIN `departments` AS d ON u.`department` = d.`id` WHERE u.`group` =  '50' AND u.`status` = '0'  ")->execute()->as_array();
+		$teacher = DB::query("SELECT *, u.`id` AS `uid` FROM  `users` AS u INNER JOIN `departments` AS d ON u.`department` = d.`id` INNER JOIN subjects AS s WHERE u.`group` =  '50' AND u.`status` = '0' AND s.`teacher_id` = u.`id` ")->execute()->as_array();
 		$view->set_global('teacher', $teacher);
 		$this->template->title = "Teachers List";
 		$this->template->content = $view;

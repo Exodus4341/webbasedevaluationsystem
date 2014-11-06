@@ -45,11 +45,17 @@ class Controller_Student_Subject extends Controller_Student
 
 		if (Input::method() == 'POST')
 		{
+
+			$questions1 = DB::query("SELECT *, q.`id` AS qid FROM questions AS q
+			INNER JOIN categories AS c ON c.`id` = q.`category`
+			INNER JOIN subjects AS s ON s.`id` = q.`subj_id`
+			WHERE q.`subj_id` = ".$stud_subj_id."  ORDER BY c.`id` ")->execute()->as_array();
+
 			$status = "1";
 			$stat = "UPDATE `subj_stud` SET `status` = '".$status."', `created_at` = NOW(), `comment` = '".$_POST['comments']."' WHERE `subj_id` = ".$stud_subj_id." AND `stud_id` = ".$this->current_user->id." ";
 			$evaluation = "INSERT INTO `studentevaluations` (`question_id`,`subj_id`,`teacher_id`,`category_id`, `stud_id`, `answer`) VALUES";
-			for($x = 0; $x < sizeof($questions); $x++){
-				$evaluation .= "('".$questions[$x]['qid']."','".$stud_subj_id."','".$uid."','".$questions[$x]['category']."', '".$this->current_user->id."','".$_POST['choices'.$x]."' ),";
+			for($x = 0; $x < sizeof($questions1); $x++){
+				$evaluation .= "('".$questions1[$x]['qid']."','".$stud_subj_id."','".$uid."','".$questions1[$x]['category']."', '".$this->current_user->id."','".$_POST['choices'.$x]."' ),";
 			}
 			
 			// var_dump($evaluation);
