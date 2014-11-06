@@ -1,69 +1,59 @@
-<ol class="breadcrumb">
-  <li><?php echo Html::anchor('admin/studentevaluation', 'Teachers'); ?></li>
-  <li><?php echo Html::anchor('admin/studentevaluation/view_subjects/'.$teachers[0]['uid'], 'View Subjects'); ?></li>
-  <li class="active">Result Evaluation</li>
-</ol>
 <?php 
- // var_dump($teachers);
 if ($teachers) {
 	echo "<table>
 				<tr>
-					<td>".Html::img('uploads/'.$teachers[0]['pic_url'], array('class' => "thumbnail", "style" => "width:120px; height:120px"))."</td>
+					<td>".Html::img('uploads/'.$teachers[0]['pic_url'], array('class' => "thumbnail", "style" => "width:150px; height:150px"))."</td>
 				</tr>
 				<tr>
 					<td>Name: </td>
-					<td>".ucwords($teachers[0]['fname']) ." ". ucwords($teachers[0]['mname']) .". ". ucwords($teachers[0]['lname']) ."</td>
+					<td><b>".ucwords($teachers[0]['fname']) ." ". ucwords($teachers[0]['mname']) .". ". ucwords($teachers[0]['lname']) ."</b></td>
 				</tr>
 				<tr>
-					<td>Subject Code: </td>
-					<td>".$teachers[0]['subj_code']."</td>
+					<td>teachersde: </td>
+					<td><b>".$teachers[0]['subj_code']."</b></td>
 				</tr>
 				<tr>
-					<td>Subject Description: </td>
-					<td>".$teachers[0]['subj_desc']."</td>
+					<td>teachersscription: </td>
+					<td><b>".$teachers[0]['subj_desc']."</b></td>
 				</tr>
 				<tr>
 					<td>Schedule: </td>
-					<td>".$teachers[0]['schedule']."</td>
+					<td><b>".$teachers[0]['schedule']."</b></td>
 				</tr>
 				<tr>
 					<td>Time: </td>
-					<td>".$teachers[0]['time']."</td>
+					<td><b>".$teachers[0]['time']."</b></td>
 				</tr>
 				<tr>
 					<td>Room: </td>
-					<td>".$teachers[0]['room']."</td>
+					<td><b>".$teachers[0]['room']."</b></td>
 				</tr>
 			</tabe>";
 }
-
+echo "";
 	if ($evaluated) {
 		$sum = 0;
-		echo Html::anchor('admin/studentevaluation/reports_per_subject/'.$evaluated[0]['teacher_id'].'/'.$evaluated[0]['subj_id'], '', array('class'=>'glyphicon glyphicon-print btn btn-success
-						 btn-sm', 'title'=>'Print Summary Reports', 'style' => 'float:right'));
+		echo Html::anchor('teacher/subject/reports_per_subject/'.$evaluated[0]['teacher_id'].'/'.$evaluated[0]['subj_id'], '', array('class'=>'glyphicon glyphicon-print btn btn-success
+						 btn-sm', 'title'=>'Print Summary Reports', 'style' => 'float:right; margin-bottom:5px;'));
 		echo "<table class='table table-striped table-hover'>";
 		echo "<tr>
 					<td style='background-color: #000; color:#fff;'><b>Category</b></td>
-					<td style='background-color: #000; color:#fff;'><b>Total Items</b></td>
 					<td style='background-color: #000; color:#fff;'><b>Total Sum</b></td>
-					<td style='background-color: #000; color:#fff;'><b>Quotient</b></td>
-					<td style='background-color: #000; color:#fff;'><b>Total Percentage Per Category</b></td>
+					<td style='background-color: #000; color:#fff;'><b>Total Items</b></td>
+					<td style='background-color: #000; color:#fff;'><b>Total Percentage</b></td>
 			</tr>";
 		for ($y=0, $x = 1; $y < sizeof($evaluated) ; $y++, $x++) { 
-			
-			$quotient = ($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]);
-			$cat_percent = $category[$y]['percentage']/100;
-			$percentage = ($quotient) * ($cat_percent);
+		
+			$percentage = ($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$y]['percentage']/100);
 			$total = $sum += $percentage;
 			echo "<tr>
 					<td>".$category[$y]['cat_name']. " </td>
-					<td>".$questionsum[$y]['category'.$x]."</td>
 					<td>".$evaluated[$y]['category_sum'.$x]."</td>
-					<td>".$evaluated[$y]['category_sum'.$x]." / ".$questionsum[$y]['category'.$x]." = "."<b>".number_format($quotient, 2, '.', '')."</b></td>
-					<td>".number_format($quotient, 2, '.', '')." x ".$cat_percent." = <b>".number_format($percentage, 2, '.', '')." %</b></td>
+					<td>".$questionsum[$y]['category'.$x]."</td>
+					<td>".number_format($percentage, 2, '.', '')." %</td>
 					</tr>";					
 		}
-		foreach ($ranges as $range) {
+				foreach ($ranges as $range) {
                         if($total <= $range['poor'] AND $total < $range['fair']){
                             $rate = "Poor";
                         }
@@ -83,8 +73,7 @@ if ($teachers) {
                         }
                     }
 		echo "<footer>
-				<td><b>Overall Percentage of ".$teachers[0]['subj_desc'].":</b></td>
-				<td></td>
+				<td><b>Total Percentage:</b></td>
 				<td></td>
 				<td></td>
 				<td><b>".number_format($total, 2, '.', '')." % ".$rate."</b></td>
@@ -96,7 +85,7 @@ if ($teachers) {
 		 	echo "<table>
 					<thead>
 						<tr>
-							<th><h2>Comments <i class='glyphicon glyphicon-comment'></i><hr style='clear:both;'/></h2></th>
+							<th><h2>Comments</h2></th>
 						</tr>
 					</thead>
 					<tbody>";

@@ -1,3 +1,10 @@
+<style type="text/css">
+	.box-department{
+		width: 500px;
+		height: 0px auto;
+		border-radius: 10px;
+	}
+</style>
 <div>
 		    <ul id="myTab" class="nav nav-tabs">
 		      <li class="active"><a href="#home" data-toggle="tab">New Admin User</a></li>
@@ -6,7 +13,7 @@
 		    </ul>
 		    <div id="myTabContent" class="tab-content">
 		      <div class="tab-pane fade in active" id="home">
-		        <form action="create" method="POST" enctype="multipart/form-data">
+		        <form action="create" method="POST" enctype="multipart/form-data" class="box-department">
 					<fieldset class="box-department">
 						<div class="clearfix">
 							<?php echo Form::label('Username', 'username'); ?>
@@ -41,7 +48,7 @@
 				<?php echo Form::close(); ?>
 		      </div>
 		      <div class="tab-pane fade" id="new_teacher">
-		        <form action="teacher" method="POST" enctype="multipart/form-data">
+		        <form action="teacher" method="POST" enctype="multipart/form-data" class="box-department">
 					<fieldset class="box-department">
 							<div class="clearfix">
 								<img id="PreviewHolder" style="width:100px; height:100px; border-radius:10%; border: 2px solid #1b1b1b;"/>
@@ -134,7 +141,7 @@
 					</script>
 		      </div>
 		      <div class="tab-pane fade" id="new_student">
-		        <form action="student" method="POST" enctype="multipart/form-data">
+		        <form action="student" method="POST" enctype="multipart/form-data" class="box-department">
 							<fieldset class="box-department">
 								<div class="clearfix">
 								<img id="PreviewHolders" style="width:100px; height:100px; border-radius:10%; border: 2px solid #1b1b1b;"/>

@@ -19,6 +19,9 @@
 	  background-size: 100%;
 	  background-position: center;
 	}
+	.img-pos{
+		text-align: center;
+	}
 	</style>
 	<?php echo Asset::js(array(
 		'jquery-1.11.0.js',
@@ -74,7 +77,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                    	<li class="padding-img" align="center">
+                    	<li class="padding-img img-pos">
                     		<?php echo Html::img('uploads/'.$current_user['pic_url'], array('class' => "img-circle", "style" => "width:100px; height:100px")) ; ?>
                     		<p>Hello, <?php echo ucwords($current_user->fname)." ".ucwords($current_user->mname).". ".ucwords($current_user->lname); ?></p>
                     	</li>
@@ -87,6 +90,9 @@
                         <li>
                         	<?php echo Html::anchor('teacher/subject/evaluations', '<i class="glyphicon glyphicon-list-alt"></i> Results of Evaluation'); ?>
                         </li>	
+                        <li>
+                        	<?php echo Html::anchor('teacher/archives', '<i class="glyphicon glyphicon-briefcase"></i> Archives') ?>
+                        </li>
                     </ul>
                 </div>
             </div>

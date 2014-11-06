@@ -23,7 +23,6 @@ class Controller_Student_Subject extends Controller_Student
 		$this->template->content = $view;
 	}
 
-
 	public function action_evaluate($stud_subj_id = null, $uid = null, $sid = null)
 	{	
 		$view = View::forge('student\subject/edit');
@@ -52,8 +51,9 @@ class Controller_Student_Subject extends Controller_Student
 			for($x = 0; $x < sizeof($questions); $x++){
 				$evaluation .= "('".$questions[$x]['qid']."','".$stud_subj_id."','".$uid."','".$questions[$x]['category']."', '".$this->current_user->id."','".$_POST['choices'.$x]."' ),";
 			}
-			var_dump($questions);
-			exit();
+			
+			// var_dump($evaluation);
+			// exit();
 				
 			$evaluation = rtrim($evaluation,',');
 			 

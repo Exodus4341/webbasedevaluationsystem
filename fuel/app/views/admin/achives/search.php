@@ -5,7 +5,7 @@
 <h1>Search Result</h1>
 <br />
 <?php if ($search): ?>
-    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped" id="example" width="100%">
+    <table cellpadding="0" cellspacing="0" border="0" class="table table-striped display" id="example" width="100%">
         <thead>
             <tr>
                 <th>Subject Code</th>

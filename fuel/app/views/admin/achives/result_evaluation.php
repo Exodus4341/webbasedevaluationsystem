@@ -33,6 +33,8 @@ if ($teachers) {
 echo "";
 	if ($evaluated) {
 		$sum = 0;
+		echo Html::anchor('admin/studentevaluation/reports_per_subject/'.$evaluated[0]['teacher_id'].'/'.$evaluated[0]['subj_id'], '', array('class'=>'glyphicon glyphicon-print btn btn-success
+						 btn-sm', 'title'=>'Print Summary Reports', 'style' => 'float:right'));
 		echo "<table class='table table-striped table-hover'>";
 		echo "<tr>
 					<td style='background-color: #000; color:#fff;'><b>Category</b></td>
@@ -51,11 +53,30 @@ echo "";
 					<td>".number_format($percentage, 2, '.', '')." %</td>
 					</tr>";					
 		}
+		foreach ($ranges as $range) {
+                        if($total <= $range['poor'] AND $total < $range['fair']){
+                            $rate = "Poor";
+                        }
+                        elseif ($total <= $range['fair'] AND $total < $range['good']) {
+                            $rate = "Fair";
+                        }
+                        elseif ($total <= $range['good'] AND $total < $range['very_good']) {
+                            $rate = "Good";
+                        }
+                        elseif ($total <= $range['very_good'] AND $total < $range['excellent']) {
+                            $rate = "Very Good";
+                        }
+                        elseif ($total <= $range['excellent'] AND $total > $range['excellent']) {
+                            $rate = "Excellent";
+                        }else{
+                            $rate = "Excellent";
+                        }
+                    }
 		echo "<footer>
 				<td><b>Total Percentage:</b></td>
 				<td></td>
 				<td></td>
-				<td><b>".number_format($total, 2, '.', '')." %</b></td>
+				<td><b>".number_format($total, 2, '.', '')." %".$rate."</b></td>
 			</footer>";
 		echo "</table>";
 		
