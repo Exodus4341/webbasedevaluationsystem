@@ -12,6 +12,29 @@ class Controller_Student_Subject extends Controller_Student
 		$this->template->content = $view;
 	}
 
+	public function action_subjects()
+	{
+		$view = View::forge('student\subject/listofsubjects');	
+		
+		$sqlQ = DB::query("SELECT *, ss.`status`, ss.`created_at` AS createdat, ss.`id` AS stud_subj_id, u.`id` AS uid, s.`id` AS sid FROM `subj_stud` AS ss INNER JOIN `subjects` AS s ON ss.`subj_id` = s.`id` LEFT JOIN `users` AS u ON u.`id` = s.`teacher_id` INNER JOIN `schoolyear` AS sy ON sy.`academicyear` = s.`academicyear` AND s.`semester` = sy.`scho_year`  WHERE ss.`stud_id` = ".$this->current_user->id." ")->execute()->as_array();
+		$view->set_global('users2', $sqlQ);
+		$this->template->title = "Subjects";
+		$this->template->content = $view;
+	}
+
+	public function action_viewclassmates($sid = null)
+	{
+		$view = View::forge('student\subject/classmates');	
+		
+		// $sqlQ = DB::query("SELECT *, ss.`status`, ss.`created_at` AS createdat, ss.`id` AS stud_subj_id, u.`id` AS uid, s.`id` AS sid FROM `subj_stud` AS ss INNER JOIN `subjects` AS s ON ss.`subj_id` = s.`id` LEFT JOIN `users` AS u ON u.`id` = s.`teacher_id` INNER JOIN `schoolyear` AS sy ON sy.`academicyear` = s.`academicyear` AND s.`semester` = sy.`scho_year`  WHERE ss.`stud_id` = ".$this->current_user->id." ")->execute()->as_array();
+		$class = DB::query("SELECT *, ss.`created_at` AS `ssc` FROM `subj_stud` AS ss INNER JOIN `users` AS u ON ss.`stud_id` = u.`id` LEFT JOIN `subjects` AS s ON s.`id` = ss.`subj_id` INNER JOIN courses AS c ON c.`id` = u.`course` WHERE ss.`subj_id` = ".$sid." ")->execute()->as_array();
+		$view->set_global('classmates', $class);
+		// var_dump($class);
+		// exit();
+		$this->template->title = "Classmates";
+		$this->template->content = $view;
+	}
+
 	public function action_view($id = null)
 	{
 		$view = View::forge('student\subject/view');
@@ -37,7 +60,7 @@ class Controller_Student_Subject extends Controller_Student
 		$questions = DB::query("SELECT *, q.`id` AS qid FROM questions AS q
 			INNER JOIN categories AS c ON c.`id` = q.`category`
 			INNER JOIN subjects AS s ON s.`id` = q.`subj_id`
-			WHERE q.`subj_id` = ".$sid."  ORDER BY c.`id` ")->execute()->as_array();
+			WHERE q.`subj_id` = ".$sid." AND q.`status` = '0' ORDER BY c.`id` ")->execute()->as_array();
 
 			// var_dump($questions);
 			// exit();
@@ -58,8 +81,8 @@ class Controller_Student_Subject extends Controller_Student
 				$evaluation .= "('".$questions1[$x]['qid']."','".$stud_subj_id."','".$uid."','".$questions1[$x]['category']."', '".$this->current_user->id."','".$_POST['choices'.$x]."' ),";
 			}
 			
-			// var_dump($evaluation);
-			// exit();
+				// 	var_dump($_POST['choices'.$x]);
+				// exit();
 				
 			$evaluation = rtrim($evaluation,',');
 			 

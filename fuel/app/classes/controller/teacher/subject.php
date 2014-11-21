@@ -91,10 +91,10 @@ class Controller_Teacher_Subject extends Controller_Teacher
 	{
 		$view = View::forge('teacher/summary/reports');
 
-		$subjects = DB::query("SELECT *, s.`id` AS sid FROM `subjects` AS s INNER JOIN `schoolyear` AS sy ON sy.`academicyear` = s.`academicyear` AND s.`semester` = sy.`scho_year` WHERE s.`teacher_id` = ".$id." GROUP BY s.`subj_code` ")->execute()->as_array();
+		$subjects = DB::query("SELECT *, s.`id` AS sid FROM `subjects` AS s INNER JOIN `schoolyear` AS sy ON s.`academicyear` = sy.`academicyear` AND s.`semester` = sy.`scho_year` WHERE s.`teacher_id` = ".$id." GROUP BY s.`subj_code` ")->execute()->as_array();
 
 		$sql1 = "SELECT id, cat_name, percentage FROM categories";
-		$category = DB::query($sql1)->execute()->as_array();
+		$category = DB::query($sql1)->execute()->as_array();	
 
 		$u = "SELECT * FROM `users` AS u INNER JOIN `departments` AS d ON u.`department` = d.`id` WHERE u.`id` = '".$id."' ";
 		$user = DB::query($u)->execute()->as_array();

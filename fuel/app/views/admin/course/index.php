@@ -18,7 +18,7 @@
 			<td>
 				<?php echo Html::anchor('admin/course/view/'.$course->id, '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info btn-xs', 'title'=>'View')); ?>
 				<?php echo Html::anchor('admin/course/edit/'.$course->id, '', array('class'=>'glyphicon glyphicon-wrench btn btn-warning btn-xs', 'title'=>'Edit')); ?>
-				<?php echo Html::anchor('admin/course/delete/'.$course->id, '', array('onclick' => "return confirm('Are you sure?')", 'class'=>'glyphicon glyphicon-trash btn btn-danger btn-xs', 'title'=>'Delete')); ?>
+				<?php echo Html::anchor('admin/course/deactivate/'.$course->id, '', array('onclick' => "return confirm('Are you sure?')", 'class'=>'glyphicon glyphicon-remove btn btn-danger btn-xs', 'title'=>'Deactivate')); ?>
 
 			</td>
 		</tr>

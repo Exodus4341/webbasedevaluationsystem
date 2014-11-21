@@ -33,7 +33,7 @@
 							<td><?php echo $deactivated['year']; ?></td>
 							<td><?php echo $deactivated['email']; ?></td>
 							<td>
-								<?php echo Html::anchor('admin/users/activate/'.$deactivated['uid'], '', array('class'=>'glyphicon glyphicon-ok btn btn-danger btn-xs', 'title'=>'Activate')); ?>
+								<?php echo Html::anchor('admin/users/activate/'.$deactivated['uid'], '', array('onclick' => "return confirm('Are you sure?')",'class'=>'glyphicon glyphicon-ok btn btn-success btn-xs', 'title'=>'Activate')); ?>
 							</td>
 						</tr>
 				<?php endforeach; ?>	</tbody>
@@ -64,7 +64,7 @@
 							<td><?php echo $deactivate_teachers['dept_name']; ?></td>
 							<td><?php echo $deactivate_teachers['email']; ?></td>
 							<td>
-								<?php echo Html::anchor('admin/users/activate/'.$deactivate_teachers['uid'], '', array('class'=>'glyphicon glyphicon-ok btn btn-danger btn-xs', 'title'=>'Deactivate')); ?>
+								<?php echo Html::anchor('admin/users/activate/'.$deactivate_teachers['uid'], '', array('onclick' => "return confirm('Are you sure?')", 'class'=>'glyphicon glyphicon-ok btn btn-success btn-xs', 'title'=>'Deactivate')); ?>
 							</td>
 						</tr>
 				<?php endforeach; ?>	</tbody>

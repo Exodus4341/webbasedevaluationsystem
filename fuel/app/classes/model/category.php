@@ -6,6 +6,7 @@ class Model_Category extends \Orm\Model
 		'id',
 		'cat_name',
 		'percentage',
+		'status',
 		'created_at',
 		'updated_at',
 	);
@@ -26,6 +27,7 @@ class Model_Category extends \Orm\Model
 		$val = Validation::forge($factory);
 		$val->add_field('cat_name', 'Categoty name', 'required|max_length[50]');
 		$val->add_field('percentage', 'Percentage', 'required|max_length[50]');
+		$val->add_field('status', 'Status', '');
 
 		return $val;
 	}

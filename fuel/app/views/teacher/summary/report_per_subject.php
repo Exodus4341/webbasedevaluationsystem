@@ -101,7 +101,8 @@ function EvaluationData($evaluated, $category, $questionsum)
 			$this->Cell($td2[0],6,$evaluated[$y]['category_sum'.$x],1,0,'L',true);
 			$this->Cell($td3[0],6,$evaluated[$y]['category_sum'.$x]." / ".$questionsum[$y]['category'.$x]." = ".number_format($quotient, 2, '.', ''),1,0,'L',true);
 			$this->Cell($td4[0],6,number_format($quotient, 2, '.', '')." x ".$cat_percent." = ".number_format($percentage, 2, '.', '').'%',1,0,'L',true);				
-			$this->Ln();
+            $this->Ln();
+			$this->SetX(25);
 			// var_dump($category);
 			// exit();
 		}

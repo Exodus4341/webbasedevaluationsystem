@@ -47,7 +47,7 @@
 <div id="wrapper">
 <?php if ($current_user): ?>
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" role="navigation" style="margin-bottom: 0; background-color: rgba(138, 39, 118, 0.8);">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -55,24 +55,28 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">JMC Web-E-SMS-Notification-System</a>
+                <a class="navbar-brand" href="#" style="color:white;">JMC Web-E-SMS-Notification-System</a>
             </div>
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-nav navbar-right">
           		
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:white;">
                         <i class="glyphicon glyphicon-user"></i> <?php echo $current_user->username ?>  <i class="caret"></i>
                     </a>
-                    <ul class="dropdown-menu dropdown-user">
-                    	<li><?php echo Html::anchor('admin/users/add_users', '<i class="glyphicon glyphicon-plus"></i> New User') ?></li>
-                    	<li><?php echo Html::anchor('admin/users/deactivated', '<i class="glyphicon glyphicon-ban-circle"></i> Deactivated Users') ?></li>
-		                <li><?php echo Html::anchor('admin/SchoolYear', '<i class="glyphicon glyphicon-wrench"></i> Set School Year') ?></li>
-		               	<li><?php echo Html::anchor('admin/academicyear', '<i class="glyphicon glyphicon-font"></i> Academic Year') ?></li>
-		               	<li><?php echo Html::anchor('admin/achives', '<i class="glyphicon glyphicon-briefcase"></i> Archives') ?></li>
+                    <ul class="dropdown-menu dropdown-user" style="background-color: rgba(138, 39, 118, 0.8);">
+                    	<li><?php echo Html::anchor('admin/users/add_users', '<i class="glyphicon glyphicon-plus"></i> New User' , array('style' => 'color:white')) ?></li>
+                    	<li><?php echo Html::anchor('admin/users/deactivated', '<i class="glyphicon glyphicon-ban-circle"></i> Deactivated Users' , array('style' => 'color:white')) ?></li>
+                        <li><?php echo Html::anchor('admin/department/deactivated', '<i class="glyphicon glyphicon-ban-circle"></i> Deactivated Department' , array('style' => 'color:white')) ?></li>
+                        <li><?php echo Html::anchor('admin/category/deactivated', '<i class="glyphicon glyphicon-ban-circle"></i> Deactivated Category' , array('style' => 'color:white')) ?></li>
+                        <li><?php echo Html::anchor('admin/question/deactivated', '<i class="glyphicon glyphicon-ban-circle"></i> Deactivated Questionnaires' , array('style' => 'color:white')) ?></li>
+                        <li><?php echo Html::anchor('admin/course/deactivated', '<i class="glyphicon glyphicon-ban-circle"></i> Deactivated Course' , array('style' => 'color:white')) ?></li>
+		                <li><?php echo Html::anchor('admin/SchoolYear', '<i class="glyphicon glyphicon-wrench"></i> Set School Year' , array('style' => 'color:white')) ?></li>
+		               	<li><?php echo Html::anchor('admin/academicyear', '<i class="glyphicon glyphicon-font"></i> Academic Year' , array('style' => 'color:white')) ?></li>
+		               	<li><?php echo Html::anchor('admin/achives', '<i class="glyphicon glyphicon-briefcase"></i> Archives' , array('style' => 'color:white')) ?></li>
                         <li class="divider">
-                        	<li><?php echo Html::anchor('admin/logout', '<i class="glyphicon glyphicon-log-out"></i> Logout') ?></li>
+                        	<li><?php echo Html::anchor('admin/logout', '<i class="glyphicon glyphicon-log-out"></i> Logout', array('style' => 'color:white')) ?></li>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

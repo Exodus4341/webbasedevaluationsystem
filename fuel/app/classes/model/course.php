@@ -4,6 +4,7 @@ class Model_Course extends \Orm\Model
 	protected static $_properties = array(
 		'id',
 		'course_name',
+		'status',
 		'created_at',
 		'updated_at',
 	);
@@ -23,6 +24,7 @@ class Model_Course extends \Orm\Model
 	{
 		$val = Validation::forge($factory);
 		$val->add_field('course_name', 'Course Name', 'required|max_length[50]');
+		$val->add_field('status', 'Status', '');
 
 		return $val;
 	}

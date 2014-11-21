@@ -21,6 +21,7 @@ class Controller_Admin_Subject extends Controller_Admin
 		$this->template->title = "Subjects";
 		$this->template->content = $view;
 	}
+
 	public function action_view($id = null)
 	{
 		$view = View::forge('admin\subject/view');

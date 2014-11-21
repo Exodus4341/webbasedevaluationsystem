@@ -21,8 +21,7 @@
 				<?php echo Html::anchor('admin/question/add_question_subject/'.$question['qid'].'/'.$question['category'].'/'.$question['order_no'], '', array('class'=>'glyphicon glyphicon-plus-sign btn btn-success btn-xs', 'title'=>'Add Subjects')); ?>
 				<?php echo Html::anchor('admin/question/view/'.$question['qid'], '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info btn-xs', 'title'=>'View')); ?>
 				<?php echo Html::anchor('admin/question/edit/'.$question['qid'].'/'.$question['category'].'/'.$question['order_no'], '', array('class'=>'glyphicon glyphicon-wrench btn btn-warning btn-xs', 'title'=>'Edit')); ?>
-				<?php echo Html::anchor('admin/question/delete/'.$question['qid'], '', array('onclick' => "return confirm('Are you sure?')", 'class'=>'glyphicon glyphicon-trash btn btn-danger btn-xs', 'title'=>'Delete')); ?>
-
+				<?php echo Html::anchor('admin/question/deactivateQuestions/'.$question['category'].'/'.$question['order_no'], '', array('onclick' => "return confirm('Are you sure?')", 'class'=>'glyphicon glyphicon-remove btn btn-danger btn-xs', 'title'=>'Deactivate Questionnaire')); ?>
 			</td>
 		</tr>
 <?php endforeach; ?>	</tbody>

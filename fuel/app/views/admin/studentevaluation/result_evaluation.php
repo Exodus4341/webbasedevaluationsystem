@@ -12,27 +12,27 @@ if ($teachers) {
 				</tr>
 				<tr>
 					<td>Name: </td>
-					<td>".ucwords($teachers[0]['fname']) ." ". ucwords($teachers[0]['mname']) .". ". ucwords($teachers[0]['lname']) ."</td>
+					<strong><td>".ucwords($teachers[0]['fname']) ." ". ucwords($teachers[0]['mname']) .". ". ucwords($teachers[0]['lname']) ."</td></strong>
 				</tr>
 				<tr>
 					<td>Subject Code: </td>
-					<td>".$teachers[0]['subj_code']."</td>
+					<strong><td>".$teachers[0]['subj_code']."</td></strong>
 				</tr>
 				<tr>
 					<td>Subject Description: </td>
-					<td>".$teachers[0]['subj_desc']."</td>
+					<strong><td>".$teachers[0]['subj_desc']."</td></strong>
 				</tr>
 				<tr>
 					<td>Schedule: </td>
-					<td>".$teachers[0]['schedule']."</td>
+					<strong><td>".$teachers[0]['schedule']."</td></strong>
 				</tr>
 				<tr>
 					<td>Time: </td>
-					<td>".$teachers[0]['time']."</td>
+					<strong><td>".$teachers[0]['time']."</td></strong>
 				</tr>
 				<tr>
 					<td>Room: </td>
-					<td>".$teachers[0]['room']."</td>
+					<strong><td>".$teachers[0]['room']."</td></strong>
 				</tr>
 			</tabe>";
 }

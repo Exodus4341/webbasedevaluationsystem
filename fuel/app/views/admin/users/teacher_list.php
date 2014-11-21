@@ -26,7 +26,7 @@
 				<?php echo Html::anchor('admin/users/teacher_subjects/'.$user['uid'], '', array('class'=>'glyphicon glyphicon-th-list btn btn-success btn-xs', 'title'=>'View Subjects')); ?>
 				<?php echo Html::anchor('admin/users/view/'.$user['uid'], '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info btn-xs', 'title'=>'View')); ?>
 				<?php echo Html::anchor('admin/users/edit/'.$user['uid'], '', array('class'=>'glyphicon glyphicon-wrench btn btn-warning btn-xs', 'title'=>'Edit')); ?>
-				<?php echo Html::anchor('admin/users/status/'.$user['uid'], '', array('class'=>'glyphicon glyphicon-remove btn btn-danger btn-xs', 'title'=>'Deactivate')); ?>
+				<?php echo Html::anchor('admin/users/status/'.$user['uid'], '', array('onclick' => "return confirm('Are you sure?')", 'class'=>'glyphicon glyphicon-remove btn btn-danger btn-xs', 'title'=>'Deactivate')); ?>
 			</td>
 		</tr>
 <?php endforeach; ?>	</tbody>

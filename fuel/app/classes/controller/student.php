@@ -12,7 +12,7 @@ class Controller_Student extends Controller_Base
 		{
 			if (Auth::check())
 			{
-				if ( ! Auth::member(1))
+				if ( ! Auth::member(1) )
 				{
 					Session::set_flash('error', e('You don\'t have access to the student panel'));
 					Response::redirect('/');

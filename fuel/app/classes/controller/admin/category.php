@@ -4,7 +4,7 @@ class Controller_Admin_Category extends Controller_Admin
 
 	public function action_index()
 	{
-		$data['categories'] = Model_Category::find('all');
+		$data['categories'] = Model_Category::find()->where('status', '=', '0')->get();
 		$this->template->title = "Category";
 		$this->template->content = View::forge('admin\category/index', $data);
 
@@ -16,7 +16,49 @@ class Controller_Admin_Category extends Controller_Admin
 
 		$this->template->title = "Category";
 		$this->template->content = View::forge('admin\category/view', $data);
+	}
 
+	public function action_deactivate($id = null)
+	{
+		// $view = View::forge('admin\category/deactivate');
+		$tatus = 1;
+		$deactivate = "UPDATE categories SET `status` = '".$tatus."' WHERE id = '".$id."' ";
+		$deactivated = DB::query($deactivate)->execute();
+
+		if (isset($deactivated)) {
+			Session::set_flash('success', e('Successfully Deactivated!'));
+			Response::redirect('admin/category');
+		}
+		else
+		{
+			Session::set_flash('error', e('Could not update.'));
+		}
+	}
+
+	public function action_activate($id = null)
+	{
+		$tatus = 0;
+		$deactivate = "UPDATE categories SET `status` = '".$tatus."' WHERE id = '".$id."' ";
+		$deactivated = DB::query($deactivate)->execute();
+
+		if (isset($deactivated)) {
+			Session::set_flash('success', e('Successfully Activated!'));
+			Response::redirect('admin/category/deactivated');
+		}
+		else
+		{
+			Session::set_flash('error', e('Could not update.'));
+		}
+	}
+
+	public function action_deactivated()
+	{
+		$view = View::forge('admin\category/deactivated');
+		$q = "SELECT * FROM categories WHERE status = '1' ";
+		$qw = DB::query($q)->execute()->as_array();
+		$view->set_global('deactivated', $qw);
+		$this->template->title = " Deactivated Categories";
+		$this->template->content = $view;
 	}
 
 	public function action_create()
@@ -27,9 +69,11 @@ class Controller_Admin_Category extends Controller_Admin
 
 			if ($val->run())
 			{
+				$status = 0;
 				$category = Model_Category::forge(array(
 					'cat_name' => Input::post('cat_name'),
 					'percentage' => Input::post('percentage'),
+					'status' => $status,
 				));
 
 				if ($category and $category->save())

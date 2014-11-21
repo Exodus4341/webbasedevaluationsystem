@@ -4,10 +4,9 @@ class Controller_Admin_Course extends Controller_Admin
 
 	public function action_index()
 	{
-		$data['courses'] = Model_Course::find('all');
+		$data['courses'] = Model_Course::find()->where('status', '=', '0')->get();
 		$this->template->title = "Courses";
 		$this->template->content = View::forge('admin\course/index', $data);
-
 	}
 
 	public function action_view($id = null)
@@ -16,7 +15,45 @@ class Controller_Admin_Course extends Controller_Admin
 
 		$this->template->title = "Course";
 		$this->template->content = View::forge('admin\course/view', $data);
+	}
 
+	public function action_deactivated()
+	{
+		$data['deactivated'] = Model_Course::find()->where('status', '=', '1')->get();
+		$this->template->title = "Courses";
+		$this->template->content = View::forge('admin\course/deactivated', $data);
+	}
+
+	public function action_deactivate($id = null)
+	{
+		$status = 1;
+		$q = "UPDATE courses SET `status` = '".$status."' WHERE `id` = '".$id."' ";
+		$qw = DB::query($q)->execute();
+
+		if (isset($qw)) {
+			Session::set_flash('success', e('Successfully Deactivated!'));
+			Response::redirect('admin/course');
+		}
+		else
+		{
+			Session::set_flash('error', e('Could not update.'));
+		}
+	}
+
+	public function action_activate($id = null)
+	{
+		$status = 0;
+		$q = "UPDATE courses SET `status` = '".$status."' WHERE `id` = '".$id."' ";
+		$qw = DB::query($q)->execute();
+
+		if (isset($qw)) {
+			Session::set_flash('success', e('Successfully Activated!'));
+			Response::redirect('admin/course');
+		}
+		else
+		{
+			Session::set_flash('error', e('Could not update.'));
+		}
 	}
 
 	public function action_create()
@@ -27,8 +64,10 @@ class Controller_Admin_Course extends Controller_Admin
 
 			if ($val->run())
 			{
+				$status = 0;
 				$course = Model_Course::forge(array(
 					'course_name' => Input::post('course_name'),
+					'status' => $status,
 				));
 
 				if ($course and $course->save())

@@ -9,6 +9,7 @@ class Model_Question extends \Orm\Model
 		'order_no',
 		'question',
 		'subj_id',
+		'status',
 		'created_at',
 		'updated_at',
 	);
@@ -30,6 +31,7 @@ class Model_Question extends \Orm\Model
 		$val->add_field('category', 'Category', 'required|max_length[50]');
 		$val->add_field('order_no', 'order no', 'required');
 		$val->add_field('question', 'Question', 'required');
+		$val->add_field('status', 'Status', '');
 		$val->add_field('subj_id[0]', 'Subj Id', 'valid_string[numeric]');
 
 		return $val;

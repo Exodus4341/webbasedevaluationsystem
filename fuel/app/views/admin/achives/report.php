@@ -178,9 +178,13 @@ function EvaluationData($evaluated, $category, $questionsum)
 			  	 	$this->Cell($td[0],6,sizeof($evaluated),1,0,'C',true);
                  }
                  if(sizeof($evaluated) == 3){
-                 	$sum = (($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+2]['category_sum'.$x] / $questionsum[$y+2]['category'.$x]) * ($category[$i]['percentage']/100));
+                 	$sum = (($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+1]['category_sum'.$x] / $questionsum[$y+1]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+2]['category_sum'.$x] / $questionsum[$y+2]['category'.$x]) * ($category[$i]['percentage']/100));
                  	$this->setX(180);
                     $total = $sum/sizeof($evaluated);
+                    // $total = array_sum($total[$x]);
+                    // $total;
+                    // var_dump($total);
+                    // exit();
 			  	 	$this->Cell($td[0],6,number_format(($total), 2, '.', '')." %",1,0,'C',true);
 			  	 	$this->setX(210);
                     foreach ($ranges as $range) {
@@ -209,7 +213,7 @@ function EvaluationData($evaluated, $category, $questionsum)
 			  	 	$this->Cell($td[0],6,sizeof($evaluated),1,0,'C',true);
                  }
                  if(sizeof($evaluated) == 4){
-                 	$sum = (($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+3]['category_sum'.$x] / $questionsum[$y+3]['category'.$x]) * ($category[$i]['percentage']/100));
+                 	$sum = (($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+1]['category_sum'.$x] / $questionsum[$y+1]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+2]['category_sum'.$x] / $questionsum[$y+2]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+3]['category_sum'.$x] / $questionsum[$y+3]['category'.$x]) * ($category[$i]['percentage']/100));
                  	$this->setX(210);
                     $total = $sum/sizeof($evaluated);
 			  	 	$this->Cell($td[0],6,number_format(($total), 2, '.', '')." %",1,0,'C',true);
@@ -240,7 +244,7 @@ function EvaluationData($evaluated, $category, $questionsum)
 			  	 	$this->Cell($td[0],6,sizeof($evaluated),1,0,'C',true);
                  }
                  if(sizeof($evaluated) == 5){
-                 	$sum = (($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+4]['category_sum'.$x] / $questionsum[$y+4]['category'.$x]) * ($category[$i]['percentage']/100));
+                 	$sum = (($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+1]['category_sum'.$x] / $questionsum[$y+1]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+2]['category_sum'.$x] / $questionsum[$y+2]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+3]['category_sum'.$x] / $questionsum[$y+3]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+4]['category_sum'.$x] / $questionsum[$y+4]['category'.$x]) * ($category[$i]['percentage']/100));
                  	$this->setX(240);
                     $total = $sum/sizeof($evaluated);
 			  	 	$this->Cell($td[0],6,number_format(($total), 2, '.', '')." %",1,0,'C',true);
@@ -271,7 +275,7 @@ function EvaluationData($evaluated, $category, $questionsum)
 			  	 	$this->Cell($td[0],6,sizeof($evaluated),1,0,'C',true);
                  }
                  if(sizeof($evaluated) == 6){
-                 	$sum = (($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+5]['category_sum'.$x] / $questionsum[$y+5]['category'.$x]) * ($category[$i]['percentage']/100));
+                 	$sum = (($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+1]['category_sum'.$x] / $questionsum[$y+1]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+2]['category_sum'.$x] / $questionsum[$y+2]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+3]['category_sum'.$x] / $questionsum[$y+3]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+4]['category_sum'.$x] / $questionsum[$y+4]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+5]['category_sum'.$x] / $questionsum[$y+5]['category'.$x]) * ($category[$i]['percentage']/100));
                  	$this->setX(270);
                     $total = $sum/sizeof($evaluated);
 			  	 	$this->Cell($td[0],6,number_format(($total), 2, '.', '')." %",1,0,'C',true);
@@ -302,7 +306,7 @@ function EvaluationData($evaluated, $category, $questionsum)
 			  	 	$this->Cell($td[0],6,sizeof($evaluated),1,0,'C',true);
                  }
                  if(sizeof($evaluated) == 7){
-                 	$sum = (($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+6]['category_sum'.$x] / $questionsum[$y+6]['category'.$x]) * ($category[$i]['percentage']/100));
+                 	$sum = (($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+1]['category_sum'.$x] / $questionsum[$y+1]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+2]['category_sum'.$x] / $questionsum[$y+2]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+3]['category_sum'.$x] / $questionsum[$y+3]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+4]['category_sum'.$x] / $questionsum[$y+4]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+5]['category_sum'.$x] / $questionsum[$y+5]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+6]['category_sum'.$x] / $questionsum[$y+6]['category'.$x]) * ($category[$i]['percentage']/100));
                  	$this->setX(300);
                     $total = $sum/sizeof($evaluated);
 			  	 	$this->Cell($td[0],6,number_format(($total), 2, '.', '')." %",1,0,'C',true);
@@ -333,7 +337,7 @@ function EvaluationData($evaluated, $category, $questionsum)
 			  	 	$this->Cell($td[0],6,sizeof($evaluated),1,0,'C',true);
                  }
                  if(sizeof($evaluated) == 8){
-                 	$sum = (($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+7]['category_sum'.$x] / $questionsum[$y+7]['category'.$x]) * ($category[$i]['percentage']/100));
+                 	$sum = (($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+1]['category_sum'.$x] / $questionsum[$y+1]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+2]['category_sum'.$x] / $questionsum[$y+2]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+3]['category_sum'.$x] / $questionsum[$y+3]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+4]['category_sum'.$x] / $questionsum[$y+4]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+5]['category_sum'.$x] / $questionsum[$y+5]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+6]['category_sum'.$x] / $questionsum[$y+6]['category'.$x]) * ($category[$i]['percentage']/100)) + (($evaluated[$y+7]['category_sum'.$x] / $questionsum[$y+7]['category'.$x]) * ($category[$i]['percentage']/100));
                  	$this->setX(310);
                     $total = $sum/sizeof($evaluated);
 			  	 	$this->Cell($td[0],6,number_format(($total), 2, '.', '')." %",1,0,'C',true);
@@ -373,6 +377,7 @@ function EvaluationData($evaluated, $category, $questionsum)
                 /*End of Conditon for Sum Rating per Subjects*/ 
 			 }
 
+             // $overall = 0;
 			 /*Start of Conditon for Total Sum Rating per Subjects*/ 
 			  $this->setX(90);
               $total = array_sum($percnt1[$y]);
@@ -398,6 +403,11 @@ function EvaluationData($evaluated, $category, $questionsum)
                     }
                 $this->setXY(90,136);
                 $this->Cell($td[$y],6,$rate,1,0,'C',true);
+
+                // $overall += number_format(array_sum($percnt1[$y]), 2, '.', '');
+                // $this->setXY(90,148);
+                // $this->Cell($td[$y],6,number_format($total, 2, '.', '')." %",1,0,'C',true);
+
 			 /*Start of Conditon for Total Sum Rating per Subjects*/ 
 			 
          }
@@ -412,6 +422,7 @@ function EvaluationData($evaluated, $category, $questionsum)
 			  $this->setX(120);
               $total = array_sum($percnt1[$y]);
 			  $this->Cell($td[$y],6,number_format($total, 2, '.', '')." %",1,0,'C',true);
+
                     foreach ($ranges as $range) {
                         if($total <= $range['poor'] AND $total < $range['fair']){
                             $rate = "Poor";
@@ -435,12 +446,37 @@ function EvaluationData($evaluated, $category, $questionsum)
                 $this->Cell($td[$y],6,$rate,1,0,'C',true);
          }
           if($y == 2){
-          	$this->setY(100);
+          	     $this->setY(100);
          	for ($i=0,$x = 1; $i < sizeof($category); $i++, $x++) { 
-         	$this->setX(150);
+         	    $this->setX(150);
 				$percnt1[$y][$x] = ($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100); 
-			 	 $this->Cell($td[$y],6,number_format($percnt1[$y][$x], 2, '.', '')." %",1,1,'C',true);
+			 	$this->Cell($td[$y],6,number_format($percnt1[$y][$x], 2, '.', '')." %s",1,1,'C',true);
 			 }
+              $this->setX(150);
+              $total = array_sum($percnt1[$y]); 
+              $this->Cell($td[$y],6,number_format($total, 2, '.', '')." %",1,0,'C',true);
+
+                    foreach ($ranges as $range) {
+                        if($total <= $range['poor'] AND $total < $range['fair']){
+                            $rate = "Poor";
+                        }
+                        elseif ($total <= $range['fair'] AND $total < $range['good']) {
+                            $rate = "Fair";
+                        }
+                        elseif ($total <= $range['good'] AND $total < $range['very_good']) {
+                            $rate = "Good";
+                        }
+                        elseif ($total <= $range['very_good'] AND $total < $range['excellent']) {
+                            $rate = "Very Good";
+                        }
+                        elseif ($total <= $range['excellent'] AND $total > $range['excellent']) {
+                            $rate = "Excellent";
+                        }else{
+                            $rate = "Excellent";
+                        }
+                    }
+                $this->setXY(150,136);
+                $this->Cell($td[$y],6,$rate,1,0,'C',true);
          }
          if($y == 3){
           	$this->setY(100);
@@ -449,6 +485,31 @@ function EvaluationData($evaluated, $category, $questionsum)
 				$percnt1[$y][$x] = ($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100); 
 			 	 $this->Cell($td[$y],6,number_format($percnt1[$y][$x], 2, '.', '')." %",1,1,'C',true);
 			 }
+             $this->setX(180);
+              $total = array_sum($percnt1[$y]); 
+              $this->Cell($td[$y],6,number_format($total, 2, '.', '')." %",1,0,'C',true);
+
+                    foreach ($ranges as $range) {
+                        if($total <= $range['poor'] AND $total < $range['fair']){
+                            $rate = "Poor";
+                        }
+                        elseif ($total <= $range['fair'] AND $total < $range['good']) {
+                            $rate = "Fair";
+                        }
+                        elseif ($total <= $range['good'] AND $total < $range['very_good']) {
+                            $rate = "Good";
+                        }
+                        elseif ($total <= $range['very_good'] AND $total < $range['excellent']) {
+                            $rate = "Very Good";
+                        }
+                        elseif ($total <= $range['excellent'] AND $total > $range['excellent']) {
+                            $rate = "Excellent";
+                        }else{
+                            $rate = "Excellent";
+                        }
+                    }
+                $this->setXY(180,136);
+                $this->Cell($td[$y],6,$rate,1,0,'C',true);
          }
          if($y == 4){
           	$this->setY(100);
@@ -457,14 +518,177 @@ function EvaluationData($evaluated, $category, $questionsum)
 				$percnt1[$y][$x] = ($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100); 
 			 	 $this->Cell($td[$y],6,number_format($percnt1[$y][$x], 2, '.', '')." %",1,1,'C',true);
 			 }
+             $this->setX(210);
+              $total = array_sum($percnt1[$y]); 
+              $this->Cell($td[$y],6,number_format($total, 2, '.', '')." %",1,0,'C',true);
+
+                    foreach ($ranges as $range) {
+                        if($total <= $range['poor'] AND $total < $range['fair']){
+                            $rate = "Poor";
+                        }
+                        elseif ($total <= $range['fair'] AND $total < $range['good']) {
+                            $rate = "Fair";
+                        }
+                        elseif ($total <= $range['good'] AND $total < $range['very_good']) {
+                            $rate = "Good";
+                        }
+                        elseif ($total <= $range['very_good'] AND $total < $range['excellent']) {
+                            $rate = "Very Good";
+                        }
+                        elseif ($total <= $range['excellent'] AND $total > $range['excellent']) {
+                            $rate = "Excellent";
+                        }else{
+                            $rate = "Excellent";
+                        }
+                    }
+                $this->setXY(210,136);
+                $this->Cell($td[$y],6,$rate,1,0,'C',true);
          }
+         if($y == 5){
+            $this->setY(100);
+            for ($i=0,$x = 1; $i < sizeof($category); $i++, $x++) { 
+            $this->setX(240);
+                $percnt1[$y][$x] = ($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100); 
+                 $this->Cell($td[$y],6,number_format($percnt1[$y][$x], 2, '.', '')." %",1,1,'C',true);
+             }
+             $this->setX(240);
+              $total = array_sum($percnt1[$y]); 
+              $this->Cell($td[$y],6,number_format($total, 2, '.', '')." %",1,0,'C',true);
+
+                    foreach ($ranges as $range) {
+                        if($total <= $range['poor'] AND $total < $range['fair']){
+                            $rate = "Poor";
+                        }
+                        elseif ($total <= $range['fair'] AND $total < $range['good']) {
+                            $rate = "Fair";
+                        }
+                        elseif ($total <= $range['good'] AND $total < $range['very_good']) {
+                            $rate = "Good";
+                        }
+                        elseif ($total <= $range['very_good'] AND $total < $range['excellent']) {
+                            $rate = "Very Good";
+                        }
+                        elseif ($total <= $range['excellent'] AND $total > $range['excellent']) {
+                            $rate = "Excellent";
+                        }else{
+                            $rate = "Excellent";
+                        }
+                    }
+                $this->setXY(240,136);
+                $this->Cell($td[$y],6,$rate,1,0,'C',true);
+         } 
+         if($y == 6){
+            $this->setY(100);
+            for ($i=0,$x = 1; $i < sizeof($category); $i++, $x++) { 
+                $this->setX(270);
+                $percnt1[$y][$x] = ($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100); 
+                 $this->Cell($td[$y],6,number_format($percnt1[$y][$x], 2, '.', '')." %",1,1,'C',true);
+             }
+             $this->setX(270);
+              $total = array_sum($percnt1[$y]); 
+              $this->Cell($td[$y],6,number_format($total, 2, '.', '')." %",1,0,'C',true);
+
+                    foreach ($ranges as $range) {
+                        if($total <= $range['poor'] AND $total < $range['fair']){
+                            $rate = "Poor";
+                        }
+                        elseif ($total <= $range['fair'] AND $total < $range['good']) {
+                            $rate = "Fair";
+                        }
+                        elseif ($total <= $range['good'] AND $total < $range['very_good']) {
+                            $rate = "Good";
+                        }
+                        elseif ($total <= $range['very_good'] AND $total < $range['excellent']) {
+                            $rate = "Very Good";
+                        }
+                        elseif ($total <= $range['excellent'] AND $total > $range['excellent']) {
+                            $rate = "Excellent";
+                        }else{
+                            $rate = "Excellent";
+                        }
+                    }
+                $this->setXY(270,136);
+                $this->Cell($td[$y],6,$rate,1,0,'C',true);
+         } 
+         if($y == 7){
+            $this->setY(100);
+            for ($i=0,$x = 1; $i < sizeof($category); $i++, $x++) { 
+            $this->setX(300);
+                $percnt1[$y][$x] = ($evaluated[$y]['category_sum'.$x] / $questionsum[$y]['category'.$x]) * ($category[$i]['percentage']/100); 
+                 $this->Cell($td[$y],6,number_format($percnt1[$y][$x], 2, '.', '')." %",1,1,'C',true);
+             }
+             $this->setX(300);
+              $total = array_sum($percnt1[$y]); 
+              $this->Cell($td[$y],6,number_format($total, 2, '.', '')." %",1,0,'C',true);
+
+                    foreach ($ranges as $range) {
+                        if($total <= $range['poor'] AND $total < $range['fair']){
+                            $rate = "Poor";
+                        }
+                        elseif ($total <= $range['fair'] AND $total < $range['good']) {
+                            $rate = "Fair";
+                        }
+                        elseif ($total <= $range['good'] AND $total < $range['very_good']) {
+                            $rate = "Good";
+                        }
+                        elseif ($total <= $range['very_good'] AND $total < $range['excellent']) {
+                            $rate = "Very Good";
+                        }
+                        elseif ($total <= $range['excellent'] AND $total > $range['excellent']) {
+                            $rate = "Excellent";
+                        }else{
+                            $rate = "Excellent";
+                        }
+                    }
+                $this->setXY(300,136);
+                $this->Cell($td[$y],6,$rate,1,0,'C',true);
+         }        
 
          // var_dump($evaluated);
          // exit();
 	     
     }
 
-    
+    $over = 0;
+    for ($a=0, $b = 1; $a <sizeof($evaluated); $a++, $b++) { 
+       for ($z=0, $p = 1; $z <sizeof($category); $z++, $p++) { 
+           $percnt2[$a][$p] = ($evaluated[$a]['category_sum'.$p] / $questionsum[$a]['category'.$p]) * ($category[$z]['percentage']/100); 
+       }
+       $over += number_format(array_sum($percnt2[$a]), 2, '.', '');
+    }
+    $overall = number_format($over / sizeof($evaluated), 2, '.', '');
+
+    foreach ($ranges as $range) {
+        if($overall <= $range['poor'] AND $overall < $range['fair']){
+                $rate = "Poor";
+            }
+        elseif ($overall <= $range['fair'] AND $overall < $range['good']) {
+                $rate = "Fair";
+            }
+        elseif ($overall <= $range['good'] AND $overall < $range['very_good']) {
+                $rate = "Good";
+            }
+        elseif ($overall <= $range['very_good'] AND $overall < $range['excellent']) {
+                $rate = "Very Good";
+            }
+        elseif ($overall <= $range['excellent'] AND $overall > $range['excellent']) {
+                $rate = "Excellent";
+            }else{
+                $rate = "Excellent";
+            }
+    }
+            $this->setXY(90,154);
+            $this->Cell($td[$y],6,$rate,1,0,'C',true);
+    // var_dump($overall);
+    // exit();
+
+    $td3 = array(30);
+    $this->setXY(90,148);
+    $this->SetFillColor(224,235,255);
+    $this->SetTextColor(0);
+    $this->SetFont('Arial','',10);
+    $this->Cell($td3[0],6,$overall." %",1,1,'C',true);
+
     $td1 = array(70);
     $this->SetY(100);
     $this->SetFillColor(224,235,255);
@@ -474,6 +698,7 @@ function EvaluationData($evaluated, $category, $questionsum)
     	$this->SetX(20);
         $this->Cell($td1[0],6,$category[$i]['cat_name'],1,1,'L',true);
     }
+    
     $td2 = array(35);
     $this->SetXY(55,130);
     $this->SetFillColor(224,0,0);
@@ -487,11 +712,17 @@ function EvaluationData($evaluated, $category, $questionsum)
     $this->SetFont('Arial','',10);
     $this->Cell($td2[0],6,'Description',1,1,'L',true);
 
-    $this->SetXY(55,142);
+    $this->SetXY(55,148);
     $this->SetFillColor(224,0,0);
     $this->SetTextColor(255);
     $this->SetFont('Arial','',10);
-    $this->Cell($td2[0],6,'Over All Rating >>>',1,1,'L',true);
+    $this->Cell($td2[0],6,'Over All Rating',1,1,'L',true);
+
+    $this->SetXY(55,154);
+    $this->SetFillColor(224,0,0);
+    $this->SetTextColor(255);
+    $this->SetFont('Arial','',10);
+    $this->Cell($td2[0],6,'Description',1,1,'L',true);
 
 
 }

@@ -32,7 +32,7 @@ class Controller_Admin_Users extends Controller_Admin
 		$status = 0;
 		$status = DB::query("UPDATE `users` SET `status` = ".$status." WHERE `id` = ".$id." ")->execute();
 		if (isset($status)) {
-			Session::set_flash('success', e('Activated status'));
+			Session::set_flash('success', e('Successfully Activated'));
 			Response::redirect('admin/users');
 		}
 		else
@@ -47,7 +47,7 @@ class Controller_Admin_Users extends Controller_Admin
 		$status = 1;
 		$status = DB::query("UPDATE `users` SET `status` = ".$status." WHERE `id` = ".$id." ")->execute();
 		if (isset($status)) {
-			Session::set_flash('success', e('Deactivated status'));
+			Session::set_flash('success', e('Successfully Deactivated'));
 			Response::redirect('admin/users');
 		}
 		else
@@ -56,6 +56,7 @@ class Controller_Admin_Users extends Controller_Admin
 		}
 		
 	}	
+	
 	public function action_deactivated()
 	{
 		$view = View::forge('admin\users/deactivated');

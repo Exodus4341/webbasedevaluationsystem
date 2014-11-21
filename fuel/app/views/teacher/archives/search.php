@@ -6,7 +6,7 @@
 <br />
 <?php if ($evaluated):
     // for ($y=0; $y < sizeof($evaluated);) {  
-        echo Html::anchor('teacher/subject/print_summary/'.$evaluated[0]['teacher_id'], '', array('class'=>'glyphicon glyphicon-print btn btn-success
+        echo Html::anchor('teacher/archives/print_summary/'.$evaluated[0]['teacher_id'].'/'.$array['acadyear'].'/'.$array['sem'], '', array('class'=>'glyphicon glyphicon-print btn btn-success
                          btn-sm', 'title'=>'Print Summary Reports', 'style' => 'float:right'));
     // }
 ?>

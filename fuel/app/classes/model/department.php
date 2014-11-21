@@ -5,6 +5,7 @@ class Model_Department extends \Orm\Model
 	protected static $_properties = array(
 		'id',
 		'dept_name',
+		'status',
 		'created_at',
 		'updated_at',
 	);
@@ -24,6 +25,7 @@ class Model_Department extends \Orm\Model
 	{
 		$val = Validation::forge($factory);
 		$val->add_field('dept_name', 'Dept Name', 'required|max_length[50]');
+		$val->add_field('status', 'Status', '');
 
 		return $val;
 	}

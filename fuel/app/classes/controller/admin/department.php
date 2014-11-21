@@ -4,7 +4,7 @@ class Controller_Admin_Department extends Controller_Admin
 
 	public function action_index()
 	{
-		$data['departments'] = Model_Department::find('all');
+		$data['departments'] = Model_Department::find()->where('status', '=', '0')->get();
 		$this->template->title = "Departments";
 		$this->template->content = View::forge('admin\department/index', $data);
 
@@ -13,10 +13,47 @@ class Controller_Admin_Department extends Controller_Admin
 	public function action_view($id = null)
 	{
 		$data['department'] = Model_Department::find($id);
-
 		$this->template->title = "Department";
 		$this->template->content = View::forge('admin\department/view', $data);
+	}
 
+	public function action_deactivated()
+	{
+		$data['deactivated'] = Model_Department::find()->where('status', '=', '1')->get();
+		$this->template->title = "Deactivated Course";
+		$this->template->content = View::forge('admin\department/deactivated', $data);
+	}
+
+	public function action_activate($id = null)
+	{
+		$status = 0;
+		$q = "UPDATE departments SET `status` = '".$status."' WHERE `id` = '".$id."' ";
+		$qw = DB::query($q)->execute();
+
+		if (isset($qw)) {
+			Session::set_flash('success', e('Successfully Activated!'));
+			Response::redirect('admin/department');
+		}
+		else
+		{
+			Session::set_flash('error', e('Could not update.'));
+		}
+	}
+
+	public function action_deactivate($id = null)
+	{
+		$status = 1;
+		$q = "UPDATE departments SET `status` = '".$status."' WHERE `id` = '".$id."' ";
+		$qw = DB::query($q)->execute();
+
+		if (isset($qw)) {
+			Session::set_flash('success', e('Successfully Deactivated!'));
+			Response::redirect('admin/department');
+		}
+		else
+		{
+			Session::set_flash('error', e('Could not update.'));
+		}
 	}
 
 	public function action_create()
@@ -27,8 +64,10 @@ class Controller_Admin_Department extends Controller_Admin
 
 			if ($val->run())
 			{
+				$status = 0;
 				$department = Model_Department::forge(array(
 					'dept_name' => Input::post('dept_name'),
+					'status' => $status,
 				));
 
 				if ($department and $department->save())

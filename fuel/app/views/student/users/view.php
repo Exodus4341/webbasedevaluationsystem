@@ -1,7 +1,7 @@
 	<?php if ($user[0]['group'] == '1'){
 		//echo "<h2>Viewing #" .$user[0]['uid']. "</h2></br>";
 		echo "<ol class='breadcrumb'>
-		  <li class='active'>Update Username / Password</li>
+		  <li class='active'>View Account</li>
 		</ol>";
 	 	echo Html::img('uploads/'.$user[0]['pic_url'], array('class' => "thumbnail", "style" => "width:80px; height:80px"));
 		echo "<p><strong>Username: </strong>" .$user[0]['username']."</p>"; 

@@ -1,5 +1,5 @@
 <ol class="breadcrumb">
-  <li class="active">Subjects to be evaluate</li>
+  <li class="active">Subjects</li>
 </ol>
 <h2>List of Subjects</h2>
 <br>
@@ -15,8 +15,6 @@
 			<th>Schedule</th>
 			<th>Time</th>
 			<th>Room</th>
-			<th>Date Evaluation</th>
-			<th>Date Evaluated</th>
 			<th>Action</th>
 		</tr>
 	</thead>
@@ -29,15 +27,7 @@
 			<td><?php echo $subject['schedule']; ?></td>
 			<td><?php echo $subject['time']; ?></td>
 			<td><?php echo $subject['room']; ?></td>
-			<td><?php echo $subject['dateevaluation']; ?></td>
-			<td><?php echo $subject['createdat']; ?></td>
-			<?php if ($subject['status'] == '0' AND $subject['dateevaluation'] == $date) {
-				echo "<td>".Html::anchor('student/subject/evaluate/'.$subject['stud_subj_id'].'/'.$subject['uid'].'/'.$subject['sid'], 'Evaluate', array('class' => 'btn btn-success'))."</td>";
-			} elseif ($subject['status'] == '0' AND $subject['dateevaluation'] != $date) {
-				echo "<td>".Html::anchor('#', 'Not Evaluate', array('class' => 'btn btn-danger', 'disabled'))."</td>";
-			} else {
-			 	echo "<td>".Html::anchor('#', 'Evaluated', array('class' => 'btn btn-info', 'disabled'))."</td>";
-			 } ?>
+			<td><?php echo Html::anchor('student/subject/viewclassmates/'.$subject['sid'], 'View Classmates', array('class' => 'btn btn-success')); ?></td>
 		</tr>
 <?php endforeach; ?>	</tbody>
 </table>

@@ -20,7 +20,7 @@
 			<td>
 				<?php echo Html::anchor('admin/category/view/'.$category->id, '', array('class'=>'glyphicon glyphicon-eye-open btn btn-info btn-xs', 'title'=>'View')); ?>
 				<?php echo Html::anchor('admin/category/edit/'.$category->id, '', array('class'=>'glyphicon glyphicon-wrench btn btn-warning btn-xs', 'title'=>'Edit')); ?>
-				<?php echo Html::anchor('admin/category/delete/'.$category->id, '', array('onclick' => "return confirm('Are you sure?')",'class'=>'glyphicon glyphicon-trash btn btn-danger btn-xs', 'title'=>'Delete')); ?>
+				<?php echo Html::anchor('admin/category/deactivate/'.$category->id, '', array('onclick' => "return confirm('Are you sure?')",'class'=>'glyphicon glyphicon-remove btn btn-danger btn-xs', 'title'=>'Deactivate')); ?>
 
 			</td>
 		</tr>

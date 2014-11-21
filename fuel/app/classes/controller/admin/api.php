@@ -7,6 +7,7 @@ class Controller_Admin_Api extends Controller_Admin {
 		->from(Model_User::table())
 		->execute();
 		return Format::forge($data)->to_json();
+		// return $this->responce();
 	}
 
 	public function get_students(){

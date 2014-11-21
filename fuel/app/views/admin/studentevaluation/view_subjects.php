@@ -9,11 +9,11 @@
 				</tr>
 				<tr>
 					<td>Name: </td>
-					<td>".ucwords($teacher_name[0]['fname']) ." ". ucwords($teacher_name[0]['mname']) .". ". ucwords($teacher_name[0]['lname']) ."</td>
+					<td><strong>".ucwords($teacher_name[0]['fname']) ." ". ucwords($teacher_name[0]['mname']) .". ". ucwords($teacher_name[0]['lname']) ."</strong></td>
 				</tr>
 					<tr>
 					<td>Department: </td>
-					<td>".ucwords($teacher_name[0]['dept_name'])."</td>
+					<td><strong>".ucwords($teacher_name[0]['dept_name'])."</strong></td>
 				</tr>
 			</table>";
 } ?>
@@ -101,6 +101,7 @@
 </table>
 
 <?php else: ?>
-<p>No Subjects on this semester.</p>
-
+<br/>
+<br/>
+<p style="text-align:center;">No Subjects Evalauted.</p>
 <?php endif; ?>
